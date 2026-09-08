@@ -542,45 +542,38 @@
 
 
 
-                    <!-- ========================================= -->
-                    <!-- BUTTON -->
-                    <!-- ========================================= -->
-
-                    <button
-                        type="button"
-                        id="continueButton"
-                        disabled
-                        class="
-                        mt-6
-                        w-full
-                        bg-[#5b0b83]
-                        text-white
-                        py-4
-                        rounded-full
-                        font-semibold
-                        disabled:opacity-40
-                        disabled:cursor-not-allowed
-                        hover:bg-[#430563]
-                        transition
-                        "
-                    >
-                        Lanjut Pembayaran →
-                    </button>
-
-
+            <!-- ========================================= -->
+            <!-- BUTTON -->
+            <!-- ========================================= -->
+            <form
+                id="voteForm"
+                action="{{ route('candidate.checkout', $candidate->id) }}"
+                method="POST"
+            >           
+                @csrf                      
+                <input
+                    type="hidden"
+                    name="category_id"
+                    id="selectedCategoryInput"
+                >
+                <input
+                    type="hidden"
+                    name="vote_amount"
+                    id="selectedVoteInput"
+                >                        
+                <button
+                    type="submit"
+                    id="continueButton"
+                    disabled
+                    class="mt-6w-fullbg-[#5b0b83]text-whitepy-4rounded-fullfont-semibolddisabled:opacity-40disabled:cursor-not-allowedhover:bg-[#430563]transition">
+                    Lanjut Pembayaran →
+                </button>
+            </form>
                     <p
-                        class="
-                        mt-3
-                        text-xs
-                        text-center
-                        text-gray-400
-                        "
-                    >
+                        class=" mt-3 text-xs text-center text-gray-400 ">
                         Pastikan finalis, kategori, dan jumlah vote
                         sudah sesuai sebelum melanjutkan.
                     </p>
-
-
                 </div>
 
             </div>
@@ -621,14 +614,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const continueButton =
         document.getElementById('continueButton');
+    const selectedCategoryInput =
+    document.getElementById('selectedCategoryInput');
 
+    const selectedVoteInput =
+        document.getElementById('selectedVoteInput');
 
+    const voteForm =
+        document.getElementById('voteForm');
     let selectedVote = 0;
-
-
-
     function rupiah(number) {
-
         return new Intl.NumberFormat(
             'id-ID',
             {
@@ -660,138 +655,109 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-
+    voteForm.addEventListener('submit', function () {
+        if (continueButton.disabled) {
+            return;
+        }
+        continueButton.disabled = true;
+        continueButton.textContent =
+            'Memproses...';
+    });
     function updateCategoryStyle() {
-
         categoryOptions.forEach(function (option) {
-
             const radio =
                 option.querySelector('.category-radio');
-
             if (radio.checked) {
-
                 option.classList.add(
                     'border-[#5b0b83]',
                     'bg-[#faf7fc]'
                 );
-
             } else {
-
                 option.classList.remove(
                     'border-[#5b0b83]',
                     'bg-[#faf7fc]'
                 );
-
             }
-
         });
-
     }
-
-
-
     function updateSummary() {
-
-        const price = getSelectedPrice();
-
-        const total = selectedVote * price;
-
-
+        const selectedCategory =
+            document.querySelector(
+                '.category-radio:checked'
+            );
+        const price =
+            getSelectedPrice();
+        const total =
+            selectedVote * price;
         summaryVote.textContent =
             selectedVote + ' vote';
-
-
         summaryPrice.textContent =
             rupiah(price);
-
-
         summaryTotal.textContent =
             rupiah(total);
-
-
+        /*
+        |--------------------------------------------------------------------------
+        | Isi data yang akan dikirim ke Laravel
+        |--------------------------------------------------------------------------
+        */
+        selectedCategoryInput.value =
+            selectedCategory
+                ? selectedCategory.value
+                : '';
+        selectedVoteInput.value =
+            selectedVote > 0
+                ? selectedVote
+                : '';
+        /*
+        |--------------------------------------------------------------------------
+        | Aktifkan tombol hanya jika valid
+        |--------------------------------------------------------------------------
+        */
         continueButton.disabled =
-            selectedVote < 1 || price < 1;
-
+            !selectedCategory ||
+            selectedVote < 1 ||
+            price < 1;
     }
-
-
-
     votePackages.forEach(function (button) {
-
         button.addEventListener('click', function () {
-
             selectedVote =
                 parseInt(button.dataset.vote);
-
-
             customVote.value = '';
-
-
             votePackages.forEach(function (item) {
-
                 item.classList.remove(
                     'border-[#5b0b83]',
                     'bg-[#faf7fc]',
                     'text-[#5b0b83]'
                 );
-
             });
-
-
             button.classList.add(
                 'border-[#5b0b83]',
                 'bg-[#faf7fc]',
                 'text-[#5b0b83]'
             );
-
-
             updateSummary();
-
         });
-
     });
-
-
-
     customVote.addEventListener('input', function () {
-
         selectedVote =
             parseInt(customVote.value) || 0;
-
-
         votePackages.forEach(function (item) {
-
             item.classList.remove(
                 'border-[#5b0b83]',
                 'bg-[#faf7fc]',
                 'text-[#5b0b83]'
             );
-
         });
-
-
         updateSummary();
-
     });
-
-
-
     categoryRadios.forEach(function (radio) {
-
         radio.addEventListener('change', function () {
-
             updateCategoryStyle();
             updateSummary();
-
         });
-
     });
-
-
-
     updateCategoryStyle();
     updateSummary();
-
 });
 
 </script>

@@ -26,3 +26,14 @@ Route::get('/candidate/{id}/vote',
     [VotingController::class, 'vote']
 )
 ->name('candidate.vote');
+
+Route::post('/candidate/{id}/checkout',
+    [VotingController::class, 'checkout']
+)
+->name('candidate.checkout');
+
+
+Route::get('/payment/{invoice}',
+    [VotingController::class, 'payment']
+)
+->name('payment.show');
