@@ -372,10 +372,6 @@
                         </div>
 
                     </div>
-
-
-
-
                     <!-- ========================================= -->
                     <!-- CUSTOM -->
                     <!-- ========================================= -->
@@ -545,30 +541,53 @@
             <!-- ========================================= -->
             <!-- BUTTON -->
             <!-- ========================================= -->
-            <form
-                id="voteForm"
-                action="{{ route('candidate.checkout', $candidate->id) }}"
-                method="POST"
-            >           
-                @csrf                      
-                <input
-                    type="hidden"
-                    name="category_id"
-                    id="selectedCategoryInput"
-                >
-                <input
-                    type="hidden"
-                    name="vote_amount"
-                    id="selectedVoteInput"
-                >                        
-                <button
-                    type="submit"
-                    id="continueButton"
-                    disabled
-                    class="mt-6w-fullbg-[#5b0b83]text-whitepy-4rounded-fullfont-semibolddisabled:opacity-40disabled:cursor-not-allowedhover:bg-[#430563]transition">
-                    Lanjut Pembayaran →
-                </button>
-            </form>
+        <form
+            id="voteForm"
+            action="{{ route('candidate.checkout', $candidate->id) }}"
+            method="POST"
+            class="mt-6"
+        >
+
+            @csrf
+
+
+            <input
+                type="hidden"
+                name="category_id"
+                id="selectedCategoryInput"
+            >
+
+
+            <input
+                type="hidden"
+                name="vote_amount"
+                id="selectedVoteInput"
+            >
+
+
+            <button
+                type="submit"
+                id="continueButton"
+                disabled
+                class="
+                    w-full
+                    bg-[#5b0b83]
+                    hover:bg-[#430563]
+                    text-white
+                    py-4
+                    px-6
+                    rounded-full
+                    font-semibold
+                    text-center
+                    transition
+                    disabled:opacity-40
+                    disabled:cursor-not-allowed
+                "
+            >
+                Lanjut Pembayaran →
+            </button>
+        
+        </form>
                     <p
                         class=" mt-3 text-xs text-center text-gray-400 ">
                         Pastikan finalis, kategori, dan jumlah vote
@@ -583,8 +602,6 @@
     </div>
 
 </section>
-
-
 
 
 <script>

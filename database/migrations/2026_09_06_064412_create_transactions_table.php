@@ -10,80 +10,76 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-{
-    Schema::create('transactions', function (Blueprint $table) {
+    {
+      Schema::create('transactions', function (Blueprint $table) {
 
-        $table->id();
-
-
-        // Nomor transaksi
-        $table->string('invoice_number')
-              ->unique();
+          $table->id();
 
 
-        // Relasi kategori
-        $table->foreignId('category_id')
-              ->constrained()
-              ->cascadeOnDelete();
-
-
-        // Relasi finalis
-        $table->foreignId('candidate_id')
-              ->constrained()
-              ->cascadeOnDelete();
+          $table->string('invoice_number')
+                ->unique();
 
 
 
-        // Jumlah vote yang dibeli
-        $table->integer('vote_amount');
+          // Event
+          $table->foreignId('event_id')
+                ->constrained()
+                ->cascadeOnDelete();
 
 
 
-        // Total pembayaran
-        $table->integer('total_amount');
+          // Category
+          $table->foreignId('category_id')
+                ->constrained()
+                ->cascadeOnDelete();
 
 
 
-        // Data pembayaran
-        $table->string('payment_method')
-              ->nullable();
-
-
-        // Status pembayaran
-        $table->enum('payment_status', [
-
-            'pending',
-            'waiting_confirmation',
-            'paid',
-            'failed',
-            'expired'
-
-        ])->default('pending');
+          // Candidate
+          $table->foreignId('candidate_id')
+                ->constrained()
+                ->cascadeOnDelete();
 
 
 
-        // Untuk payment gateway
-        $table->string('payment_reference')
-              ->nullable();
+          $table->integer('vote_amount');
 
 
-
-        // Jika sementara manual upload bukti
-        $table->string('payment_proof')
-              ->nullable();
+          $table->integer('total_amount');
 
 
-
-        // Waktu pembayaran berhasil
-        $table->timestamp('paid_at')
-              ->nullable();
+          $table->string('payment_method')
+                ->nullable();
 
 
+          $table->enum('payment_status',[
 
-        $table->timestamps();
+              'pending',
+              'waiting_confirmation',
+              'paid',
+              'failed',
+              'expired'
 
-    });
-}
+          ])
+          ->default('pending');
+
+
+          $table->string('payment_reference')
+                ->nullable();
+
+
+          $table->string('payment_proof')
+                ->nullable();
+
+
+          $table->timestamp('paid_at')
+                ->nullable();
+
+
+          $table->timestamps();
+
+            });
+      }
     /**
      * Reverse the migrations.
      */

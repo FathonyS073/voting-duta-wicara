@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Candidate;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 
 class VotingController extends Controller
@@ -12,105 +14,127 @@ class VotingController extends Controller
 
     public function index()
     {
-        $events = Event::where('status', 1)
+
+        $events = Event::where('status','active')
+            ->latest()
+            ->take(6)
             ->get();
 
-        $candidates = Candidate::where('status', 1)
-            ->with('categories')
-            ->withSum('votes as total_votes', 'vote_amount')
-            ->orderByDesc('total_votes')
-            ->limit(5)
+
+        $popularEvents = Event::withCount('votes')
+            ->orderBy('votes_count','desc')
+            ->take(6)
             ->get();
 
-        return view(
-            'voting.index',
-            compact(
-                'events',
-                'candidates'
-            )
-        );
+
+
+        return view('voting.index',[
+            'events'=>$events,
+            'popularEvents'=>$popularEvents
+        ]);
+
     }
 
-
-    public function event(Request $request, $id)
-    {
-        $event = Event::findOrFail($id);
-
-        /*
+          /*
         |--------------------------------------------------------------------------
-        | Daftar Kabupaten / Kota
+        | Event Candidate
         |--------------------------------------------------------------------------
         */
-        $cities = Candidate::where('event_id', $id)
+        public function event(Request $request, Event $event)
+        {
+            $event->load([
+                'categories' => function ($query) {
+                    $query->where('status', 1);
+                },
+            ]);
+    
+        /*
+        |--------------------------------------------------------------------------
+        | Daftar Kota/Kabupaten Finalis
+        |--------------------------------------------------------------------------
+        */
+    
+        $cities = Candidate::where('event_id', $event->id)
             ->where('status', 1)
             ->whereNotNull('city')
             ->where('city', '!=', '')
             ->distinct()
             ->orderBy('city')
             ->pluck('city');
-
-
+    
+    
+    
         /*
         |--------------------------------------------------------------------------
-        | Filter
+        | Filter Request
         |--------------------------------------------------------------------------
         */
+    
         $selectedCity = $request->query('city');
-
+    
         $search = trim((string) $request->query('q', ''));
-
-
+    
+    
+    
         /*
         |--------------------------------------------------------------------------
-        | Query Finalis
+        | Query Candidate
         |--------------------------------------------------------------------------
         */
-        $candidateQuery = Candidate::where('event_id', $id)
+    
+        $candidateQuery = Candidate::where('event_id', $event->id)
             ->where('status', 1)
             ->with('categories')
             ->withSum('votes as total_votes', 'vote_amount');
-
-
+    
+    
+    
         /*
         |--------------------------------------------------------------------------
-        | Filter Kabupaten / Kota
+        | Filter Kota
         |--------------------------------------------------------------------------
         */
+    
         if ($selectedCity) {
-
+    
             $candidateQuery->where('city', $selectedCity);
-
+    
         }
-
-
+    
+    
+    
         /*
         |--------------------------------------------------------------------------
         | Search Nama / Kota
         |--------------------------------------------------------------------------
         */
+    
         if ($search !== '') {
-
+    
             $candidateQuery->where(function ($query) use ($search) {
-
+    
                 $query
                     ->where('name', 'like', '%' . $search . '%')
                     ->orWhere('city', 'like', '%' . $search . '%');
-
+    
             });
-
+    
         }
-
-
+    
+    
+    
         /*
         |--------------------------------------------------------------------------
-        | Ambil Data
+        | Ambil Candidate
         |--------------------------------------------------------------------------
         */
+    
         $candidates = $candidateQuery
-            ->orderBy('name')
+            ->orderByDesc('total_votes')
             ->get();
-
-
+    
+    
+    
         return view(
             'voting.event',
             compact(
@@ -121,7 +145,14 @@ class VotingController extends Controller
                 'search'
             )
         );
-    }
+    
+    }       
+            
+            /*
+            |--------------------------------------------------------------------------
+            | Event Candidate
+            |--------------------------------------------------------------------------
+        */
     public function candidate($id)
     {
         $candidate = Candidate::where('status', 1)
@@ -131,9 +162,7 @@ class VotingController extends Controller
             ])
             ->withSum('votes as total_votes', 'vote_amount')
             ->findOrFail($id);
-
         $event = $candidate->event;
-
         return view(
             'voting.candidate',
             compact(
@@ -273,8 +302,8 @@ class VotingController extends Controller
             ])
             ->where('invoice_number', $invoice)
             ->firstOrFail();
-    
-    
+
+
         return view(
             'voting.payment',
             compact('transaction')

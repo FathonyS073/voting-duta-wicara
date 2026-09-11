@@ -9,6 +9,7 @@ class Vote extends Model
 
     protected $fillable = [
 
+        'event_id',
         'transaction_id',
         'category_id',
         'candidate_id',
@@ -17,16 +18,26 @@ class Vote extends Model
     ];
 
 
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
+
+
+
     public function transaction()
     {
         return $this->belongsTo(Transaction::class);
     }
 
 
+
     public function candidate()
     {
         return $this->belongsTo(Candidate::class);
     }
+
 
 
     public function category()

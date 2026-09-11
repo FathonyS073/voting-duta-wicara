@@ -38,4 +38,10 @@ class Category extends Model
         return $this->hasMany(Vote::class);
     }
 
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
 }

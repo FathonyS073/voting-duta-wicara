@@ -4,34 +4,77 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VotingController;
 
 
+
+/*
+|--------------------------------------------------------------------------
+| Landing Page
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/',
     [VotingController::class, 'index']
 )
 ->name('home');
 
 
-Route::get('/event/{id}',
+
+/*
+|--------------------------------------------------------------------------
+| Detail Event
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/event/{event}',
     [VotingController::class, 'event']
 )
 ->name('event.detail');
 
 
-Route::get('/candidate/{id}',
+
+/*
+|--------------------------------------------------------------------------
+| Detail Candidate
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/candidate/{candidate}',
     [VotingController::class, 'candidate']
 )
 ->name('candidate.detail');
 
 
-Route::get('/candidate/{id}/vote',
+
+/*
+|--------------------------------------------------------------------------
+| Voting Candidate
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/candidate/{candidate}/vote',
     [VotingController::class, 'vote']
 )
 ->name('candidate.vote');
 
-Route::post('/candidate/{id}/checkout',
+
+
+/*
+|--------------------------------------------------------------------------
+| Checkout Vote
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/candidate/{candidate}/checkout',
     [VotingController::class, 'checkout']
 )
 ->name('candidate.checkout');
 
+
+
+/*
+|--------------------------------------------------------------------------
+| Payment
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/payment/{invoice}',
     [VotingController::class, 'payment']
