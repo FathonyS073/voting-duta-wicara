@@ -11,33 +11,41 @@ return new class extends Migration
      */
     public function up(): void
 {
-    Schema::create('events', function (Blueprint $table) {
-
+        Schema::create('events', function (Blueprint $table) {
+    
         $table->id();
-
+    
         $table->string('name');
-
-        $table->string('slug')->unique();
-
-        $table->text('description')->nullable();
-
-        $table->string('logo')->nullable();
-
-        $table->string('banner')->nullable();
-
-        $table->date('start_date')->nullable();
-
-        $table->date('end_date')->nullable();
-
+    
+        $table->string('slug')
+              ->unique();
+    
+        $table->text('description')
+              ->nullable();
+    
+        $table->string('logo')
+              ->nullable();
+    
+        $table->string('banner')
+              ->nullable();
+    
+        $table->date('start_date')
+              ->nullable();
+    
+        $table->date('end_date')
+              ->nullable();
+    
         $table->enum('status', [
             'draft',
             'active',
             'closed',
             'finished'
-        ])->default('draft');
-
+        ])
+        ->default('draft');
+    
+    
         $table->timestamps();
-
+    
     });
 }
 

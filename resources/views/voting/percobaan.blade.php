@@ -5,798 +5,760 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <title>
-        Vote {{ $candidate->name }} - Duta Wicara Jawa Timur
+        PICO - Digital Voting Platform
     </title>
+
 
     @vite(['resources/css/app.css'])
 
 </head>
 
 
-<body class="bg-[#faf8ff] text-[#172033]">
+<body class="bg-white text-gray-900">
 
 
-@include('partials.navbar', [
-    'activePage' => 'finalis'
-])
-
-
-
-<!-- HEADER -->
-<section class="pt-28 sm:pt-32">
-
-    <div class="max-w-5xl mx-auto px-5 sm:px-8">
-
-        <a
-            href="{{ route('candidate.detail', $candidate->id) }}"
-            class="
-            inline-flex
-            items-center
-            gap-2
-            text-sm
-            text-gray-500
-            hover:text-[#5b0b83]
-            transition
-            "
-        >
-            ← Kembali ke Detail Finalis
-        </a>
-
-    </div>
-
-</section>
+    @include('partials.navbar')
 
 
 
-<!-- VOTING -->
-<section class="pt-7 pb-20 sm:pt-10 sm:pb-24">
-
-    <div class="max-w-5xl mx-auto px-5 sm:px-8">
 
 
-        <div
-            class="
-            grid
-            grid-cols-1
-            lg:grid-cols-3
-            gap-6
-            lg:gap-8
-            "
-        >
+    <!-- ================================================= -->
+    <!-- HERO SECTION -->
+    <!-- ================================================= -->
 
 
-            <!-- ================================================= -->
-            <!-- FINALIS -->
-            <!-- ================================================= -->
+    <section class="
+pt-32
+pb-16
+bg-gradient-to-br
+from-blue-50
+via-white
+to-blue-100
+">
+
+
+        <div class="
+max-w-7xl
+mx-auto
+px-6
+grid
+lg:grid-cols-2
+gap-10
+items-center
+">
+
+
+
+            <!-- TEXT -->
+
 
             <div>
 
-                <div
-                    class="
-                    bg-white
-                    rounded-3xl
-                    border
-                    border-gray-100
-                    p-4
-                    sticky
-                    top-28
-                    "
-                >
 
-                    <div
+                <p class="
+text-blue-600
+font-semibold
+uppercase
+tracking-[4px]
+text-sm
+">
+
+                    Suara Untuk Perubahan
+
+                </p>
+
+
+
+
+                <h1 class="
+mt-5
+text-5xl
+lg:text-6xl
+font-bold
+leading-tight
+text-[#14285a]
+">
+
+
+                    Platform Voting Digital
+
+                    <br>
+
+
+                    <span class="text-blue-600">
+
+                        untuk Berbagai Event
+
+                    </span>
+
+
+                </h1>
+
+
+
+
+
+                <p class="
+mt-6
+text-gray-600
+text-lg
+leading-relaxed
+max-w-xl
+">
+
+
+                    PICO memudahkan Anda untuk membuat,
+                    mengikuti, dan mengelola voting online
+                    dengan aman, mudah, dan realtime.
+                    Dukung talenta, karya, dan komunitas favorit Anda.
+
+
+                </p>
+
+
+
+
+
+                <div class="
+mt-8
+flex
+gap-4
+flex-wrap
+">
+
+
+
+                    <a href="#event"
                         class="
-                        aspect-[4/5]
-                        overflow-hidden
-                        rounded-2xl
-                        bg-gray-100
-                        "
-                    >
-
-                        <img
-                            src="{{ asset('storage/' . $candidate->photo) }}"
-                            alt="{{ $candidate->name }}"
-                            class="w-full h-full object-cover"
-                        >
-
-                    </div>
+bg-blue-600
+text-white
+px-8
+py-3
+rounded-xl
+font-semibold
+shadow-lg
+hover:bg-blue-700
+">
 
 
-                    <div class="pt-5 text-center">
+                        Mulai Voting →
 
-                        <p
-                            class="
-                            text-[#c48621]
-                            tracking-[4px]
-                            text-[10px]
-                            font-semibold
-                            "
-                        >
-                            FINALIS
-                        </p>
+                    </a>
 
 
-                        <h1
-                            class="
-                            mt-2
-                            text-xl
-                            sm:text-2xl
-                            font-bold
-                            "
-                        >
-                            {{ $candidate->name }}
-                        </h1>
 
 
-                        <p class="text-gray-500 text-sm mt-1">
+                    <a href="#" class="
+border
+border-blue-500
+text-blue-600
+px-8
+py-3
+rounded-xl
+font-semibold
+">
 
-                            {{ $candidate->city }}
 
-                        </p>
+                        + Buat Event
 
 
-                        <p
-                            class="
-                            mt-4
-                            font-bold
-                            text-[#5b0b83]
-                            "
-                        >
+                    </a>
 
-                            {{ number_format(
-                                $candidate->total_votes ?? 0,
-                                0,
-                                ',',
-                                '.'
-                            ) }}
 
-                            <span class="text-sm font-medium text-gray-500">
-                                vote
-                            </span>
-
-                        </p>
-
-                    </div>
 
                 </div>
 
-            </div>
-
-
-
-            <!-- ================================================= -->
-            <!-- PILIH VOTE -->
-            <!-- ================================================= -->
-
-            <div class="lg:col-span-2">
-
-
-                <div
-                    class="
-                    bg-white
-                    rounded-3xl
-                    border
-                    border-gray-100
-                    p-5
-                    sm:p-8
-                    "
-                >
-
-
-                    <p
-                        class="
-                        text-[#c48621]
-                        tracking-[4px]
-                        text-xs
-                        font-semibold
-                        "
-                    >
-                        BERIKAN DUKUNGAN
-                    </p>
-
-
-                    <h2
-                        class="
-                        mt-2
-                        text-2xl
-                        sm:text-3xl
-                        font-bold
-                        "
-                    >
-                        Pilih Jumlah Vote
-                    </h2>
-
-
-                    <p
-                        class="
-                        text-gray-500
-                        mt-2
-                        text-sm
-                        sm:text-base
-                        "
-                    >
-                        Tentukan kategori dan jumlah vote yang ingin
-                        diberikan untuk {{ $candidate->name }}.
-                    </p>
 
 
 
 
-                    <!-- ========================================= -->
-                    <!-- KATEGORI -->
-                    <!-- ========================================= -->
-
-                    <div class="mt-8">
-
-                        <label class="font-semibold">
-                            Pilih Kategori
-                        </label>
+                <div class="
+mt-8
+flex
+items-center
+gap-4
+">
 
 
-                        <div
-                            id="categoryContainer"
-                            class="
-                            grid
-                            grid-cols-1
-                            sm:grid-cols-2
-                            gap-3
-                            mt-4
-                            "
-                        >
-
-                            @foreach($candidate->categories as $category)
-
-                                <label
-                                    class="
-                                    category-option
-                                    relative
-                                    border
-                                    border-gray-200
-                                    rounded-2xl
-                                    p-4
-                                    cursor-pointer
-                                    hover:border-[#5b0b83]
-                                    transition
-                                    "
-                                >
-
-                                    <input
-                                        type="radio"
-                                        name="category"
-                                        value="{{ $category->id }}"
-                                        data-price="{{ $category->vote_price }}"
-                                        class="hidden category-radio"
-                                        {{ $loop->first ? 'checked' : '' }}
-                                    >
+                    <div class="flex -space-x-3">
 
 
-                                    <div>
-
-                                        <p class="font-bold">
-                                            {{ $category->name }}
-                                        </p>
+                        <img src="{{ asset('Images/user1.webp') }}"
+                            class="w-10 h-10 rounded-full border-2 border-white">
 
 
-                                        <p class="text-sm text-gray-500 mt-1">
+                        <img src="{{ asset('Images/user2.webp') }}"
+                            class="w-10 h-10 rounded-full border-2 border-white">
 
-                                            Rp{{ number_format(
-                                                $category->vote_price,
-                                                0,
-                                                ',',
-                                                '.'
-                                            ) }}
 
-                                            / vote
+                        <img src="{{ asset('Images/user3.webp') }}"
+                            class="w-10 h-10 rounded-full border-2 border-white">
 
-                                        </p>
-
-                                    </div>
-
-                                </label>
-
-                            @endforeach
-
-                        </div>
 
                     </div>
 
 
 
+                    <p class="text-sm text-gray-600">
 
-                    <!-- ========================================= -->
-                    <!-- JUMLAH VOTE -->
-                    <!-- ========================================= -->
+                        Bergabung dengan
+                        <b>100.000+</b>
+                        pengguna di seluruh Indonesia
 
-                    <div class="mt-9">
-
-                        <label class="font-semibold">
-                            Pilih Jumlah Vote
-                        </label>
-
-
-                        <div
-                            class="
-                            grid
-                            grid-cols-2
-                            sm:grid-cols-4
-                            gap-3
-                            mt-4
-                            "
-                        >
-
-                            @foreach([5, 10, 25, 50] as $amount)
-
-                                <button
-                                    type="button"
-                                    data-vote="{{ $amount }}"
-                                    class="
-                                    vote-package
-                                    border
-                                    border-gray-200
-                                    rounded-2xl
-                                    px-4
-                                    py-5
-                                    hover:border-[#5b0b83]
-                                    transition
-                                    "
-                                >
-
-                                    <span
-                                        class="
-                                        block
-                                        text-2xl
-                                        font-bold
-                                        "
-                                    >
-                                        {{ $amount }}
-                                    </span>
-
-                                    <span
-                                        class="
-                                        text-xs
-                                        text-gray-500
-                                        "
-                                    >
-                                        Vote
-                                    </span>
-
-                                </button>
-
-                            @endforeach
-
-                        </div>
-
-                    </div>
-
-
-
-
-                    <!-- ========================================= -->
-                    <!-- CUSTOM -->
-                    <!-- ========================================= -->
-
-                    <div class="mt-6">
-
-                        <label
-                            for="customVote"
-                            class="font-semibold"
-                        >
-                            Atau Masukkan Custom Vote
-                        </label>
-
-
-                        <div class="relative mt-3">
-
-                            <input
-                                id="customVote"
-                                type="number"
-                                min="1"
-                                placeholder="Contoh: 30"
-                                class="
-                                w-full
-                                border
-                                border-gray-200
-                                rounded-2xl
-                                px-5
-                                py-4
-                                outline-none
-                                focus:border-[#5b0b83]
-                                focus:ring-2
-                                focus:ring-[#5b0b83]/10
-                                "
-                            >
-
-
-                            <span
-                                class="
-                                absolute
-                                right-5
-                                top-1/2
-                                -translate-y-1/2
-                                text-gray-400
-                                text-sm
-                                "
-                            >
-                                vote
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-
-
-                    <!-- ========================================= -->
-                    <!-- RINGKASAN -->
-                    <!-- ========================================= -->
-
-                    <div
-                        class="
-                        mt-9
-                        bg-[#faf7fc]
-                        border
-                        border-[#eee5f2]
-                        rounded-3xl
-                        p-5
-                        sm:p-6
-                        "
-                    >
-
-                        <h3 class="font-bold text-lg">
-                            Ringkasan Voting
-                        </h3>
-
-
-                        <div
-                            class="
-                            mt-5
-                            space-y-4
-                            text-sm
-                            "
-                        >
-
-
-                            <div
-                                class="
-                                flex
-                                justify-between
-                                gap-4
-                                "
-                            >
-
-                                <span class="text-gray-500">
-                                    Jumlah Vote
-                                </span>
-
-                                <span
-                                    id="summaryVote"
-                                    class="font-semibold"
-                                >
-                                    0 vote
-                                </span>
-
-                            </div>
-
-
-                            <div
-                                class="
-                                flex
-                                justify-between
-                                gap-4
-                                "
-                            >
-
-                                <span class="text-gray-500">
-                                    Harga per Vote
-                                </span>
-
-                                <span
-                                    id="summaryPrice"
-                                    class="font-semibold"
-                                >
-                                    Rp0
-                                </span>
-
-                            </div>
-
-
-                            <div
-                                class="
-                                border-t
-                                border-gray-200
-                                pt-4
-                                flex
-                                justify-between
-                                items-end
-                                gap-4
-                                "
-                            >
-
-                                <span class="font-semibold">
-                                    Total Pembayaran
-                                </span>
-
-                                <span
-                                    id="summaryTotal"
-                                    class="
-                                    text-2xl
-                                    font-bold
-                                    text-[#5b0b83]
-                                    "
-                                >
-                                    Rp0
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-
-                    <!-- ========================================= -->
-                    <!-- BUTTON -->
-                    <!-- ========================================= -->
-
-                    <button
-                        type="button"
-                        id="continueButton"
-                        disabled
-                        class="
-                        mt-6
-                        w-full
-                        bg-[#5b0b83]
-                        text-white
-                        py-4
-                        rounded-full
-                        font-semibold
-                        disabled:opacity-40
-                        disabled:cursor-not-allowed
-                        hover:bg-[#430563]
-                        transition
-                        "
-                    >
-                        Lanjut Pembayaran →
-                    </button>
-
-
-                    <p
-                        class="
-                        mt-3
-                        text-xs
-                        text-center
-                        text-gray-400
-                        "
-                    >
-                        Pastikan finalis, kategori, dan jumlah vote
-                        sudah sesuai sebelum melanjutkan.
                     </p>
 
 
                 </div>
 
+
             </div>
+
+
+
+
+
+            <!-- IMAGE HERO -->
+
+
+            <div class="
+relative
+flex
+justify-center
+">
+
+
+                <div class="
+absolute
+w-96
+h-96
+bg-blue-300
+rounded-full
+blur-3xl
+opacity-30
+">
+
+                </div>
+
+
+
+                <img src="{{ asset('Images/pico-hero.webp') }}" class="
+relative
+max-w-xl
+w-full
+">
+
+
+            </div>
+
+
+
 
         </div>
 
-    </div>
 
-</section>
+    </section>
 
 
 
 
-<script>
 
-document.addEventListener('DOMContentLoaded', function () {
 
-    const votePackages =
-        document.querySelectorAll('.vote-package');
 
-    const customVote =
-        document.getElementById('customVote');
 
-    const categoryRadios =
-        document.querySelectorAll('.category-radio');
 
-    const categoryOptions =
-        document.querySelectorAll('.category-option');
+    <!-- ================================================= -->
+    <!-- SEARCH EVENT -->
+    <!-- ================================================= -->
 
-    const summaryVote =
-        document.getElementById('summaryVote');
 
-    const summaryPrice =
-        document.getElementById('summaryPrice');
+    <section class="
+max-w-7xl
+mx-auto
+px-6
+-mt-8
+relative
+z-10
+">
 
-    const summaryTotal =
-        document.getElementById('summaryTotal');
 
-    const continueButton =
-        document.getElementById('continueButton');
+        <div class="
+bg-white
+rounded-3xl
+shadow-xl
+p-5
+border
+">
 
 
-    let selectedVote = 0;
 
+            <div class="
+flex
+items-center
+gap-3
+border
+rounded-full
+px-5
+py-3
+">
 
 
-    function rupiah(number) {
+                <span>
+                    🔍
+                </span>
 
-        return new Intl.NumberFormat(
-            'id-ID',
-            {
-                style: 'currency',
-                currency: 'IDR',
-                minimumFractionDigits: 0,
-            }
-        ).format(number);
 
-    }
+                <input type="text" placeholder="Cari event, voting, atau kategori..." class="
+w-full
+outline-none
+">
 
 
+                <button class="
+bg-blue-600
+text-white
+px-5
+py-2
+rounded-full
+">
 
-    function getSelectedPrice() {
+                    →
 
-        const selectedCategory =
-            document.querySelector(
-                '.category-radio:checked'
-            );
+                </button>
 
-        if (!selectedCategory) {
-            return 0;
-        }
 
-        return parseInt(
-            selectedCategory.dataset.price
-        ) || 0;
+            </div>
 
-    }
 
 
 
-    function updateCategoryStyle() {
 
-        categoryOptions.forEach(function (option) {
+            <div class="
+flex
+gap-3
+mt-5
+flex-wrap
+">
 
-            const radio =
-                option.querySelector('.category-radio');
 
-            if (radio.checked) {
+                <button class="
+bg-blue-600
+text-white
+px-5
+py-2
+rounded-full
+text-sm
+">
 
-                option.classList.add(
-                    'border-[#5b0b83]',
-                    'bg-[#faf7fc]'
-                );
+                    🔥 Populer
 
-            } else {
+                </button>
 
-                option.classList.remove(
-                    'border-[#5b0b83]',
-                    'bg-[#faf7fc]'
-                );
 
-            }
 
-        });
+                <button class="
+border
+px-5
+py-2
+rounded-full
+text-sm
+">
 
-    }
+                    Terbaru
 
+                </button>
 
 
-    function updateSummary() {
 
-        const price = getSelectedPrice();
+                <button class="
+border
+px-5
+py-2
+rounded-full
+text-sm
+">
 
-        const total = selectedVote * price;
+                    ♛ Pageant
 
+                </button>
 
-        summaryVote.textContent =
-            selectedVote + ' vote';
 
 
-        summaryPrice.textContent =
-            rupiah(price);
 
+                <button class="
+border
+px-5
+py-2
+rounded-full
+text-sm
+">
 
-        summaryTotal.textContent =
-            rupiah(total);
+                    👥 Organisasi
 
+                </button>
 
-        continueButton.disabled =
-            selectedVote < 1 || price < 1;
 
-    }
 
+                <button class="
+border
+px-5
+py-2
+rounded-full
+text-sm
+">
 
+                    🏆 Kompetisi
 
-    votePackages.forEach(function (button) {
+                </button>
 
-        button.addEventListener('click', function () {
 
-            selectedVote =
-                parseInt(button.dataset.vote);
 
+            </div>
 
-            customVote.value = '';
 
 
-            votePackages.forEach(function (item) {
+        </div>
 
-                item.classList.remove(
-                    'border-[#5b0b83]',
-                    'bg-[#faf7fc]',
-                    'text-[#5b0b83]'
-                );
 
-            });
+    </section>
 
 
-            button.classList.add(
-                'border-[#5b0b83]',
-                'bg-[#faf7fc]',
-                'text-[#5b0b83]'
-            );
 
 
-            updateSummary();
 
-        });
 
-    });
 
 
 
-    customVote.addEventListener('input', function () {
+    <!-- ================================================= -->
+    <!-- STATISTIC -->
+    <!-- ================================================= -->
 
-        selectedVote =
-            parseInt(customVote.value) || 0;
 
+    <section class="
+max-w-7xl
+mx-auto
+px-6
+py-16
+">
 
-        votePackages.forEach(function (item) {
 
-            item.classList.remove(
-                'border-[#5b0b83]',
-                'bg-[#faf7fc]',
-                'text-[#5b0b83]'
-            );
+        <div class="
+grid
+md:grid-cols-4
+gap-6
+">
 
-        });
 
 
-        updateSummary();
+            <div class="
+bg-blue-50
+rounded-3xl
+p-6
+">
 
-    });
 
+                <h2 class="text-3xl font-bold text-blue-600">
 
+                    500+
 
-    categoryRadios.forEach(function (radio) {
+                </h2>
 
-        radio.addEventListener('change', function () {
 
-            updateCategoryStyle();
-            updateSummary();
+                <p>
 
-        });
+                    Event Telah Dibuat
 
-    });
+                </p>
 
 
+            </div>
 
-    updateCategoryStyle();
-    updateSummary();
 
-});
 
-</script>
 
 
-</body>
+            <div class="
+bg-green-50
+rounded-3xl
+p-6
+">
 
-</html>
+
+                <h2 class="text-3xl font-bold text-green-600">
+
+                    50.000+
+
+                </h2>
+
+
+                <p>
+
+                    Peserta Terdaftar
+
+                </p>
+
+
+            </div>
+
+
+
+
+
+            <div class="
+bg-yellow-50
+rounded-3xl
+p-6
+">
+
+
+                <h2 class="text-3xl font-bold text-yellow-600">
+
+                    1 Juta+
+
+                </h2>
+
+
+                <p>
+
+                    Vote Terkumpul
+
+                </p>
+
+
+            </div>
+
+
+
+
+
+            <div class="
+bg-purple-50
+rounded-3xl
+p-6
+">
+
+
+                <h2 class="text-3xl font-bold text-purple-600">
+
+                    24/7
+
+                </h2>
+
+
+                <p>
+
+                    Sistem Realtime
+
+                </p>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <!-- ================================================= -->
+    <!-- POPULAR EVENT -->
+    <!-- ================================================= -->
+
+
+    <section id="event" class="
+max-w-7xl
+mx-auto
+px-6
+pb-20
+">
+
+
+        <div class="
+flex
+justify-between
+items-center
+mb-8
+">
+
+
+            <div>
+
+
+                <h2 class="
+text-3xl
+font-bold
+text-[#14285a]
+">
+
+                    Vote Terpopuler
+
+                </h2>
+
+
+                <p class="text-gray-500">
+
+                    Temukan event menarik dan dukung favorit Anda
+
+                </p>
+
+
+            </div>
+
+
+
+            <a href="#" class="
+text-blue-600
+font-semibold
+">
+
+                Lihat Semua Event →
+
+            </a>
+
+
+        </div>
+
+
+
+
+
+        <div class="
+grid
+md:grid-cols-3
+gap-8
+">
+
+
+
+            @forelse($popularEvents as $event)
+                <div class="
+bg-white
+rounded-3xl
+shadow-lg
+border
+overflow-hidden
+">
+
+
+
+                    <img src="{{ asset('storage/' . $event->banner) }}" class="
+w-full
+h-52
+object-cover
+">
+
+
+
+                    <div class="p-5">
+
+
+                        <h3 class="
+font-bold
+text-xl
+">
+
+                            {{ $event->name }}
+
+                        </h3>
+
+
+
+                        <p class="
+text-gray-500
+mt-2
+line-clamp-2
+">
+
+                            {{ $event->description }}
+
+                        </p>
+
+
+
+                        <div class="
+mt-5
+flex
+justify-between
+text-sm
+text-gray-500
+">
+
+
+                            <span>
+
+                                📅 {{ $event->start_date }}
+
+                            </span>
+
+
+
+                            <span>
+
+                                👥 {{ $event->candidates_count ?? 0 }}
+
+                                Finalis
+
+                            </span>
+
+
+                        </div>
+
+
+
+
+                        <a href="{{ route('event.detail', $event->id) }}"
+                            class="
+block
+mt-5
+text-center
+bg-blue-600
+text-white
+py-3
+rounded-xl
+font-semibold
+">
+
+                            Lihat Event →
+
+                        </a>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            @empty
+
+
+                <p>
+
+                    Belum ada event tersedia.
+
+                </p>
+            @endforelse
+
+
+
+        </div>
+
+
+    </section>

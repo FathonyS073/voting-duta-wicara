@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+
 class Candidate extends Model
 {
+
     protected $fillable = [
 
         'event_id',
@@ -27,11 +29,33 @@ class Candidate extends Model
     ];
 
 
+
+    protected $casts = [
+
+        'status' => 'boolean'
+
+    ];
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Candidate milik Event
+    |--------------------------------------------------------------------------
+    */
+
     public function event()
     {
         return $this->belongsTo(Event::class);
     }
 
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Candidate memiliki banyak Category
+    |--------------------------------------------------------------------------
+    */
 
     public function categories()
     {
@@ -42,18 +66,42 @@ class Candidate extends Model
     }
 
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Candidate memiliki banyak Vote
+    |--------------------------------------------------------------------------
+    */
+
     public function votes()
     {
         return $this->hasMany(Vote::class);
     }
 
 
+
     protected static function boot()
     {
         parent::boot();
 
+
         static::creating(function ($candidate) {
-            $candidate->slug = Str::slug($candidate->name);
+
+            $candidate->slug = Str::slug(
+                $candidate->name
+            );
+
         });
+
+
+        static::updating(function ($candidate) {
+
+            $candidate->slug = Str::slug(
+                $candidate->name
+            );
+
+        });
+
     }
+
 }

@@ -4,87 +4,153 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
+
     public function up(): void
     {
-      Schema::create('transactions', function (Blueprint $table) {
 
-          $table->id();
+        Schema::create('transactions', function (Blueprint $table) {
 
 
-          $table->string('invoice_number')
-                ->unique();
+            $table->id();
 
 
 
-          // Event
-          $table->foreignId('event_id')
-                ->constrained()
-                ->cascadeOnDelete();
+            /*
+            |--------------------------------------------------------------------------
+            | Invoice
+            |--------------------------------------------------------------------------
+            */
+
+            $table->string('invoice_number')
+                  ->unique();
 
 
 
-          // Category
-          $table->foreignId('category_id')
-                ->constrained()
-                ->cascadeOnDelete();
+            /*
+            |--------------------------------------------------------------------------
+            | Relasi Event
+            |--------------------------------------------------------------------------
+            */
+
+            $table->foreignId('event_id')
+                  ->constrained()
+                  ->cascadeOnDelete();
 
 
 
-          // Candidate
-          $table->foreignId('candidate_id')
-                ->constrained()
-                ->cascadeOnDelete();
+            /*
+            |--------------------------------------------------------------------------
+            | Relasi Category
+            |--------------------------------------------------------------------------
+            */
+
+            $table->foreignId('category_id')
+                  ->constrained()
+                  ->cascadeOnDelete();
 
 
 
-          $table->integer('vote_amount');
+            /*
+            |--------------------------------------------------------------------------
+            | Relasi Candidate
+            |--------------------------------------------------------------------------
+            */
+
+            $table->foreignId('candidate_id')
+                  ->constrained()
+                  ->cascadeOnDelete();
 
 
-          $table->integer('total_amount');
+
+            /*
+            |--------------------------------------------------------------------------
+            | Data Customer
+            |--------------------------------------------------------------------------
+            */
+
+            $table->string('customer_name')
+                  ->nullable();
 
 
-          $table->string('payment_method')
-                ->nullable();
+            $table->string('customer_email')
+                  ->nullable();
 
 
-          $table->enum('payment_status',[
-
-              'pending',
-              'waiting_confirmation',
-              'paid',
-              'failed',
-              'expired'
-
-          ])
-          ->default('pending');
+            $table->string('customer_phone')
+                  ->nullable();
 
 
-          $table->string('payment_reference')
-                ->nullable();
+
+            /*
+            |--------------------------------------------------------------------------
+            | Vote
+            |--------------------------------------------------------------------------
+            */
+
+            $table->integer('vote_amount');
 
 
-          $table->string('payment_proof')
-                ->nullable();
+
+            /*
+            |--------------------------------------------------------------------------
+            | Pembayaran
+            |--------------------------------------------------------------------------
+            */
+
+            $table->integer('total_amount');
 
 
-          $table->timestamp('paid_at')
-                ->nullable();
+            $table->string('payment_method')
+                  ->nullable();
 
 
-          $table->timestamps();
 
-            });
-      }
-    /**
-     * Reverse the migrations.
-     */
+            $table->enum('payment_status',[
+
+                'pending',
+                'waiting_confirmation',
+                'paid',
+                'failed',
+                'expired'
+
+            ])
+            ->default('pending');
+
+
+
+            $table->string('payment_reference')
+                  ->nullable();
+
+
+            $table->string('payment_proof')
+                  ->nullable();
+
+
+
+            $table->timestamp('paid_at')
+                  ->nullable();
+
+
+
+            $table->timestamps();
+
+
+        });
+
+    }
+
+
+
+
     public function down(): void
     {
+
         Schema::dropIfExists('transactions');
+
     }
+
 };

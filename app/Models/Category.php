@@ -18,11 +18,35 @@ class Category extends Model
     ];
 
 
+
+    protected $casts = [
+
+        'status' => 'boolean',
+
+        'vote_price' => 'integer',
+
+    ];
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Category milik Event
+    |--------------------------------------------------------------------------
+    */
+
     public function event()
     {
         return $this->belongsTo(Event::class);
     }
 
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Category memiliki banyak Candidate
+    |--------------------------------------------------------------------------
+    */
 
     public function candidates()
     {
@@ -33,11 +57,25 @@ class Category extends Model
     }
 
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Category memiliki banyak Vote
+    |--------------------------------------------------------------------------
+    */
+
     public function votes()
     {
         return $this->hasMany(Vote::class);
     }
 
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Category memiliki banyak Transaction
+    |--------------------------------------------------------------------------
+    */
 
     public function transactions()
     {

@@ -10,14 +10,24 @@ class Vote extends Model
     protected $fillable = [
 
         'event_id',
+
         'transaction_id',
+
         'category_id',
+
         'candidate_id',
+
         'vote_amount',
 
     ];
 
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Vote milik Event
+    |--------------------------------------------------------------------------
+    */
 
     public function event()
     {
@@ -26,6 +36,12 @@ class Vote extends Model
 
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Vote berasal dari Transaction
+    |--------------------------------------------------------------------------
+    */
+
     public function transaction()
     {
         return $this->belongsTo(Transaction::class);
@@ -33,12 +49,24 @@ class Vote extends Model
 
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Vote diberikan kepada Candidate
+    |--------------------------------------------------------------------------
+    */
+
     public function candidate()
     {
         return $this->belongsTo(Candidate::class);
     }
 
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Vote menggunakan Category
+    |--------------------------------------------------------------------------
+    */
 
     public function category()
     {
