@@ -705,7 +705,7 @@ text-gray-500
 
 
 
-                    <a href="{{ route('event.detail', $event->id) }}" class="
+                    <a href="{{ route('event.detail', $event) }}" class="
 block
 mt-5
 text-center

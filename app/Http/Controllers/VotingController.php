@@ -136,7 +136,7 @@ class VotingController extends Controller
     
     
         return view(
-            'voting.event',
+            'voting.detail',
             compact(
                 'event',
                 'candidates',
