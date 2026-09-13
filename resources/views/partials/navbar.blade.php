@@ -125,7 +125,7 @@
             </a>
 
 
-            <a href="{{ route('home') }}#event"
+            <a href="{{ route('events.index') }}"
                 class="
                 hover:text-blue-600
                 transition
@@ -334,7 +334,7 @@
                 </a>
 
 
-                <a href="{{ route('home') }}#event"
+                <a href="{{ route('events.index') }}"
                     class="
                     mobile-nav-link
 

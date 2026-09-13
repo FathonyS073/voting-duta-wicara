@@ -11,28 +11,79 @@ use Illuminate\Support\Str;
 
 class VotingController extends Controller
 {
-
-    public function index()
+    public function index(Request $request)
     {
-
-        $events = Event::where('status','active')
+        /*
+        |--------------------------------------------------------------------------
+        | Search
+        |--------------------------------------------------------------------------
+        */
+    
+        $search = trim((string) $request->query('q', ''));
+    
+    
+        /*
+        |--------------------------------------------------------------------------
+        | Event Terbaru
+        |--------------------------------------------------------------------------
+        */
+    
+        $events = Event::where('status', 'active')
+            ->withCount('candidates')
             ->latest()
-            ->take(6)
+            ->take(12)
             ->get();
-
-
-        $popularEvents = Event::withCount('votes')
-            ->orderBy('votes_count','desc')
-            ->take(6)
+    
+    
+        /*
+        |--------------------------------------------------------------------------
+        | Event Populer
+        |--------------------------------------------------------------------------
+        */
+    
+        $popularEventsQuery = Event::query()
+            ->where('status', 'active')
+            ->withCount('candidates')
+            ->withSum('votes as total_votes', 'vote_amount');
+    
+    
+        /*
+        |--------------------------------------------------------------------------
+        | Search Event
+        |--------------------------------------------------------------------------
+        */
+    
+        if ($search !== '') {
+    
+            $popularEventsQuery->where(function ($query) use ($search) {
+    
+                $query
+                    ->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%');
+    
+            });
+    
+        }
+    
+    
+        /*
+        |--------------------------------------------------------------------------
+        | Ambil Event
+        |--------------------------------------------------------------------------
+        */
+    
+        $popularEvents = $popularEventsQuery
+            ->orderByDesc('total_votes')
+            ->latest()
+            ->take(12)
             ->get();
-
-
-
-        return view('voting.index',[
-            'events'=>$events,
-            'popularEvents'=>$popularEvents
+    
+    
+        return view('voting.index', [
+            'events' => $events,
+            'popularEvents' => $popularEvents,
+            'search' => $search,
         ]);
-
     }
 
           /*
@@ -40,8 +91,8 @@ class VotingController extends Controller
         | Event Candidate
         |--------------------------------------------------------------------------
         */
-        public function event(Request $request, Event $event)
-        {
+    public function event(Request $request, Event $event)
+    {
             $event->load([
                 'categories' => function ($query) {
                     $query->where('status', 1);
@@ -389,7 +440,153 @@ class VotingController extends Controller
             compact('transaction')
         );
     }
+    public function events(Request $request)
+    {
+        /*
+        |--------------------------------------------------------------------------
+        | Filter Request
+        |--------------------------------------------------------------------------
+        */
 
+        $search = trim((string) $request->query('q', ''));
+
+        $status = $request->query('status', 'all');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Query Event Publik
+        |--------------------------------------------------------------------------
+        */
+
+        $eventQuery = Event::query()
+            ->whereIn('status', [
+                'active',
+                'closed',
+                'finished',
+            ])
+            ->withCount('candidates')
+            ->withSum('votes as total_votes', 'vote_amount');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Search
+        |--------------------------------------------------------------------------
+        */
+
+        if ($search !== '') {
+
+            $eventQuery->where(function ($query) use ($search) {
+
+                $query
+                    ->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%');
+
+            });
+
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Filter Status
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            in_array(
+                $status,
+                [
+                    'active',
+                    'closed',
+                    'finished',
+                ],
+                true
+            )
+        ) {
+
+            $eventQuery->where('status', $status);
+
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Jumlah Event Per Halaman
+        |--------------------------------------------------------------------------
+        |
+        | Mobile  : 4
+        | Desktop : 8
+        |
+        */
+
+        $perPage = (int) $request->query('per_page', 8);
+
+
+        if (!in_array($perPage, [4, 8], true)) {
+
+            $perPage = 8;
+
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Ambil Event
+        |--------------------------------------------------------------------------
+        */
+
+        $events = $eventQuery
+            ->orderByRaw("
+                CASE
+                    WHEN status = 'active' THEN 1
+                    WHEN status = 'closed' THEN 2
+                    WHEN status = 'finished' THEN 3
+                    ELSE 4
+                END
+            ")
+            ->orderByDesc('start_date')
+            ->paginate($perPage)
+            ->withQueryString();
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Statistik Event
+        |--------------------------------------------------------------------------
+        */
+
+        $activeCount = Event::where('status', 'active')
+            ->count();
+
+
+        $closedCount = Event::whereIn(
+            'status',
+            [
+                'closed',
+                'finished',
+            ]
+        )->count();
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Return View
+        |--------------------------------------------------------------------------
+        */
+
+        return view(
+            'voting.events',
+            compact(
+                'events',
+                'search',
+                'status',
+                'activeCount',
+                'closedCount'
+            )
+        );
+    }
 
 
 }

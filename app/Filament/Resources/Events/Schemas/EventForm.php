@@ -7,8 +7,9 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Select;
 use Filament\Schemas\Components\Section;
+
 
 class EventForm
 {
@@ -16,6 +17,12 @@ class EventForm
     {
         return $schema
             ->components([
+
+                /*
+                |--------------------------------------------------------------------------
+                | Informasi Event
+                |--------------------------------------------------------------------------
+                */
 
                 Section::make('Informasi Event')
                     ->schema([
@@ -29,7 +36,8 @@ class EventForm
                         TextInput::make('slug')
                             ->label('Slug Event')
                             ->required()
-                            ->unique(ignoreRecord: true),
+                            ->unique(ignoreRecord: true)
+                            ->maxLength(255),
 
 
                         Textarea::make('description')
@@ -41,23 +49,39 @@ class EventForm
                     ->columns(2),
 
 
+
+                /*
+                |--------------------------------------------------------------------------
+                | Media Event
+                |--------------------------------------------------------------------------
+                */
+
                 Section::make('Media Event')
                     ->schema([
 
                         FileUpload::make('logo')
                             ->label('Logo Event')
                             ->image()
+                            ->disk('public')
                             ->directory('events/logo'),
 
 
                         FileUpload::make('banner')
                             ->label('Banner Event')
                             ->image()
+                            ->disk('public')
                             ->directory('events/banner'),
 
                     ])
                     ->columns(2),
 
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | Periode Voting
+                |--------------------------------------------------------------------------
+                */
 
                 Section::make('Periode Voting')
                     ->schema([
@@ -69,19 +93,36 @@ class EventForm
 
                         DatePicker::make('end_date')
                             ->label('Tanggal Selesai')
-                            ->required(),
-
+                            ->required()
+                            ->afterOrEqual('start_date'),
 
                     ])
                     ->columns(2),
 
 
-                Section::make('Status')
+
+                /*
+                |--------------------------------------------------------------------------
+                | Status Event
+                |--------------------------------------------------------------------------
+                */
+
+                Section::make('Status Event')
                     ->schema([
 
-                        Toggle::make('status')
-                            ->label('Event Aktif')
-                            ->default(true),
+                        Select::make('status')
+                            ->label('Status')
+                            ->options([
+
+                                'draft' => 'Draft',
+                                'active' => 'Aktif',
+                                'closed' => 'Ditutup',
+                                'finished' => 'Selesai',
+
+                            ])
+                            ->default('draft')
+                            ->required()
+                            ->native(false),
 
                     ]),
 

@@ -4,79 +4,43 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VotingController;
 
 
-
-/*
-|--------------------------------------------------------------------------
-| Landing Page
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/',
+Route::get(
+    '/',
     [VotingController::class, 'index']
-)
-->name('home');
+)->name('home');
 
 
+Route::get(
+    '/events',
+    [VotingController::class, 'events']
+)->name('events.index');
 
-/*
-|--------------------------------------------------------------------------
-| Detail Event
-|--------------------------------------------------------------------------
-*/
 
-Route::get('/event/{event}',
+Route::get(
+    '/event/{event}',
     [VotingController::class, 'event']
-)
-->name('event.detail');
+)->name('event.detail');
 
 
-
-/*
-|--------------------------------------------------------------------------
-| Detail Candidate
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/candidate/{candidate}',
+Route::get(
+    '/candidate/{candidate}',
     [VotingController::class, 'candidate']
-)
-->name('candidate.detail');
+)->name('candidate.detail');
 
 
-
-/*
-|--------------------------------------------------------------------------
-| Voting Candidate
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/candidate/{candidate}/vote',
+Route::get(
+    '/candidate/{candidate}/vote',
     [VotingController::class, 'vote']
-)
-->name('candidate.vote');
+)->name('candidate.vote');
 
 
-
-/*
-|--------------------------------------------------------------------------
-| Checkout Vote
-|--------------------------------------------------------------------------
-*/
-
-Route::post('/candidate/{candidate}/checkout',
+Route::post(
+    '/candidate/{candidate}/checkout',
     [VotingController::class, 'checkout']
-)
-->name('candidate.checkout');
+)->name('candidate.checkout');
 
 
-
-/*
-|--------------------------------------------------------------------------
-| Payment
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/payment/{invoice}',
+Route::get(
+    '/payment/{invoice}',
     [VotingController::class, 'payment']
-)
-->name('payment.show');
+)->name('payment.show');

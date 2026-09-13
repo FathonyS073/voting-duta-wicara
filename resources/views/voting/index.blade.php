@@ -345,215 +345,198 @@
     {{-- SEARCH EVENT --}}
     {{-- ========================================================= --}}
 
+    {{-- ========================================================= --}}
+    {{-- SEARCH EVENT --}}
+    {{-- ========================================================= --}}
+
     <section class="
-        max-w-7xl
-        mx-auto
-
-        px-4
-        sm:px-6
-
-        -mt-6
-        sm:-mt-8
-
-        relative
-        z-10
-        ">
+    max-w-7xl
+    mx-auto
+    px-4
+    sm:px-6
+    -mt-6
+    sm:-mt-8
+    relative
+    z-10
+    ">
 
         <div class="
-            bg-white
+        bg-white
+        rounded-2xl
+        sm:rounded-3xl
+        shadow-xl
+        p-4
+        sm:p-5
+        border
+        border-gray-100
+        ">
 
-            rounded-2xl
-            sm:rounded-3xl
+            <form action="{{ route('home') }}#event" method="GET">
 
-            shadow-xl
-
-            p-4
-            sm:p-5
-
-            border
-            border-gray-100
-            ">
-
-
-            {{-- SEARCH --}}
-            <div class="
+                <div class="
                 flex
                 items-center
-
                 gap-2
                 sm:gap-3
-
                 border
-
+                border-gray-300
                 rounded-full
-
                 px-4
                 sm:px-5
-
                 py-2.5
                 sm:py-3
                 ">
 
-                <span class="shrink-0">
-                    🔍
-                </span>
+                    <span class="shrink-0">
+                        🔍
+                    </span>
 
 
-                <input type="text" placeholder="Cari event, voting, atau kategori..." class="
+                    <input type="text" name="q" value="{{ $search ?? '' }}" placeholder="Cari event atau voting..."
+                        class="
                     w-full
                     min-w-0
-
+                    bg-transparent
                     outline-none
-
                     text-sm
                     sm:text-base
-
-                    bg-transparent
                     ">
 
 
-                <button type="button" class="
-                    shrink-0
+                    @if(!empty($search))
 
+                    <a href="{{ route('home') }}#event" class="
+                        shrink-0
+                        text-gray-400
+                        hover:text-red-500
+                        px-2
+                        ">
+                        ✕
+                    </a>
+
+                    @endif
+
+
+                    <button type="submit" class="
+                    shrink-0
                     bg-blue-600
                     hover:bg-blue-700
-
                     text-white
-
-                    w-9
-                    h-9
-
+                    w-10
+                    h-10
                     sm:w-auto
                     sm:h-auto
-                    sm:px-5
-                    sm:py-2
-
+                    sm:px-6
+                    sm:py-2.5
                     rounded-full
-
                     flex
                     items-center
                     justify-center
-
                     transition
                     ">
-                    →
-                </button>
+                        →
+                    </button>
 
-            </div>
+                </div>
+
+            </form>
 
 
-
-            {{-- FILTER --}}
+            {{-- FILTER VISUAL --}}
             <div class="
-                flex
-                gap-2
-                sm:gap-3
+            flex
+            gap-2
+            sm:gap-3
+            mt-4
+            sm:mt-5
+            flex-wrap
+            ">
 
-                mt-4
-                sm:mt-5
-
-                flex-wrap
+                <a href="{{ route('home') }}#event" class="
+                bg-blue-600
+                text-white
+                px-4
+                sm:px-5
+                py-2
+                rounded-full
+                text-xs
+                sm:text-sm
                 ">
-
-                <button type="button" class="
-                    bg-blue-600
-                    text-white
-
-                    px-4
-                    sm:px-5
-
-                    py-2
-
-                    rounded-full
-
-                    text-xs
-                    sm:text-sm
-                    ">
                     🔥 Populer
-                </button>
+                </a>
 
 
                 <button type="button" class="
-                    border
-
-                    px-4
-                    sm:px-5
-
-                    py-2
-
-                    rounded-full
-
-                    text-xs
-                    sm:text-sm
-
-                    hover:border-blue-300
-                    transition
-                    ">
+                border
+                px-4
+                sm:px-5
+                py-2
+                rounded-full
+                text-xs
+                sm:text-sm
+                ">
                     Terbaru
                 </button>
 
 
                 <button type="button" class="
-                    border
-
-                    px-4
-                    sm:px-5
-
-                    py-2
-
-                    rounded-full
-
-                    text-xs
-                    sm:text-sm
-
-                    hover:border-blue-300
-                    transition
-                    ">
+                border
+                px-4
+                sm:px-5
+                py-2
+                rounded-full
+                text-xs
+                sm:text-sm
+                ">
                     ♛ Pageant
                 </button>
 
 
                 <button type="button" class="
-                    border
-
-                    px-4
-                    sm:px-5
-
-                    py-2
-
-                    rounded-full
-
-                    text-xs
-                    sm:text-sm
-
-                    hover:border-blue-300
-                    transition
-                    ">
+                border
+                px-4
+                sm:px-5
+                py-2
+                rounded-full
+                text-xs
+                sm:text-sm
+                ">
                     👥 Organisasi
                 </button>
 
 
                 <button type="button" class="
-                    border
-
-                    px-4
-                    sm:px-5
-
-                    py-2
-
-                    rounded-full
-
-                    text-xs
-                    sm:text-sm
-
-                    hover:border-blue-300
-                    transition
-                    ">
+                border
+                px-4
+                sm:px-5
+                py-2
+                rounded-full
+                text-xs
+                sm:text-sm
+                ">
                     🏆 Kompetisi
                 </button>
 
             </div>
 
+
+            @if(!empty($search))
+
+            <div class="
+                mt-4
+                text-sm
+                text-gray-500
+                ">
+
+                Hasil pencarian untuk:
+
+                <strong class="text-[#14285a]">
+                    "{{ $search }}"
+                </strong>
+
+            </div>
+
+            @endif
 
         </div>
 
@@ -730,226 +713,332 @@
     {{-- ========================================================= --}}
 
     <section id="event" class="
-        max-w-7xl
-        mx-auto
-
-        px-4
-        sm:px-6
-
-        pb-14
-        sm:pb-20
-        ">
-
+    max-w-7xl
+    mx-auto
+    px-4
+    sm:px-6
+    pb-14
+    sm:pb-20
+    ">
 
         {{-- HEADER --}}
         <div class="
-            flex
-
-            flex-col
-            sm:flex-row
-
-            sm:items-end
-            sm:justify-between
-
-            gap-4
-
-            mb-7
-            sm:mb-8
-            ">
+        flex
+        items-end
+        justify-between
+        gap-4
+        mb-7
+        ">
 
             <div>
 
                 <h2 class="
-                    text-2xl
-                    sm:text-3xl
-
-                    font-bold
-
-                    text-[#14285a]
-                    ">
+                text-2xl
+                sm:text-3xl
+                font-bold
+                text-[#14285a]
+                ">
+                    @if(!empty($search))
+                    Hasil Pencarian
+                    @else
                     Vote Terpopuler
+                    @endif
                 </h2>
 
+
                 <p class="
-                    mt-1
+                mt-1
+                text-sm
+                sm:text-base
+                text-gray-500
+                ">
+                    @if(!empty($search))
 
-                    text-sm
-                    sm:text-base
+                    Event yang sesuai dengan pencarian
+                    "{{ $search }}"
 
-                    text-gray-500
-                    ">
+                    @else
+
                     Temukan event menarik dan dukung favorit Anda
+
+                    @endif
                 </p>
 
             </div>
 
 
-            <a href="#" class="
+            <div class="
+            flex
+            items-center
+            gap-3
+            shrink-0
+            ">
+
+                <a href="{{ route('events.index') }}" class="
+                hidden
+                md:inline
                 text-blue-600
-
-                text-sm
-                sm:text-base
-
                 font-semibold
-
-                shrink-0
+                text-sm
                 ">
-                Lihat Semua Event →
-            </a>
+                    Lihat Semua Event →
+                </a>
+
+
+                {{-- TOMBOL SLIDER HANYA JIKA > 4 EVENT --}}
+                @if($popularEvents->count() > 4)
+
+                <button type="button" id="eventSliderPrev" class="
+                    hidden
+                    sm:flex
+                    w-10
+                    h-10
+                    rounded-full
+                    border
+                    border-gray-200
+                    bg-white
+                    items-center
+                    justify-center
+                    hover:border-blue-500
+                    hover:text-blue-600
+                    transition
+                    ">
+                    ←
+                </button>
+
+
+                <button type="button" id="eventSliderNext" class="
+                    hidden
+                    sm:flex
+                    w-10
+                    h-10
+                    rounded-full
+                    bg-blue-600
+                    text-white
+                    items-center
+                    justify-center
+                    hover:bg-blue-700
+                    transition
+                    ">
+                    →
+                </button>
+
+                @endif
+
+            </div>
 
         </div>
 
 
 
-        {{-- CARD GRID --}}
-        <div class="
-            grid
+        {{-- ========================================================= --}}
+        {{-- SLIDER VIEWPORT --}}
+        {{-- ========================================================= --}}
 
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-3
+        <div class="overflow-hidden">
 
-            gap-5
-            lg:gap-8
+            <div id="eventSlider" class="
+            flex
+            gap-4
+
+            overflow-x-auto
+            scroll-smooth
+
+            snap-x
+            snap-mandatory
+
+            pb-5
+
+            [scrollbar-width:none]
+            [&::-webkit-scrollbar]:hidden
             ">
 
+                @forelse($popularEvents as $event)
 
-            @forelse($popularEvents as $event)
+                <article class="
+                    event-slide
+                    snap-start
+                    shrink-0
 
-            <article class="
+                    basis-[88%]
+                    sm:basis-[calc((100%_-_1rem)/2)]
+                    lg:basis-[calc((100%_-_3rem)/4)]
+
                     bg-white
 
                     rounded-2xl
-                    sm:rounded-3xl
-
-                    shadow-lg
 
                     border
                     border-gray-100
+
+                    shadow-md
 
                     overflow-hidden
 
                     flex
                     flex-col
 
-                    h-full
+                    hover:-translate-y-1
+                    hover:shadow-xl
+
+                    transition
+                    duration-300
                     ">
 
 
-                {{-- IMAGE --}}
-                <div class="
+                    {{-- BANNER --}}
+                    <div class="
                         w-full
-                        aspect-[16/9]
-
+                        h-40
                         overflow-hidden
-
                         bg-gray-100
                         ">
 
-                    @if($event->banner)
+                        @if($event->banner)
 
-                    <img src="{{ asset('storage/' . $event->banner) }}" alt="{{ $event->name }}" class="
+                        <img src="{{ asset('storage/' . $event->banner) }}" alt="{{ $event->name }}" class="
                                 w-full
                                 h-full
                                 object-cover
                                 ">
 
-                    @endif
+                        @else
 
-                </div>
+                        <div class="
+                                w-full
+                                h-full
+                                flex
+                                items-center
+                                justify-center
+                                bg-blue-50
+                                text-blue-600
+                                font-bold
+                                ">
+                            PICO
+                        </div>
 
-
-
-                {{-- CONTENT --}}
-                <div class="
-                        p-5
-
-                        flex
-                        flex-col
-                        flex-1
-                        ">
-
-                    <h3 class="
-                            font-bold
-
-                            text-lg
-                            sm:text-xl
-
-                            leading-snug
-
-                            min-h-[52px]
-
-                            line-clamp-2
-                            ">
-                        {{ $event->name }}
-                    </h3>
-
-
-
-                    <p class="
-                            text-gray-500
-
-                            text-sm
-
-                            mt-2
-
-                            leading-6
-
-                            line-clamp-2
-
-                            min-h-[48px]
-                            ">
-                        {{ $event->description }}
-                    </p>
-
-
-
-                    {{-- INFO --}}
-                    <div class="
-                            mt-5
-
-                            pt-4
-
-                            border-t
-                            border-gray-100
-
-                            flex
-                            flex-col
-                            sm:flex-row
-
-                            sm:items-center
-                            sm:justify-between
-
-                            gap-2
-
-                            text-xs
-                            sm:text-sm
-
-                            text-gray-500
-                            ">
-
-                        <span>
-                            📅 {{ $event->start_date }}
-                        </span>
-
-
-                        <span>
-                            👥 {{ $event->candidates_count ?? 0 }}
-                            Finalis
-                        </span>
+                        @endif
 
                     </div>
 
 
 
-                    <a href="{{ route('event.detail', $event) }}" class="
-                            mt-auto
-                            pt-5
+                    {{-- CONTENT --}}
+                    <div class="
+                        p-4
+                        flex
+                        flex-col
+                        flex-1
+                        ">
+
+                        {{-- TITLE --}}
+                        <h3 class="
+                            text-base
+                            font-bold
+                            leading-6
+                            line-clamp-2
+                            min-h-[48px]
+                            ">
+                            {{ $event->name }}
+                        </h3>
+
+
+
+                        {{-- DESCRIPTION --}}
+                        <p class="
+                            mt-2
+                            text-xs
+                            text-gray-500
+                            leading-5
+                            line-clamp-2
+                            min-h-[40px]
+                            ">
+                            {{ $event->description }}
+                        </p>
+
+
+
+                        {{-- INFO --}}
+                        <div class="
+                            mt-4
+                            pt-4
+                            border-t
+                            border-gray-100
+
+                            flex
+                            items-center
+                            justify-between
+                            gap-2
+
+                            text-[11px]
+                            text-gray-500
                             ">
 
-                        <span class="
-                                block
+                            <span class="truncate">
 
+                                📅
+
+                                @if($event->start_date)
+                                {{ \Carbon\Carbon::parse($event->start_date)->format('d M Y') }}
+                                @else
+                                -
+                                @endif
+
+                            </span>
+
+
+                            <span class="shrink-0">
+                                👥
+                                {{ $event->candidates_count ?? 0 }}
+                                Finalis
+                            </span>
+
+                        </div>
+
+
+
+                        {{-- TOTAL VOTE --}}
+                        <div class="
+                            mt-3
+                            flex
+                            items-center
+                            justify-between
+                            ">
+
+                            <span class="
+                                text-[11px]
+                                text-gray-400
+                                ">
+                                Total dukungan
+                            </span>
+
+
+                            <strong class="
+                                text-sm
+                                text-blue-600
+                                ">
+                                {{ number_format(
+                                    $event->total_votes ?? 0,
+                                    0,
+                                    ',',
+                                    '.'
+                                ) }}
+                                vote
+                            </strong>
+
+                        </div>
+
+
+
+                        {{-- BUTTON --}}
+                        <a href="{{ route('event.detail', $event) }}" class="
+                            mt-auto
+                            pt-4
+                            ">
+
+                            <span class="
+                                block
+                                w-full
                                 text-center
 
                                 bg-blue-600
@@ -957,46 +1046,65 @@
 
                                 text-white
 
-                                py-3
+                                py-2.5
 
                                 rounded-xl
 
+                                text-sm
                                 font-semibold
 
                                 transition
                                 ">
-                            Lihat Event →
-                        </span>
+                                Lihat Event →
+                            </span>
 
-                    </a>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                @empty
+
+                <div class="
+                    w-full
+                    bg-blue-50
+                    border
+                    border-blue-100
+                    rounded-2xl
+                    p-10
+                    text-center
+                    ">
+
+                    <p class="font-bold">
+                        Belum ada event tersedia.
+                    </p>
 
                 </div>
 
-            </article>
+                @endforelse
 
-
-            @empty
-
-            <div class="
-                    col-span-full
-
-                    bg-blue-50
-
-                    rounded-2xl
-
-                    p-8
-
-                    text-center
-                    ">
-                <p class="font-semibold">
-                    Belum ada event tersedia.
-                </p>
             </div>
 
-            @endforelse
-
-
         </div>
+
+
+
+        {{-- MOBILE HINT --}}
+        @if($popularEvents->count() > 1)
+
+        <p class="
+            sm:hidden
+            text-center
+            text-xs
+            text-gray-400
+            mt-1
+            ">
+            ← Geser untuk melihat event lainnya →
+        </p>
+
+        @endif
 
     </section>
 
@@ -1013,8 +1121,8 @@
         px-4
         sm:px-6
 
-        py-14
-        sm:py-20
+        py-2
+        sm:py-6
         ">
 
 
@@ -2159,6 +2267,110 @@
         </div>
 
     </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const slider =
+            document.getElementById('eventSlider');
+
+        const prevButton =
+            document.getElementById('eventSliderPrev');
+
+        const nextButton =
+            document.getElementById('eventSliderNext');
+
+
+        if (!slider) {
+            return;
+        }
+
+
+        function getSlideDistance() {
+
+            const firstSlide =
+                slider.querySelector('.event-slide');
+
+            if (!firstSlide) {
+                return 0;
+            }
+
+
+            const slideWidth =
+                firstSlide.getBoundingClientRect().width;
+
+
+            const computedStyle =
+                window.getComputedStyle(slider);
+
+
+            const gap =
+                parseFloat(computedStyle.gap) || 16;
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Desktop = 4 card
+            | Tablet  = 2 card
+            | Mobile  = 1 card
+            |--------------------------------------------------------------------------
+            */
+
+            if (window.innerWidth >= 1024) {
+
+                return (slideWidth + gap) * 4;
+
+            }
+
+
+            if (window.innerWidth >= 640) {
+
+                return (slideWidth + gap) * 2;
+
+            }
+
+
+            return slideWidth + gap;
+
+        }
+
+
+
+        if (nextButton) {
+
+            nextButton.addEventListener(
+                'click',
+                function() {
+
+                    slider.scrollBy({
+                        left: getSlideDistance(),
+                        behavior: 'smooth'
+                    });
+
+                }
+            );
+
+        }
+
+
+
+        if (prevButton) {
+
+            prevButton.addEventListener(
+                'click',
+                function() {
+
+                    slider.scrollBy({
+                        left: -getSlideDistance(),
+                        behavior: 'smooth'
+                    });
+
+                }
+            );
+
+        }
+
+    });
+    </script>
 
 
 </body>
