@@ -16,7 +16,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f]">
+<body class="bg-[#f8faff] text-[#10204f] overflow-x-hidden">
 
 
     {{-- ========================================================= --}}
@@ -91,25 +91,32 @@
 
 
 
-        <div class="
+        <div
+            class="
         relative
         max-w-7xl
         mx-auto
-        px-6
-        py-10
+        px-4
+        sm:px-6
+        py-6
+        sm:py-8
+        lg:py-10
         ">
 
             {{-- BREADCRUMB --}}
 
             <div
                 class="
-            flex
-            items-center
-            gap-2
-            text-sm
-            text-gray-500
-            mb-6
-            ">
+    flex
+    items-center
+    gap-2
+    text-xs
+    sm:text-sm
+    text-gray-500
+    mb-5
+    sm:mb-6
+    overflow-hidden
+    ">
 
                 <a href="{{ route('home') }}" class="hover:text-blue-600 transition">
                     Event
@@ -127,25 +134,19 @@
 
             <div
                 class="
-            grid
-            lg:grid-cols-[240px_1fr]
-            gap-40
-            items-stretch
-            ">
+    grid
+    grid-cols-1
+    lg:grid-cols-[260px_1fr]
+    gap-6
+    lg:gap-8
+    items-stretch
+    ">
 
 
                 {{-- POSTER / BANNER EVENT --}}
 
                 <div
-                    class="
-                bg-white
-                rounded-[26px]
-                overflow-hidden
-                shadow-lg
-                border
-                border-blue-100
-                aspect-[4/5]
-                ">
+                    class="bg-white rounded-2xl sm:rounded-[26px] overflow-hidden shadow-lg border border-blue-10 w-full max-w-[280px] sm:max-w-[320px] lg:max-w-non mx-auto lg:mx- aspect-[4/5] ">
 
                     @if ($event->banner)
                         <img src="{{ asset('storage/' . $event->banner) }}" alt="{{ $event->name }}"
@@ -216,15 +217,22 @@
 
                 <div
                     class="
-                relative
-                bg-white/55
-                backdrop-blur-sm
-                rounded-[28px]
-                border
-                border-blue-100
-                p-8
-                overflow-hidden
-                ">
+    relative
+    bg-white/60
+    backdrop-blur-sm
+
+    rounded-2xl
+    sm:rounded-[28px]
+
+    border
+    border-blue-100
+
+    p-5
+    sm:p-6
+    lg:p-8
+
+    overflow-hidden
+    ">
 
 
                     {{-- DECORATION --}}
@@ -280,13 +288,19 @@
 
                         <h1
                             class="
-                        mt-4
-                        text-4xl
-                        xl:text-5xl
-                        font-extrabold
-                        tracking-tight
-                        text-[#10204f]
-                        ">
+    mt-4
+
+    text-2xl
+    sm:text-3xl
+    lg:text-4xl
+    xl:text-5xl
+
+    leading-tight
+    font-extrabold
+    tracking-tight
+    text-[#10204f]
+    break-words
+    ">
                             {{ $event->name }}
                         </h1>
 
@@ -294,15 +308,16 @@
 
                         {{-- ORGANIZER --}}
 
-                        <div
-                            class="
-                        mt-4
-                        flex
-                        items-center
-                        gap-3
-                        ">
+                        <div class="
+    mt-4
+    flex
+    flex-wrap
+    items-center
+    gap-2
+    sm:gap-3
+    ">
 
-                            <span class="text-gray-500">
+                            <span class="text-sm sm:text-base text-gray-500">
                                 Diselenggarakan melalui
                             </span>
 
@@ -349,13 +364,18 @@
 
                             <div
                                 class="
-                            mt-2
-                            flex
-                            items-center
-                            gap-3
-                            font-semibold
-                            text-[#10204f]
-                            ">
+    mt-2
+    flex
+    items-start
+    sm:items-center
+    gap-3
+
+    font-semibold
+    text-sm
+    sm:text-base
+
+    text-[#10204f]
+    ">
 
                                 <div
                                     class="
@@ -400,13 +420,13 @@
 
                         {{-- ACTION BUTTON --}}
 
-                        <div
-                            class="
-                        mt-7
-                        flex
-                        flex-wrap
-                        gap-3
-                        ">
+                        <div class="
+    mt-7
+x    grid
+    grid-cols-1
+    sm:flex
+    gap-3
+    ">
 
                             <a href="{{ route('home') }}#cara-vote"
                                 class="
@@ -424,6 +444,7 @@
                             shadow-sm
                             hover:bg-blue-50
                             transition
+                            justify-center
                             ">
                                 <span>?</span>
                                 Panduan Vote
@@ -494,7 +515,8 @@
     <section
         class="
     sticky
-    top-[77px]
+    top-[65px]
+    sm:top-[77px]
     z-30
     bg-white
     border-y
@@ -502,18 +524,29 @@
     shadow-sm
     ">
 
-        <div
-            class="
-        max-w-7xl
-        mx-auto
-        px-6
-        flex
-        items-center
-        justify-between
-        ">
+        <div class="
+    max-w-7xl
+    mx-auto
+    px-0
+    sm:px-6
+    flex
+    items-center
+    justify-between
+    ">
+            <div
+                class="
+    flex
+    items-center
 
+    overflow-x-auto
+    whitespace-nowrap
 
-            <div class="flex items-center">
+    w-full
+    xl:w-auto
+
+    [scrollbar-width:none]
+    [&::-webkit-scrollbar]:hidden
+    ">
 
 
                 <button type="button" data-event-tab="ranking"
@@ -599,7 +632,15 @@
     {{-- MAIN EVENT CONTENT --}}
     {{-- ========================================================= --}}
 
-    <main class="max-w-7xl mx-auto px-6 py-8">
+    <main class="
+    max-w-7xl
+    mx-auto
+    px-4
+    sm:px-6
+
+    py-5
+    sm:py-8
+    ">
 
 
         <div class="
@@ -626,25 +667,35 @@
 
                     <div
                         class="
-                    bg-white
-                    rounded-[26px]
-                    border
-                    border-gray-100
-                    shadow-sm
-                    p-6
-                    ">
+    bg-white
+
+    rounded-2xl
+    sm:rounded-[26px]
+
+    border
+    border-gray-100
+    shadow-sm
+    p-4
+    sm:p-6
+    ">
 
 
                         {{-- HEADER --}}
 
                         <div
                             class="
-                        flex
-                        items-start
-                        justify-between
-                        gap-5
-                        mb-7
-                        ">
+    flex
+    flex-col
+    sm:flex-row
+
+    sm:items-start
+    sm:justify-between
+
+    gap-4
+    sm:gap-5
+
+    mb-7
+    ">
 
                             <div>
 
@@ -674,10 +725,13 @@
 
                                         <h2
                                             class="
-                                        text-3xl
-                                        font-extrabold
-                                        text-[#10204f]
-                                        ">
+    text-xl
+    sm:text-2xl
+    lg:text-3xl
+
+    font-extrabold
+    text-[#10204f]
+    ">
                                             Papan Peringkat
                                         </h2>
 
@@ -712,12 +766,14 @@
 
                             <div
                                 class="
-                            grid
-                            grid-cols-3
-                            gap-4
-                            items-end
-                            mb-6
-                            ">
+    grid
+    grid-cols-1
+    md:grid-cols-3
+    gap-4
+    items-stretch
+    md:items-end
+    mb-6
+    ">
 
 
                                 {{-- JUARA 2 --}}
@@ -813,6 +869,7 @@
                                         rounded-xl
                                         font-semibold
                                         transition
+                                        justify-center
                                         ">
                                             Vote
                                         </a>
@@ -1058,17 +1115,21 @@
 
                                     <div
                                         class="
-                                    grid
-                                    grid-cols-[52px_1fr_100px_90px]
-                                    gap-4
-                                    items-center
-                                    bg-[#fbfcff]
-                                    border
-                                    border-gray-100
-                                    rounded-2xl
-                                    px-4
-                                    py-3
-                                    ">
+    grid
+    grid-cols-[44px_1fr]
+    sm:grid-cols-[52px_1fr_90px_80px]
+    lg:grid-cols-[52px_1fr_100px_90px]
+    gap-3
+    sm:gap-4
+    items-center
+    bg-[#fbfcff]
+    border
+    border-gray-100
+    rounded-2xl
+    px-3
+    sm:px-4
+    py-3
+    ">
 
                                         <div
                                             class="
@@ -1129,29 +1190,39 @@
 
                                         <p
                                             class="
-                                        font-extrabold
-                                        text-right
-                                        ">
+    font-extrabold
+    text-right
+
+    col-start-2
+    sm:col-start-auto
+    ">
                                             {{ number_format($percentage, 2, ',', '.') }}%
                                         </p>
 
 
                                         <a href="{{ route('candidate.vote', $candidate) }}"
                                             class="
-                                        text-center
-                                        border
-                                        border-blue-300
-                                        text-blue-600
-                                        hover:bg-blue-600
-                                        hover:text-white
-                                        py-2
-                                        rounded-xl
-                                        font-semibold
-                                        transition
-                                        ">
+    col-span-2
+    sm:col-span-1
+
+    text-center
+
+    border
+    border-blue-300
+
+    text-blue-600
+
+    hover:bg-blue-600
+    hover:text-white
+
+    py-2
+
+    rounded-xl
+    font-semibold
+    transition
+    ">
                                             Vote
                                         </a>
-
                                     </div>
                                 @endforeach
 
@@ -1207,12 +1278,15 @@
 
                         <div
                             class="
-                        flex
-                        items-start
-                        justify-between
-                        gap-6
-                        mb-7
-                        ">
+    flex
+    flex-col
+    lg:flex-row
+    lg:items-start
+    lg:justify-between
+    gap-5
+    lg:gap-6
+    mb-7
+    ">
 
                             <div>
 
@@ -1234,7 +1308,8 @@
 
                             {{-- SEARCH --}}
 
-                            <form method="GET" action="{{ route('event.detail', $event) }}" class="flex gap-2">
+                            <form method="GET" action="{{ route('event.detail', $event) }}"
+                                class=" grid grid-cols-1 sm:grid-cols-[1fr_180px_auto] gap- w-full lg:w-auto ">
 
                                 <input type="hidden" name="tab" value="finalis">
 
@@ -1248,7 +1323,7 @@
                                 px-4
                                 py-2.5
                                 outline-none
-                                focus:border-blue-500
+                                focus:border-blue-500 w-full
                                 ">
 
 
@@ -1276,12 +1351,13 @@
 
                                 <button type="submit"
                                     class="
-                                bg-blue-600
-                                text-white
-                                px-5
-                                rounded-xl
-                                font-semibold
-                                ">
+    bg-blue-600
+    text-white
+    px-5
+    py-3
+    rounded-xl
+    font-semibold
+    ">
                                     Cari
                                 </button>
 
@@ -1291,26 +1367,11 @@
 
 
 
-                        <div
-                            class="
-                        grid
-                        grid-cols-3
-                        gap-5
-                        ">
+                        <div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 ">
 
                             @forelse($candidates as $candidate)
                                 <div
-                                    class="
-        bg-white
-        rounded-3xl
-        border
-        border-gray-100
-        overflow-hidden
-        shadow-sm
-        flex
-        flex-col
-        h-full
-        ">
+                                    class=" bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm flex flex-col h-full ">
 
                                     {{-- FOTO --}}
                                     <div
@@ -1639,7 +1700,7 @@
             {{-- SIDEBAR --}}
             {{-- ================================================= --}}
 
-            <aside class="space-y-5">
+            <aside class=" space-y-5 w-full ">
 
 
                 {{-- DETAIL EVENT --}}
@@ -1975,25 +2036,10 @@
     {{-- CTA --}}
     {{-- ========================================================= --}}
 
-    <section class="max-w-7xl mx-auto px-6 pb-8">
+    <section class=" max-w-7xl mx-auto px-4 sm:px-6 pb-8 ">
 
         <div
-            class="
-        relative
-        overflow-hidden
-        rounded-[28px]
-        bg-gradient-to-r
-        from-[#e7f1ff]
-        via-white
-        to-[#dfeaff]
-        border
-        border-blue-100
-        px-10
-        py-8
-        flex
-        items-center
-        justify-between
-        ">
+            class=" relative overflow-hidden rounded-2xl sm:rounded-[28px] bg-gradient-to-r from-[#e7f1ff] via-white to-[#dfeaff] border border-blue-100 px-5 sm:px-8 lg:px-10 py-6 sm:py-8 flex flex-col lg:flex-row lg:items-center lg:justify-between. gap-6 ">
 
             <div>
 
@@ -2050,20 +2096,12 @@
     ">
 
         <div
-            class="
-        max-w-7xl
-        mx-auto
-        px-6
-        py-10
-        grid
-        grid-cols-[1.4fr_1fr_1fr_1fr]
-        gap-10
-        ">
+            class=" max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-8 lg:gap-10 ">
 
 
             {{-- BRAND --}}
 
-            <div>
+            <div class="sm:col-span-2 lg:col-span-1">
 
                 <div class="
                 flex
@@ -2131,8 +2169,7 @@
                     <a href="{{ route('home') }}" class="block hover:text-blue-600">
                         Beranda
                     </a>
-
-                    <a href="{{ route('home') }}#event" class="block hover:text-blue-600">
+                    <a href="{{ route('events.index') }}" class="block hover:text-blue-600">
                         Event
                     </a>
 
@@ -2213,16 +2250,7 @@
         ">
 
             <div
-                class="
-            max-w-7xl
-            mx-auto
-            px-6
-            py-5
-            flex
-            justify-between
-            text-xs
-            text-gray-400
-            ">
+                class=" max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-xs text">
 
                 <p>
                     © {{ date('Y') }} PICO. All rights reserved.
