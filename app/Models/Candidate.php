@@ -77,8 +77,10 @@ class Candidate extends Model
     {
         return $this->hasMany(Vote::class);
     }
-
-
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     protected static function boot()
     {

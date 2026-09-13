@@ -153,16 +153,44 @@ class VotingController extends Controller
             | Event Candidate
             |--------------------------------------------------------------------------
         */
-    public function candidate($id)
+    public function candidate(Candidate $candidate)
     {
-        $candidate = Candidate::where('status', 1)
-            ->with([
-                'event',
-                'categories',
-            ])
-            ->withSum('votes as total_votes', 'vote_amount')
-            ->findOrFail($id);
+        /*
+        |--------------------------------------------------------------------------
+        | Pastikan Candidate Aktif
+        |--------------------------------------------------------------------------
+        */
+    
+        abort_if(!$candidate->status, 404);
+    
+    
+        /*
+        |--------------------------------------------------------------------------
+        | Load Relasi dan Total Vote
+        |--------------------------------------------------------------------------
+        */
+    
+        $candidate->load([
+            'event',
+            'categories',
+        ]);
+    
+    
+        $candidate->loadSum(
+            'votes as total_votes',
+            'vote_amount'
+        );
+    
+    
+        /*
+        |--------------------------------------------------------------------------
+        | Event Candidate
+        |--------------------------------------------------------------------------
+        */
+    
         $event = $candidate->event;
+    
+    
         return view(
             'voting.candidate',
             compact(

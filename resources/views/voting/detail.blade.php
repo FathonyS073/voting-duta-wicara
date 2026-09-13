@@ -802,7 +802,7 @@
                                         </p>
 
 
-                                        <a href="{{ route('candidate.vote', $candidate->id) }}"
+                                        <a href="{{ route('candidate.vote', $candidate) }}"
                                             class="
                                         block
                                         mt-4
@@ -914,7 +914,7 @@
                                         </p>
 
 
-                                        <a href="{{ route('candidate.vote', $candidate->id) }}"
+                                        <a href="{{ route('candidate.vote', $candidate) }}"
                                             class="
                                         block
                                         mt-4
@@ -1018,7 +1018,7 @@
                                         </p>
 
 
-                                        <a href="{{ route('candidate.vote', $candidate->id) }}"
+                                        <a href="{{ route('candidate.vote', $candidate) }}"
                                             class="
                                         block
                                         mt-4
@@ -1136,7 +1136,7 @@
                                         </p>
 
 
-                                        <a href="{{ route('candidate.vote', $candidate->id) }}"
+                                        <a href="{{ route('candidate.vote', $candidate) }}"
                                             class="
                                         text-center
                                         border
@@ -1355,7 +1355,7 @@
                                         </div>
 
 
-                                        <a href="{{ route('candidate.detail', $candidate->id) }}"
+                                        <a href="{{ route('candidate.detail', $candidate) }}"
                                             class="
                                         block
                                         mt-4
@@ -1371,7 +1371,7 @@
                                         </a>
 
 
-                                        <a href="{{ route('candidate.vote', $candidate->id) }}"
+                                        <a href="{{ route('candidate.vote', $candidate) }}"
                                             class="
                                         block
                                         mt-2
@@ -1753,7 +1753,7 @@
                         </option>
 
                         @foreach ($rankedCandidates as $candidate)
-                            <option value="{{ route('candidate.vote', $candidate->id) }}">
+                            <option value="{{ route('candidate.vote', $candidate) }}">
                                 {{ $candidate->name }}
                             </option>
                         @endforeach
