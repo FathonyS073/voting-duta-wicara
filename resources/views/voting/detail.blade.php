@@ -1301,91 +1301,158 @@
                             @forelse($candidates as $candidate)
                                 <div
                                     class="
-                                rounded-3xl
-                                border
-                                border-gray-100
-                                bg-white
-                                overflow-hidden
-                                shadow-sm
-                                ">
+        bg-white
+        rounded-3xl
+        border
+        border-gray-100
+        overflow-hidden
+        shadow-sm
+        flex
+        flex-col
+        h-full
+        ">
 
+                                    {{-- FOTO --}}
                                     <div
                                         class="
-                                    aspect-[4/5]
-                                    bg-gray-100
-                                    overflow-hidden
-                                    ">
+            aspect-[4/5]
+            bg-gray-100
+            overflow-hidden
+            shrink-0
+            ">
 
                                         @if ($candidate->photo)
                                             <img src="{{ asset('storage/' . $candidate->photo) }}"
-                                                alt="{{ $candidate->name }}" class="w-full h-full object-cover">
+                                                alt="{{ $candidate->name }}"
+                                                class="
+                    w-full
+                    h-full
+                    object-cover
+                    ">
+                                        @else
+                                            <div
+                                                class="
+                    w-full
+                    h-full
+                    flex
+                    items-center
+                    justify-center
+                    bg-blue-50
+                    text-blue-600
+                    text-5xl
+                    font-bold
+                    ">
+                                                {{ mb_substr($candidate->name, 0, 1) }}
+                                            </div>
                                         @endif
 
                                     </div>
 
 
-                                    <div class="p-5">
 
-                                        <h3 class="font-bold text-lg">
+                                    {{-- CONTENT --}}
+                                    <div
+                                        class="
+            p-5
+            flex
+            flex-col
+            flex-1
+            ">
+
+                                        {{-- NAMA --}}
+                                        <h3 class="
+                font-bold
+                text-lg
+                leading-7
+                min-h-[56px]
+                line-clamp-2
+                "
+                                            title="{{ $candidate->name }}">
                                             {{ $candidate->name }}
                                         </h3>
 
-                                        <p class="text-gray-500 text-sm mt-1">
-                                            {{ $candidate->city }}
+
+
+                                        {{-- KOTA --}}
+                                        <p
+                                            class="
+                text-gray-500
+                text-sm
+                mt-1
+                min-h-[24px]
+                ">
+                                            {{ $candidate->city ?: '-' }}
                                         </p>
 
 
+
+                                        {{-- TOTAL VOTE --}}
                                         <div
                                             class="
-                                        flex
-                                        items-center
-                                        justify-between
-                                        mt-4
-                                        text-sm
-                                        ">
+                flex
+                items-center
+                justify-between
+                mt-5
+                text-sm
+                ">
 
                                             <span class="text-gray-500">
                                                 Total Vote
                                             </span>
 
-                                            <strong class="text-blue-600">
+
+                                            <strong
+                                                class="
+                    text-blue-600
+                    text-base
+                    ">
                                                 {{ number_format($candidate->total_votes ?? 0, 0, ',', '.') }}
                                             </strong>
 
                                         </div>
 
 
-                                        <a href="{{ route('candidate.detail', $candidate) }}"
-                                            class="
-                                        block
-                                        mt-4
-                                        text-center
-                                        border
-                                        border-blue-200
-                                        text-blue-600
-                                        py-2.5
-                                        rounded-xl
-                                        font-semibold
-                                        ">
-                                            Lihat Detail
-                                        </a>
+
+                                        {{-- BUTTON --}}
+                                        <div class="mt-auto pt-5">
+
+                                            <a href="{{ route('candidate.detail', $candidate) }}"
+                                                class="
+                    block
+                    w-full
+                    text-center
+                    border
+                    border-blue-200
+                    text-blue-600
+                    hover:bg-blue-50
+                    py-3
+                    rounded-xl
+                    font-semibold
+                    transition
+                    ">
+                                                Lihat Detail
+                                            </a>
 
 
-                                        <a href="{{ route('candidate.vote', $candidate) }}"
-                                            class="
-                                        block
-                                        mt-2
-                                        text-center
-                                        bg-blue-600
-                                        hover:bg-blue-700
-                                        text-white
-                                        py-2.5
-                                        rounded-xl
-                                        font-semibold
-                                        transition
-                                        ">
-                                            Vote {{ $candidate->name }}
-                                        </a>
+                                            <a href="{{ route('candidate.vote', $candidate) }}"
+                                                class="
+                    block
+                    w-full
+                    mt-2
+                    text-center
+                    bg-blue-600
+                    hover:bg-blue-700
+                    text-white
+                    py-3
+                    rounded-xl
+                    font-semibold
+                    transition
+                    ">
+                                                Vote
+                                            </a>
+
+                                        </div>
+
 
                                     </div>
 
@@ -1395,29 +1462,19 @@
 
                                 <div
                                     class="
-                                col-span-3
-                                text-center
-                                py-16
-                                bg-blue-50
-                                rounded-3xl
-                                ">
+        col-span-3
+        text-center
+        py-16
+        bg-blue-50
+        rounded-3xl
+        ">
 
                                     <p class="font-bold">
                                         Finalis tidak ditemukan.
                                     </p>
 
-                                    <a href="{{ route('event.detail', $event) }}?tab=finalis"
-                                        class="
-                                    inline-block
-                                    text-blue-600
-                                    mt-3
-                                    ">
-                                        Tampilkan semua finalis
-                                    </a>
-
                                 </div>
                             @endforelse
-
                         </div>
 
 

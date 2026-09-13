@@ -199,18 +199,55 @@ class VotingController extends Controller
             )
         );
     }
-    public function vote($id)
+    public function vote(Candidate $candidate)
     {
-        $candidate = Candidate::where('status', 1)
-            ->with([
-                'event',
-                'categories',
-            ])
-            ->withSum('votes as total_votes', 'vote_amount')
-            ->findOrFail($id);
-
+        /*
+        |--------------------------------------------------------------------------
+        | Pastikan Candidate Aktif
+        |--------------------------------------------------------------------------
+        */
+    
+        abort_if(!$candidate->status, 404);
+    
+    
+        /*
+        |--------------------------------------------------------------------------
+        | Load Event, Category, dan Total Vote
+        |--------------------------------------------------------------------------
+        */
+    
+        $candidate->load([
+            'event',
+            'categories' => function ($query) {
+                $query->where('categories.status', 1);
+            },
+        ]);
+    
+    
+        $candidate->loadSum(
+            'votes as total_votes',
+            'vote_amount'
+        );
+    
+    
+        /*
+        |--------------------------------------------------------------------------
+        | Event Candidate
+        |--------------------------------------------------------------------------
+        */
+    
         $event = $candidate->event;
-
+    
+    
+        /*
+        |--------------------------------------------------------------------------
+        | Pastikan Event Tersedia
+        |--------------------------------------------------------------------------
+        */
+    
+        abort_if(!$event, 404);
+    
+    
         return view(
             'voting.vote',
             compact(
@@ -219,16 +256,25 @@ class VotingController extends Controller
             )
         );
     }
-    public function checkout(Request $request, $id)
+    public function checkout(Request $request, Candidate $candidate)
     {
         /*
         |--------------------------------------------------------------------------
-        | Ambil Finalis
+        | Pastikan Candidate Aktif
         |--------------------------------------------------------------------------
         */
-        $candidate = Candidate::where('status', 1)
-            ->with('event')
-            ->findOrFail($id);
+        abort_if(!$candidate->status, 404);
+        /*
+        |--------------------------------------------------------------------------
+        | Load Event
+        |--------------------------------------------------------------------------
+        */
+
+        $candidate->load('event');
+
+        $event = $candidate->event;
+
+        abort_if(!$event, 404);
 
 
         /*
@@ -236,6 +282,7 @@ class VotingController extends Controller
         | Validasi Input
         |--------------------------------------------------------------------------
         */
+
         $validated = $request->validate([
             'category_id' => [
                 'required',
@@ -246,30 +293,35 @@ class VotingController extends Controller
                 'required',
                 'integer',
                 'min:1',
+                'max:100000',
             ],
         ]);
 
 
         /*
         |--------------------------------------------------------------------------
-        | Pastikan kategori memang milik finalis
+        | Pastikan Category Benar-Benar Milik Candidate
         |--------------------------------------------------------------------------
         */
+
         $category = $candidate
             ->categories()
             ->where('categories.id', $validated['category_id'])
-            ->where('categories.status', 1)
+            ->where('categories.event_id', $event->id)
+            ->where('categories.status', true)
             ->firstOrFail();
 
 
         /*
         |--------------------------------------------------------------------------
-        | Hitung Harga DI SERVER
+        | Hitung Harga di Server
         |--------------------------------------------------------------------------
         |
         | Jangan menggunakan total harga dari browser.
+        | Harga harus dihitung ulang menggunakan vote_price di database.
         |
         */
+
         $voteAmount = (int) $validated['vote_amount'];
 
         $votePrice = (int) $category->vote_price;
@@ -279,20 +331,24 @@ class VotingController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | Buat Invoice
+        | Generate Invoice
         |--------------------------------------------------------------------------
         */
-        $invoiceNumber =
-            'INV-' . Str::upper((string) Str::ulid());
+
+        $invoiceNumber = 'PICO-' . strtoupper((string) \Illuminate\Support\Str::ulid());
 
 
         /*
         |--------------------------------------------------------------------------
-        | Simpan Transaksi Pending
+        | Create Transaction
         |--------------------------------------------------------------------------
         */
+
         $transaction = Transaction::create([
+
             'invoice_number' => $invoiceNumber,
+
+            'event_id' => $event->id,
 
             'category_id' => $category->id,
 
@@ -302,21 +358,17 @@ class VotingController extends Controller
 
             'total_amount' => $totalAmount,
 
-            'payment_method' => null,
-
             'payment_status' => 'pending',
 
-            'payment_reference' => null,
-
-            'paid_at' => null,
         ]);
 
 
         /*
         |--------------------------------------------------------------------------
-        | Masuk Halaman Pembayaran
+        | Redirect Payment
         |--------------------------------------------------------------------------
         */
+
         return redirect()->route(
             'payment.show',
             $transaction->invoice_number
