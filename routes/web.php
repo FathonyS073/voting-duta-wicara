@@ -72,3 +72,15 @@ Route::get(
     [VotingController::class,'terms']
 )
 ->name('terms');
+
+Route::get(
+    '/hubungi-kami',
+    [VotingController::class,'contact']
+)
+->name('contact');
+
+Route::get(
+    '/faq',
+    [VotingController::class,'faq']
+)
+->name('faq');

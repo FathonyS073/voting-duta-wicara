@@ -606,9 +606,16 @@ class VotingController extends Controller
     }
 
     public function terms()
-{
-    return view('voting.terms');
-}
-
+    {
+        return view('voting.terms');
+    }
+    public function contact()
+    {
+        return view('voting.contact');
+    }
+    public function faq()
+    {
+        return view('voting.faq');
+    }
 
 }
