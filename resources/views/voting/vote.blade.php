@@ -16,7 +16,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f]">
+<body class="bg-[#f8faff] text-[#10204f] overflow-x-hidden">
 
 
     @include('partials.navbar')
@@ -27,8 +27,6 @@
 
         $totalVotes = (int) ($candidate->total_votes ?? 0);
 
-        $firstCategory = $candidate->categories->first();
-
     @endphp
 
 
@@ -37,44 +35,89 @@
     {{-- BREADCRUMB --}}
     {{-- ========================================================= --}}
 
-    <section class="pt-24">
+    <section class="pt-20 sm:pt-24">
 
-        <div class="max-w-7xl mx-auto px-6 pt-7">
+        <div
+            class="
+        max-w-7xl
+        mx-auto
+        px-4
+        sm:px-6
+        pt-5
+        sm:pt-7
+        ">
 
             <div
                 class="
             flex
             items-center
             gap-2
-            text-sm
+
+            text-xs
+            sm:text-sm
+
             text-gray-500
+
+            overflow-hidden
             ">
 
-                <a href="{{ route('home') }}" class="hover:text-blue-600">
+                <a href="{{ route('home') }}"
+                    class="
+                shrink-0
+                hover:text-blue-600
+                transition
+                ">
                     Beranda
                 </a>
 
 
-                <span>›</span>
+                <span class="shrink-0">
+                    ›
+                </span>
 
 
-                <a href="{{ route('event.detail', $event) }}" class="hover:text-blue-600">
+                <a href="{{ route('event.detail', $event) }}"
+                    class="
+                truncate
+                max-w-[110px]
+                sm:max-w-xs
+
+                hover:text-blue-600
+                transition
+                ">
                     {{ $event->name }}
                 </a>
 
 
-                <span>›</span>
+                <span class="shrink-0">
+                    ›
+                </span>
 
 
-                <a href="{{ route('candidate.detail', $candidate) }}" class="hover:text-blue-600">
+                <a href="{{ route('candidate.detail', $candidate) }}"
+                    class="
+                truncate
+                max-w-[90px]
+                sm:max-w-xs
+
+                hover:text-blue-600
+                transition
+                ">
                     {{ $candidate->name }}
                 </a>
 
 
-                <span>›</span>
+                <span class="shrink-0">
+                    ›
+                </span>
 
 
-                <span class="font-medium text-[#10204f]">
+                <span
+                    class="
+                shrink-0
+                font-semibold
+                text-[#10204f]
+                ">
                     Vote
                 </span>
 
@@ -90,29 +133,47 @@
     {{-- PAGE HEADER --}}
     {{-- ========================================================= --}}
 
-    <section class="pt-7 pb-8">
+    <section class="pt-5 sm:pt-7 pb-6 sm:pb-8">
 
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="
+        max-w-7xl
+        mx-auto
+        px-4
+        sm:px-6
+        ">
 
             <div
                 class="
-            bg-gradient-to-r
+            bg-linear-to-r
             from-[#e9f2ff]
             via-white
             to-[#edf4ff]
+
             border
             border-blue-100
-            rounded-[28px]
-            px-9
-            py-7
+
+            rounded-2xl
+            sm:rounded-[28px]
+
+            px-5
+            sm:px-7
+            lg:px-9
+
+            py-6
+            sm:py-7
             ">
 
                 <p
                     class="
                 text-blue-600
+
                 text-xs
+
                 uppercase
-                tracking-[4px]
+
+                tracking-[3px]
+                sm:tracking-[4px]
+
                 font-semibold
                 ">
                     Voting PICO
@@ -122,14 +183,29 @@
                 <h1
                     class="
                 mt-2
-                text-3xl
+
+                text-2xl
+                sm:text-3xl
+
+                leading-tight
+
                 font-extrabold
+
+                break-words
                 ">
                     Berikan Dukungan untuk {{ $candidate->name }}
                 </h1>
 
 
-                <p class="text-gray-500 mt-2">
+                <p
+                    class="
+                text-sm
+                sm:text-base
+
+                text-gray-500
+
+                mt-2
+                ">
                     Pilih kategori dan jumlah vote yang ingin diberikan.
                 </p>
 
@@ -145,16 +221,24 @@
     {{-- MAIN --}}
     {{-- ========================================================= --}}
 
-    <section class="pb-14">
+    <section class="pb-10 sm:pb-14">
 
         <div
             class="
         max-w-7xl
         mx-auto
-        px-6
+
+        px-4
+        sm:px-6
+
         grid
-        grid-cols-[340px_1fr]
-        gap-7
+        grid-cols-1
+        lg:grid-cols-[340px_1fr]
+
+        gap-5
+        sm:gap-6
+        lg:gap-7
+
         items-start
         ">
 
@@ -166,36 +250,64 @@
             <aside
                 class="
             bg-white
-            rounded-[28px]
+
+            rounded-2xl
+            sm:rounded-[28px]
+
             border
             border-gray-100
+
             shadow-sm
-            p-5
+
+            p-4
+            sm:p-5
+
+            w-full
             ">
 
 
                 <div
                     class="
                 aspect-[4/5]
-                rounded-[22px]
+
+                max-w-[260px]
+                sm:max-w-[300px]
+                lg:max-w-none
+
+                mx-auto
+
+                rounded-2xl
+                sm:rounded-[22px]
+
                 overflow-hidden
+
                 bg-gray-100
                 ">
 
                     @if ($candidate->photo)
                         <img src="{{ asset('storage/' . $candidate->photo) }}" alt="{{ $candidate->name }}"
-                            class="w-full h-full object-cover">
+                            class="
+                        w-full
+                        h-full
+                        object-cover
+                        ">
                     @else
                         <div
                             class="
                         w-full
                         h-full
+
                         flex
                         items-center
                         justify-center
+
                         bg-blue-50
+
                         text-blue-600
-                        text-6xl
+
+                        text-5xl
+                        sm:text-6xl
+
                         font-bold
                         ">
                             {{ mb_substr($candidate->name, 0, 1) }}
@@ -206,14 +318,17 @@
 
 
 
-                <div class="pt-6 text-center">
-
+                <div class="pt-5 sm:pt-6 text-center">
 
                     <p
                         class="
                     text-blue-600
+
                     text-xs
-                    tracking-[4px]
+
+                    tracking-[3px]
+                    sm:tracking-[4px]
+
                     uppercase
                     font-semibold
                     ">
@@ -224,14 +339,28 @@
                     <h2
                         class="
                     mt-2
-                    text-2xl
+
+                    text-xl
+                    sm:text-2xl
+
+                    leading-tight
                     font-extrabold
+
+                    break-words
                     ">
                         {{ $candidate->name }}
                     </h2>
 
 
-                    <p class="mt-2 text-gray-500">
+                    <p
+                        class="
+                    mt-2
+
+                    text-sm
+                    sm:text-base
+
+                    text-gray-500
+                    ">
                         {{ $candidate->city ?: '-' }}
 
                         @if ($candidate->province)
@@ -244,9 +373,12 @@
                     <div
                         class="
                     mt-5
+
                     border-t
                     border-gray-100
+
                     pt-5
+
                     flex
                     items-center
                     justify-between
@@ -272,23 +404,32 @@
                     <a href="{{ route('candidate.detail', $candidate) }}"
                         class="
                     block
+
                     mt-5
+
                     w-full
+
                     border
                     border-blue-200
+
                     text-blue-600
+
                     py-3
+
                     rounded-xl
+
+                    text-sm
+                    sm:text-base
+
                     font-semibold
+
                     hover:bg-blue-50
                     transition
                     ">
                         Lihat Profil Kandidat
                     </a>
 
-
                 </div>
-
 
             </aside>
 
@@ -301,13 +442,21 @@
             <div
                 class="
             bg-white
-            rounded-[28px]
+
+            rounded-2xl
+            sm:rounded-[28px]
+
             border
             border-gray-100
-            shadow-sm
-            p-8
-            ">
 
+            shadow-sm
+
+            p-5
+            sm:p-6
+            lg:p-8
+
+            min-w-0
+            ">
 
                 <form id="voteForm" action="{{ route('candidate.checkout', $candidate) }}" method="POST">
 
@@ -321,68 +470,83 @@
 
                     <div>
 
-
-                        <div
+                        <p
                             class="
-                        flex
-                        items-start
-                        justify-between
+                        text-xs
+
+                        text-blue-600
+
+                        tracking-[3px]
+
+                        uppercase
+                        font-semibold
                         ">
+                            Langkah 1
+                        </p>
 
-                            <div>
 
-                                <p
-                                    class="
-                                text-xs
-                                text-blue-600
-                                tracking-[3px]
-                                uppercase
-                                font-semibold
-                                ">
-                                    Langkah 1
-                                </p>
+                        <h2
+                            class="
+                        text-xl
+                        sm:text-2xl
 
-                                <h2
-                                    class="
-                                text-2xl
-                                font-extrabold
-                                mt-2
-                                ">
-                                    Pilih Kategori Vote
-                                </h2>
+                        font-extrabold
 
-                                <p class="text-gray-500 mt-1">
-                                    Harga vote dapat berbeda pada setiap kategori.
-                                </p>
+                        mt-2
+                        ">
+                            Pilih Kategori Vote
+                        </h2>
 
-                            </div>
 
-                        </div>
+                        <p
+                            class="
+                        text-sm
+                        sm:text-base
+
+                        text-gray-500
+
+                        mt-1
+                        ">
+                            Harga vote dapat berbeda pada setiap kategori.
+                        </p>
 
 
 
                         @if ($candidate->categories->count())
 
-
                             <div
                                 class="
                             grid
-                            grid-cols-2
-                            gap-4
-                            mt-6
+
+                            grid-cols-1
+                            sm:grid-cols-2
+
+                            gap-3
+                            sm:gap-4
+
+                            mt-5
+                            sm:mt-6
                             ">
 
                                 @foreach ($candidate->categories as $category)
                                     <label
                                         class="
                                     category-card
+
                                     relative
+
                                     border-2
                                     border-gray-100
+
                                     rounded-2xl
-                                    p-5
+
+                                    p-4
+                                    sm:p-5
+
                                     cursor-pointer
+
                                     transition
+
                                     hover:border-blue-200
                                     ">
 
@@ -396,15 +560,20 @@
                                         flex
                                         items-start
                                         justify-between
+
                                         gap-4
                                         ">
 
-                                            <div>
+                                            <div class="min-w-0">
 
                                                 <p
                                                     class="
                                                 font-bold
-                                                text-lg
+
+                                                text-base
+                                                sm:text-lg
+
+                                                break-words
                                                 ">
                                                     {{ $category->name }}
                                                 </p>
@@ -415,8 +584,12 @@
                                                         class="
                                                     text-sm
                                                     text-gray-500
+
                                                     mt-2
+
                                                     leading-6
+
+                                                    break-words
                                                     ">
                                                         {{ \Illuminate\Support\Str::limit($category->description, 90) }}
                                                     </p>
@@ -428,11 +601,15 @@
                                             <div
                                                 class="
                                             category-check
+
                                             w-6
                                             h-6
+
                                             rounded-full
+
                                             border-2
                                             border-gray-200
+
                                             shrink-0
                                             ">
                                             </div>
@@ -444,17 +621,24 @@
                                         <div
                                             class="
                                         mt-5
+
                                         pt-4
+
                                         border-t
                                         border-gray-100
+
                                         flex
                                         items-center
                                         justify-between
+
+                                        gap-3
                                         ">
 
                                             <span
                                                 class="
-                                            text-sm
+                                            text-xs
+                                            sm:text-sm
+
                                             text-gray-500
                                             ">
                                                 Harga / Vote
@@ -464,12 +648,16 @@
                                             <strong
                                                 class="
                                             text-blue-600
+
+                                            text-sm
+                                            sm:text-base
+
+                                            shrink-0
                                             ">
                                                 Rp{{ number_format($category->vote_price, 0, ',', '.') }}
                                             </strong>
 
                                         </div>
-
 
                                     </label>
                                 @endforeach
@@ -479,18 +667,22 @@
                             <div
                                 class="
                             mt-6
+
                             bg-amber-50
+
                             border
                             border-amber-100
+
                             text-amber-700
+
                             rounded-2xl
+
                             p-5
                             ">
                                 Kandidat ini belum memiliki kategori voting aktif.
                             </div>
 
                         @endif
-
 
                     </div>
 
@@ -502,18 +694,24 @@
 
                     <div
                         class="
-                    mt-9
-                    pt-8
+                    mt-7
+                    sm:mt-9
+
+                    pt-7
+                    sm:pt-8
+
                     border-t
                     border-gray-100
                     ">
 
-
                         <p
                             class="
                         text-xs
+
                         text-blue-600
+
                         tracking-[3px]
+
                         uppercase
                         font-semibold
                         ">
@@ -523,58 +721,88 @@
 
                         <h2
                             class="
-                        text-2xl
+                        text-xl
+                        sm:text-2xl
+
                         font-extrabold
+
                         mt-2
                         ">
                             Pilih Jumlah Vote
                         </h2>
 
 
-                        <p class="text-gray-500 mt-1">
+                        <p
+                            class="
+                        text-sm
+                        sm:text-base
+
+                        text-gray-500
+
+                        mt-1
+                        ">
                             Pilih paket cepat atau masukkan jumlah vote sendiri.
                         </p>
 
 
 
                         {{-- PRESET VOTE --}}
-
                         <div
                             class="
                         grid
-                        grid-cols-4
-                        gap-4
-                        mt-6
-                        ">
 
+                        grid-cols-2
+                        sm:grid-cols-4
+
+                        gap-3
+                        sm:gap-4
+
+                        mt-5
+                        sm:mt-6
+                        ">
 
                             @foreach ([5, 10, 25, 50] as $amount)
                                 <button type="button" data-vote="{{ $amount }}"
                                     class="
                                 vote-option
+
                                 border-2
                                 border-gray-100
+
                                 hover:border-blue-300
+
                                 rounded-2xl
-                                py-6
+
+                                py-4
+                                sm:py-6
+
                                 text-center
+
                                 transition
                                 ">
 
                                     <span
                                         class="
                                     block
-                                    text-3xl
+
+                                    text-2xl
+                                    sm:text-3xl
+
                                     font-extrabold
                                     ">
                                         {{ $amount }}
                                     </span>
 
+
                                     <span
                                         class="
                                     block
-                                    text-sm
+
+                                    text-xs
+                                    sm:text-sm
+
                                     text-gray-500
+
                                     mt-1
                                     ">
                                         Vote
@@ -583,20 +811,22 @@
                                 </button>
                             @endforeach
 
-
                         </div>
 
 
 
                         {{-- CUSTOM VOTE --}}
-
-                        <div class="mt-7">
-
+                        <div class="mt-6 sm:mt-7">
 
                             <label for="customVote"
                                 class="
                             block
+
                             font-bold
+
+                            text-sm
+                            sm:text-base
+
                             mb-3
                             ">
                                 Atau Masukkan Custom Vote
@@ -605,20 +835,31 @@
 
                             <div class="relative">
 
-
                                 <input type="number" id="customVote" min="1" step="1"
                                     placeholder="Contoh: 30"
                                     class="
                                 w-full
+
                                 border-2
                                 border-gray-100
+
                                 focus:border-blue-400
+
                                 outline-none
+
                                 rounded-2xl
-                                px-5
-                                py-4
+
+                                px-4
+                                sm:px-5
+
+                                py-3.5
+                                sm:py-4
+
                                 pr-20
-                                text-lg
+
+                                text-base
+                                sm:text-lg
+
                                 transition
                                 ">
 
@@ -629,17 +870,16 @@
                                 right-5
                                 top-1/2
                                 -translate-y-1/2
+
+                                text-sm
                                 text-gray-400
                                 ">
                                     vote
                                 </span>
 
-
                             </div>
 
-
                         </div>
-
 
                     </div>
 
@@ -651,20 +891,28 @@
 
                     <div
                         class="
-                    mt-9
-                    bg-gradient-to-br
+                    mt-7
+                    sm:mt-9
+
+                    bg-linear-to-br
                     from-[#f7f9ff]
                     to-[#eef4ff]
+
                     border
                     border-blue-100
-                    rounded-[24px]
-                    p-7
-                    ">
 
+                    rounded-2xl
+                    sm:rounded-[24px]
+
+                    p-5
+                    sm:p-7
+                    ">
 
                         <h2
                             class="
-                        text-xl
+                        text-lg
+                        sm:text-xl
+
                         font-extrabold
                         ">
                             Ringkasan Voting
@@ -674,7 +922,9 @@
 
                         <div
                             class="
-                        mt-6
+                        mt-5
+                        sm:mt-6
+
                         space-y-4
                         ">
 
@@ -682,15 +932,32 @@
                             <div
                                 class="
                             flex
-                            items-center
+                            items-start
                             justify-between
+
+                            gap-5
                             ">
 
-                                <span class="text-gray-500">
+                                <span
+                                    class="
+                                text-sm
+                                text-gray-500
+                                ">
                                     Kandidat
                                 </span>
 
-                                <strong>
+
+                                <strong
+                                    class="
+                                text-sm
+                                sm:text-base
+
+                                text-right
+
+                                max-w-[60%]
+
+                                break-words
+                                ">
                                     {{ $candidate->name }}
                                 </strong>
 
@@ -701,15 +968,30 @@
                             <div
                                 class="
                             flex
-                            items-center
+                            items-start
                             justify-between
+
+                            gap-5
                             ">
 
-                                <span class="text-gray-500">
+                                <span
+                                    class="
+                                text-sm
+                                text-gray-500
+                                ">
                                     Kategori
                                 </span>
 
-                                <strong id="summaryCategory">
+
+                                <strong id="summaryCategory"
+                                    class="
+                                text-sm
+                                sm:text-base
+
+                                text-right
+
+                                max-w-[60%]
+                                ">
                                     -
                                 </strong>
 
@@ -722,13 +1004,19 @@
                             flex
                             items-center
                             justify-between
+
+                            gap-5
                             ">
 
-                                <span class="text-gray-500">
+                                <span
+                                    class="
+                                text-sm
+                                text-gray-500
+                                ">
                                     Jumlah Vote
                                 </span>
 
-                                <strong id="summaryVote">
+                                <strong id="summaryVote" class="text-sm sm:text-base">
                                     0 vote
                                 </strong>
 
@@ -741,13 +1029,20 @@
                             flex
                             items-center
                             justify-between
+
+                            gap-5
                             ">
 
-                                <span class="text-gray-500">
+                                <span
+                                    class="
+                                text-sm
+                                text-gray-500
+                                ">
                                     Harga per Vote
                                 </span>
 
-                                <strong id="summaryPrice">
+
+                                <strong id="summaryPrice" class="text-sm sm:text-base">
                                     Rp0
                                 </strong>
 
@@ -759,18 +1054,27 @@
                                 class="
                             border-t
                             border-blue-100
+
                             pt-5
                             mt-5
+
                             flex
-                            items-end
-                            justify-between
-                            gap-5
+                            flex-col
+                            sm:flex-row
+
+                            sm:items-end
+                            sm:justify-between
+
+                            gap-2
+                            sm:gap-5
                             ">
 
                                 <span
                                     class="
                                 font-bold
-                                text-lg
+
+                                text-base
+                                sm:text-lg
                                 ">
                                     Total Pembayaran
                                 </span>
@@ -778,8 +1082,11 @@
 
                                 <strong id="summaryTotal"
                                     class="
-                                text-3xl
+                                text-2xl
+                                sm:text-3xl
+
                                 font-extrabold
+
                                 text-blue-600
                                 ">
                                     Rp0
@@ -787,39 +1094,44 @@
 
                             </div>
 
-
                         </div>
-
 
                     </div>
 
 
 
-                    {{-- ================================================= --}}
                     {{-- HIDDEN VALUE --}}
-                    {{-- ================================================= --}}
-
                     <input type="hidden" name="vote_amount" id="selectedVoteInput">
 
 
 
-                    {{-- ================================================= --}}
                     {{-- SUBMIT --}}
-                    {{-- ================================================= --}}
-
                     <button type="submit" id="continueButton" disabled
                         class="
-                    mt-6
+                    mt-5
+                    sm:mt-6
+
                     w-full
+
                     bg-blue-600
                     hover:bg-blue-700
+
                     text-white
-                    py-4
+
+                    py-3.5
+                    sm:py-4
+
                     rounded-xl
+
                     font-semibold
-                    text-lg
+
+                    text-base
+                    sm:text-lg
+
                     shadow-lg
+
                     transition
+
                     disabled:bg-gray-200
                     disabled:text-gray-400
                     disabled:shadow-none
@@ -832,46 +1144,57 @@
                     <p
                         class="
                     mt-3
+
                     text-xs
+
+                    leading-5
+
                     text-center
                     text-gray-400
                     ">
-                        Pastikan kandidat, kategori, dan jumlah vote sudah sesuai sebelum melanjutkan.
+                        Pastikan kandidat, kategori, dan jumlah vote sudah sesuai
+                        sebelum melanjutkan.
                     </p>
-
 
                 </form>
 
-
             </div>
 
-
         </div>
-
 
     </section>
 
 
 
     {{-- ========================================================= --}}
-    {{-- FOOTER SIMPLE --}}
+    {{-- FOOTER --}}
     {{-- ========================================================= --}}
 
     <footer class="
     bg-[#0c1d46]
     text-white
-    mt-6
+    mt-4
     ">
 
         <div
             class="
         max-w-7xl
         mx-auto
-        px-6
-        py-8
+
+        px-4
+        sm:px-6
+
+        py-7
+        sm:py-8
+
         flex
-        items-center
-        justify-between
+        flex-col
+        sm:flex-row
+
+        sm:items-center
+        sm:justify-between
+
+        gap-5
         ">
 
             <div>
@@ -890,7 +1213,6 @@
             <p class="text-sm text-white/50">
                 © {{ date('Y') }} PICO. All rights reserved.
             </p>
-
 
         </div>
 
@@ -1027,6 +1349,7 @@
                             '.category-radio'
                         );
 
+
                     const check =
                         card.querySelector(
                             '.category-check'
@@ -1039,6 +1362,7 @@
                             'border-blue-500',
                             'bg-blue-50'
                         );
+
 
                         card.classList.remove(
                             'border-gray-100'
@@ -1220,6 +1544,7 @@
                     function() {
 
                         updateCategoryStyle();
+
                         updateSummary();
 
                     }
@@ -1251,6 +1576,7 @@
 
 
                         updateVoteOptionStyle();
+
                         updateSummary();
 
                     }
@@ -1284,6 +1610,7 @@
 
 
                     updateVoteOptionStyle();
+
                     updateSummary();
 
                 }
@@ -1308,6 +1635,7 @@
 
                     continueButton.disabled = true;
 
+
                     continueButton.textContent =
                         'Memproses...';
 
@@ -1323,7 +1651,9 @@
             */
 
             updateCategoryStyle();
+
             updateVoteOptionStyle();
+
             updateSummary();
 
 
