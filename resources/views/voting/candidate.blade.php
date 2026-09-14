@@ -16,7 +16,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f]">
+<body class="bg-[#f8faff] text-[#10204f] overflow-x-hidden">
 
 
     {{-- ========================================================= --}}
@@ -39,46 +39,75 @@
     {{-- BREADCRUMB --}}
     {{-- ========================================================= --}}
 
-    <section class="pt-24">
+    <section class="pt-20 sm:pt-24">
 
-        <div class="max-w-7xl mx-auto px-6 pt-7">
-
+        <div
+            class="
+        max-w-7xl
+        mx-auto
+        px-4
+        sm:px-6
+        pt-5
+        sm:pt-7
+        ">
 
             <div
                 class="
             flex
             items-center
             gap-2
-            text-sm
+
+            text-xs
+            sm:text-sm
+
             text-gray-500
+
+            overflow-hidden
             ">
 
-                <a href="{{ route('home') }}" class="hover:text-blue-600 transition">
+                <a href="{{ route('home') }}"
+                    class="
+                shrink-0
+                hover:text-blue-600
+                transition
+                ">
                     Beranda
                 </a>
 
 
-                <span>
+                <span class="shrink-0">
                     ›
                 </span>
 
 
-                <a href="{{ route('event.detail', $event) }}" class="hover:text-blue-600 transition">
+                <a href="{{ route('event.detail', $event) }}"
+                    class="
+                truncate
+                max-w-[130px]
+                sm:max-w-xs
+
+                hover:text-blue-600
+                transition
+                ">
                     {{ $event->name }}
                 </a>
 
 
-                <span>
+                <span class="shrink-0">
                     ›
                 </span>
 
 
-                <span class="text-[#10204f] font-medium">
+                <span
+                    class="
+                text-[#10204f]
+                font-medium
+                truncate
+                ">
                     {{ $candidate->name }}
                 </span>
 
             </div>
-
 
         </div>
 
@@ -90,22 +119,31 @@
     {{-- CANDIDATE HERO --}}
     {{-- ========================================================= --}}
 
-    <section class="py-8">
+    <section class="py-5 sm:py-8">
 
-
-        <div class="max-w-7xl mx-auto px-6">
-
+        <div class="
+        max-w-7xl
+        mx-auto
+        px-4
+        sm:px-6
+        ">
 
             <div
                 class="
             grid
-            grid-cols-[420px_1fr]
-            min-h-[520px]
+            grid-cols-1
+            lg:grid-cols-[420px_1fr]
+
             bg-white
-            rounded-[30px]
+
+            rounded-2xl
+            sm:rounded-[30px]
+
             overflow-hidden
+
             border
             border-blue-100
+
             shadow-sm
             ">
 
@@ -117,28 +155,38 @@
                 <div
                     class="
                 relative
-                bg-gradient-to-br
+
+                bg-linear-to-br
                 from-[#eaf3ff]
                 via-[#edf4ff]
                 to-[#d8e8ff]
-                p-8
+
+                p-5
+                sm:p-7
+                lg:p-8
+
                 flex
                 items-center
                 justify-center
+
                 overflow-hidden
                 ">
 
 
                     {{-- DECORATION --}}
-
                     <div
                         class="
                     absolute
                     -top-16
                     -left-16
-                    w-64
-                    h-64
+
+                    w-52
+                    h-52
+                    sm:w-64
+                    sm:h-64
+
                     rounded-full
+
                     bg-blue-300/30
                     blur-3xl
                     ">
@@ -150,9 +198,14 @@
                     absolute
                     -bottom-20
                     -right-12
-                    w-72
-                    h-72
+
+                    w-56
+                    h-56
+                    sm:w-72
+                    sm:h-72
+
                     rounded-full
+
                     bg-indigo-300/20
                     blur-3xl
                     ">
@@ -163,41 +216,58 @@
                     <div
                         class="
                     relative
+
                     w-full
-                    max-w-[330px]
+
+                    max-w-[250px]
+                    sm:max-w-[300px]
+                    lg:max-w-[330px]
+
                     aspect-[4/5]
-                    rounded-[28px]
+
+                    rounded-2xl
+                    sm:rounded-[28px]
+
                     overflow-hidden
+
                     bg-white
+
                     shadow-xl
+
                     border
                     border-white
                     ">
 
-
                         @if ($candidate->photo)
                             <img src="{{ asset('storage/' . $candidate->photo) }}" alt="{{ $candidate->name }}"
-                                class="w-full h-full object-cover">
+                                class="
+                            w-full
+                            h-full
+                            object-cover
+                            ">
                         @else
                             <div
                                 class="
                             w-full
                             h-full
+
                             flex
                             items-center
                             justify-center
+
                             bg-blue-50
                             text-blue-600
-                            text-7xl
+
+                            text-6xl
+                            sm:text-7xl
+
                             font-bold
                             ">
                                 {{ mb_substr($candidate->name, 0, 1) }}
                             </div>
                         @endif
 
-
                     </div>
-
 
                 </div>
 
@@ -207,14 +277,26 @@
                 {{-- INFORMASI UTAMA --}}
                 {{-- ================================================= --}}
 
-                <div class="p-12 flex flex-col justify-center">
+                <div
+                    class="
+                p-5
+                sm:p-8
+                lg:p-12
 
+                flex
+                flex-col
+                justify-center
+                ">
 
                     <p
                         class="
                     text-blue-600
-                    tracking-[4px]
+
+                    tracking-[3px]
+                    sm:tracking-[4px]
+
                     uppercase
+
                     text-xs
                     font-bold
                     ">
@@ -225,11 +307,21 @@
 
                     <h1
                         class="
-                    mt-4
-                    text-5xl
+                    mt-3
+                    sm:mt-4
+
+                    text-3xl
+                    sm:text-4xl
+                    lg:text-5xl
+
+                    leading-tight
+
                     font-extrabold
                     tracking-tight
+
                     text-[#10204f]
+
+                    break-words
                     ">
                         {{ $candidate->name }}
                     </h1>
@@ -237,12 +329,13 @@
 
 
                     {{-- EVENT --}}
-
                     <div
                         class="
                     mt-5
+
                     flex
                     items-center
+
                     gap-3
                     ">
 
@@ -250,28 +343,44 @@
                             class="
                         w-9
                         h-9
+
                         rounded-xl
+
                         bg-blue-600
+
                         text-white
+
                         flex
                         items-center
                         justify-center
+
                         text-sm
                         font-bold
+
+                        shrink-0
                         ">
                             P
                         </div>
 
 
-                        <div>
+                        <div class="min-w-0">
 
                             <p class="text-xs text-gray-400">
                                 Finalis Event
                             </p>
 
+
                             <a href="{{ route('event.detail', $event) }}"
                                 class="
+                            block
+
                             font-semibold
+
+                            text-sm
+                            sm:text-base
+
+                            truncate
+
                             hover:text-blue-600
                             transition
                             ">
@@ -285,19 +394,26 @@
 
 
                     {{-- LOCATION --}}
-
                     <div
                         class="
-                    mt-6
+                    mt-5
+                    sm:mt-6
+
                     flex
-                    items-center
+                    items-start
+
                     gap-2
+
+                    text-sm
+                    sm:text-base
+
                     text-gray-500
                     ">
 
-                        <span>
+                        <span class="shrink-0">
                             📍
                         </span>
+
 
                         <span>
                             {{ $candidate->city ?: '-' }}
@@ -312,14 +428,16 @@
 
 
                     {{-- CATEGORIES --}}
-
                     @if ($candidate->categories->count())
 
                         <div
                             class="
-                        mt-6
+                        mt-5
+                        sm:mt-6
+
                         flex
                         flex-wrap
+
                         gap-2
                         ">
 
@@ -327,13 +445,22 @@
                                 <span
                                     class="
                                 bg-blue-50
+
                                 border
                                 border-blue-100
+
                                 text-blue-700
-                                px-4
+
+                                px-3
+                                sm:px-4
+
                                 py-2
+
                                 rounded-full
-                                text-sm
+
+                                text-xs
+                                sm:text-sm
+
                                 font-medium
                                 ">
                                     {{ $category->name }}
@@ -347,26 +474,32 @@
 
 
                     {{-- TOTAL VOTE --}}
-
                     <div
                         class="
-                    mt-8
-                    max-w-md
-                    rounded-3xl
-                    bg-gradient-to-r
+                    mt-7
+                    sm:mt-8
+
+                    w-full
+                    sm:max-w-md
+
+                    rounded-2xl
+                    sm:rounded-3xl
+
+                    bg-linear-to-r
                     from-[#f6f8ff]
                     to-[#eef4ff]
+
                     border
                     border-blue-100
-                    px-6
-                    py-5
+
+                    px-5
+                    sm:px-6
+
+                    py-4
+                    sm:py-5
                     ">
 
-                        <p
-                            class="
-                        text-sm
-                        text-gray-500
-                        ">
+                        <p class="text-sm text-gray-500">
                             Total Dukungan
                         </p>
 
@@ -375,14 +508,19 @@
                             class="
                         flex
                         items-end
+
                         gap-2
+
                         mt-1
                         ">
 
                             <span
                                 class="
-                            text-4xl
+                            text-3xl
+                            sm:text-4xl
+
                             font-extrabold
+
                             text-blue-600
                             ">
                                 {{ number_format($totalVotes, 0, ',', '.') }}
@@ -403,25 +541,43 @@
 
 
 
-                    {{-- BUTTONS --}}
+                    {{-- BUTTON --}}
+                    <div
+                        class="
+                    mt-7
+                    sm:mt-8
 
-                    <div class="mt-8 flex items-center gap-3">
+                    grid
+                    grid-cols-1
+                    sm:flex
 
+                    gap-3
+                    ">
 
                         <a href="{{ route('candidate.vote', $candidate) }}"
                             class="
                         inline-flex
                         items-center
                         justify-center
+
                         gap-2
+
                         bg-blue-600
                         hover:bg-blue-700
+
                         text-white
-                        px-8
+
+                        px-7
+                        sm:px-8
+
                         py-3.5
+
                         rounded-xl
+
                         font-semibold
+
                         shadow-lg
+
                         transition
                         ">
                             Vote Sekarang
@@ -429,37 +585,37 @@
                         </a>
 
 
-
                         <a href="{{ route('event.detail', $event) }}?tab=finalis"
                             class="
                         inline-flex
                         items-center
                         justify-center
+
                         border
                         border-gray-200
+
                         hover:border-blue-300
                         hover:text-blue-600
+
                         px-6
                         py-3.5
+
                         rounded-xl
+
                         font-semibold
+
                         transition
                         ">
                             ← Semua Finalis
                         </a>
 
-
                     </div>
-
 
                 </div>
 
-
             </div>
 
-
         </div>
-
 
     </section>
 
@@ -469,39 +625,50 @@
     {{-- DETAIL CONTENT --}}
     {{-- ========================================================= --}}
 
-    <section class="pb-12">
-
+    <section class="pb-10 sm:pb-12">
 
         <div
             class="
         max-w-7xl
         mx-auto
-        px-6
+
+        px-4
+        sm:px-6
+
         grid
-        grid-cols-[1fr_340px]
-        gap-7
+        grid-cols-1
+        lg:grid-cols-[1fr_340px]
+
+        gap-5
+        sm:gap-6
+        lg:gap-7
+
         items-start
         ">
-
 
 
             {{-- ================================================= --}}
             {{-- LEFT --}}
             {{-- ================================================= --}}
 
-            <div class="space-y-6">
+            <div class="space-y-5 sm:space-y-6">
 
 
                 {{-- ABOUT --}}
-
                 <div
                     class="
                 bg-white
-                rounded-[26px]
+
+                rounded-2xl
+                sm:rounded-[26px]
+
                 border
                 border-gray-100
+
                 shadow-sm
-                p-8
+
+                p-5
+                sm:p-8
                 ">
 
                     <p
@@ -509,7 +676,8 @@
                     text-blue-600
                     text-xs
                     uppercase
-                    tracking-[4px]
+                    tracking-[3px]
+                    sm:tracking-[4px]
                     font-semibold
                     ">
                         Profil
@@ -518,8 +686,11 @@
 
                     <h2
                         class="
-                    text-3xl
+                    text-2xl
+                    sm:text-3xl
+
                     font-extrabold
+
                     mt-3
                     ">
                         Tentang Kandidat
@@ -528,49 +699,72 @@
 
                     <div
                         class="
-                    mt-6
+                    mt-5
+                    sm:mt-6
+
+                    text-sm
+                    sm:text-base
+
                     text-gray-600
-                    leading-8
+
+                    leading-7
+                    sm:leading-8
+
                     whitespace-pre-line
+
+                    break-words
                     ">
                         {{ $candidate->bio ?: 'Profil kandidat belum tersedia.' }}
                     </div>
-
 
                 </div>
 
 
 
                 {{-- VISI --}}
-
                 <div
                     class="
                 bg-white
-                rounded-[26px]
+
+                rounded-2xl
+                sm:rounded-[26px]
+
                 border
                 border-gray-100
+
                 shadow-sm
-                p-8
+
+                p-5
+                sm:p-8
                 ">
 
                     <div
                         class="
                     flex
                     items-center
-                    gap-4
+                    gap-3
+                    sm:gap-4
                     ">
 
                         <div
                             class="
-                        w-12
-                        h-12
+                        w-11
+                        h-11
+                        sm:w-12
+                        sm:h-12
+
                         rounded-2xl
+
                         bg-violet-50
                         text-violet-600
+
                         flex
                         items-center
                         justify-center
+
                         font-extrabold
+
+                        shrink-0
                         ">
                             V
                         </div>
@@ -578,7 +772,9 @@
 
                         <h2
                             class="
-                        text-2xl
+                        text-xl
+                        sm:text-2xl
+
                         font-extrabold
                         ">
                             Visi
@@ -589,49 +785,71 @@
 
                     <div
                         class="
-                    mt-6
+                    mt-5
+                    sm:mt-6
+
+                    text-sm
+                    sm:text-base
+
                     text-gray-600
-                    leading-8
+
+                    leading-7
+                    sm:leading-8
+
                     whitespace-pre-line
+                    break-words
                     ">
                         {{ $candidate->vision ?: 'Visi kandidat belum tersedia.' }}
                     </div>
-
 
                 </div>
 
 
 
                 {{-- MISI --}}
-
                 <div
                     class="
                 bg-white
-                rounded-[26px]
+
+                rounded-2xl
+                sm:rounded-[26px]
+
                 border
                 border-gray-100
+
                 shadow-sm
-                p-8
+
+                p-5
+                sm:p-8
                 ">
 
                     <div
                         class="
                     flex
                     items-center
-                    gap-4
+                    gap-3
+                    sm:gap-4
                     ">
 
                         <div
                             class="
-                        w-12
-                        h-12
+                        w-11
+                        h-11
+                        sm:w-12
+                        sm:h-12
+
                         rounded-2xl
+
                         bg-amber-50
                         text-amber-600
+
                         flex
                         items-center
                         justify-center
+
                         font-extrabold
+
+                        shrink-0
                         ">
                             M
                         </div>
@@ -639,7 +857,9 @@
 
                         <h2
                             class="
-                        text-2xl
+                        text-xl
+                        sm:text-2xl
+
                         font-extrabold
                         ">
                             Misi
@@ -650,43 +870,63 @@
 
                     <div
                         class="
-                    mt-6
+                    mt-5
+                    sm:mt-6
+
+                    text-sm
+                    sm:text-base
+
                     text-gray-600
-                    leading-8
+
+                    leading-7
+                    sm:leading-8
+
                     whitespace-pre-line
+                    break-words
                     ">
                         {{ $candidate->mission ?: 'Misi kandidat belum tersedia.' }}
                     </div>
 
-
                 </div>
-
 
             </div>
 
 
 
             {{-- ================================================= --}}
-            {{-- RIGHT SIDEBAR --}}
+            {{-- RIGHT --}}
             {{-- ================================================= --}}
 
-            <aside class="space-y-6">
+            <aside class="
+            space-y-5
+            sm:space-y-6
+
+            w-full
+            ">
 
 
                 {{-- INFORMATION --}}
-
                 <div
                     class="
                 bg-white
-                rounded-[26px]
+
+                rounded-2xl
+                sm:rounded-[26px]
+
                 border
                 border-gray-100
+
                 shadow-sm
-                p-6
+
+                p-5
+                sm:p-6
                 ">
 
-                    <h2 class="
-                    text-xl
+                    <h2
+                        class="
+                    text-lg
+                    sm:text-xl
+
                     font-extrabold
                     ">
                         Informasi Kandidat
@@ -695,11 +935,13 @@
 
 
                     {{-- EDUCATION --}}
-
                     <div
                         class="
-                    mt-6
+                    mt-5
+                    sm:mt-6
+
                     pb-5
+
                     border-b
                     border-gray-100
                     ">
@@ -719,6 +961,7 @@
                             class="
                         font-semibold
                         mt-2
+                        break-words
                         ">
                             {{ $candidate->education ?: '-' }}
                         </p>
@@ -728,7 +971,6 @@
 
 
                     {{-- ACHIEVEMENT --}}
-
                     <div class="pt-5">
 
                         <p
@@ -745,39 +987,52 @@
                         <div
                             class="
                         mt-2
+
+                        text-sm
+                        sm:text-base
+
                         text-gray-600
+
                         leading-6
+
                         whitespace-pre-line
+                        break-words
                         ">
                             {{ $candidate->achievement ?: '-' }}
                         </div>
 
                     </div>
 
-
                 </div>
 
 
 
                 {{-- SOCIAL MEDIA --}}
-
                 <div
                     class="
                 bg-white
-                rounded-[26px]
+
+                rounded-2xl
+                sm:rounded-[26px]
+
                 border
                 border-gray-100
+
                 shadow-sm
-                p-6
+
+                p-5
+                sm:p-6
                 ">
 
-                    <h2 class="
-                    text-xl
+                    <h2
+                        class="
+                    text-lg
+                    sm:text-xl
+
                     font-extrabold
                     ">
                         Media Sosial
                     </h2>
-
 
 
                     <div class="mt-5 space-y-3">
@@ -789,12 +1044,19 @@
                             flex
                             items-center
                             justify-between
+
+                            gap-3
+
                             border
                             border-gray-100
+
                             hover:border-blue-200
+
                             rounded-2xl
+
                             px-4
                             py-4
+
                             transition
                             ">
 
@@ -802,31 +1064,40 @@
                                     class="
                                 flex
                                 items-center
+
                                 gap-3
+
+                                min-w-0
                                 ">
 
                                     <div
                                         class="
                                     w-10
                                     h-10
+
                                     rounded-xl
+
                                     bg-pink-50
+
                                     flex
                                     items-center
                                     justify-center
+
                                     font-bold
+
+                                    shrink-0
                                     ">
                                         IG
                                     </div>
 
 
-                                    <span class="font-medium">
+                                    <span class="font-medium truncate">
                                         Instagram
                                     </span>
 
                                 </div>
 
-                                <span>→</span>
+                                <span class="shrink-0">→</span>
 
                             </a>
                         @else
@@ -835,20 +1106,19 @@
                             flex
                             items-center
                             justify-between
+
                             border
                             border-gray-100
+
                             rounded-2xl
+
                             px-4
                             py-4
+
                             opacity-50
                             ">
-
-                                <span>
-                                    Instagram
-                                </span>
-
+                                <span>Instagram</span>
                                 <span>-</span>
-
                             </div>
                         @endif
 
@@ -860,12 +1130,19 @@
                             flex
                             items-center
                             justify-between
+
+                            gap-3
+
                             border
                             border-gray-100
+
                             hover:border-blue-200
+
                             rounded-2xl
+
                             px-4
                             py-4
+
                             transition
                             ">
 
@@ -874,30 +1151,37 @@
                                 flex
                                 items-center
                                 gap-3
+                                min-w-0
                                 ">
 
                                     <div
                                         class="
                                     w-10
                                     h-10
+
                                     rounded-xl
+
                                     bg-gray-50
+
                                     flex
                                     items-center
                                     justify-center
+
                                     font-bold
+
+                                    shrink-0
                                     ">
                                         TT
                                     </div>
 
 
-                                    <span class="font-medium">
+                                    <span class="font-medium truncate">
                                         TikTok
                                     </span>
 
                                 </div>
 
-                                <span>→</span>
+                                <span class="shrink-0">→</span>
 
                             </a>
                         @else
@@ -906,42 +1190,43 @@
                             flex
                             items-center
                             justify-between
+
                             border
                             border-gray-100
+
                             rounded-2xl
+
                             px-4
                             py-4
+
                             opacity-50
                             ">
-
-                                <span>
-                                    TikTok
-                                </span>
-
+                                <span>TikTok</span>
                                 <span>-</span>
-
                             </div>
                         @endif
 
-
                     </div>
-
 
                 </div>
 
 
 
-                {{-- EVENT INFO --}}
-
+                {{-- EVENT --}}
                 <div
                     class="
-                bg-gradient-to-br
+                bg-linear-to-br
                 from-blue-50
                 to-indigo-50
-                rounded-[26px]
+
+                rounded-2xl
+                sm:rounded-[26px]
+
                 border
                 border-blue-100
-                p-6
+
+                p-5
+                sm:p-6
                 ">
 
                     <p
@@ -949,6 +1234,7 @@
                     text-xs
                     uppercase
                     tracking-[2px]
+
                     text-blue-600
                     font-semibold
                     ">
@@ -959,8 +1245,12 @@
                     <h3
                         class="
                     font-extrabold
-                    text-lg
+                    text-base
+                    sm:text-lg
+
                     mt-2
+
+                    break-words
                     ">
                         {{ $event->name }}
                     </h3>
@@ -971,23 +1261,22 @@
                     inline-flex
                     items-center
                     gap-2
+
                     text-blue-600
+
                     font-semibold
+
                     mt-5
                     ">
                         Lihat Event
                         <span>→</span>
                     </a>
 
-
                 </div>
-
 
             </aside>
 
-
         </div>
-
 
     </section>
 
@@ -997,36 +1286,59 @@
     {{-- BOTTOM CTA --}}
     {{-- ========================================================= --}}
 
-    <section class="max-w-7xl mx-auto px-6 pb-10">
+    <section class="
+    max-w-7xl
+    mx-auto
 
+    px-4
+    sm:px-6
+
+    pb-10
+    ">
 
         <div
             class="
         relative
         overflow-hidden
-        rounded-[30px]
-        bg-gradient-to-r
+
+        rounded-2xl
+        sm:rounded-[30px]
+
+        bg-linear-to-r
         from-[#e6f0ff]
         via-[#f9fbff]
         to-[#dfeaff]
+
         border
         border-blue-100
-        px-10
-        py-9
+
+        px-5
+        sm:px-8
+        lg:px-10
+
+        py-6
+        sm:py-9
+
         flex
-        items-center
-        justify-between
+        flex-col
+        lg:flex-row
+
+        lg:items-center
+        lg:justify-between
+
+        gap-6
         ">
 
-
             <div>
-
 
                 <p
                     class="
                 text-blue-600
+
                 text-xs
+
                 tracking-[3px]
+
                 font-semibold
                 uppercase
                 ">
@@ -1037,17 +1349,29 @@
                 <h2
                     class="
                 mt-2
-                text-3xl
+
+                text-2xl
+                sm:text-3xl
+
                 font-extrabold
+
+                wrap-break-words
                 ">
                     Dukung {{ $candidate->name }}
                 </h2>
 
 
-                <p class="text-gray-500 mt-2">
+                <p
+                    class="
+                text-sm
+                sm:text-base
+
+                text-gray-500
+
+                mt-2
+                ">
                     Setiap vote adalah bentuk dukungan untuk perjalanan kandidat favorit Anda.
                 </p>
-
 
             </div>
 
@@ -1055,22 +1379,35 @@
 
             <a href="{{ route('candidate.vote', $candidate) }}"
                 class="
+            w-full
+            sm:w-auto
+
+            text-center
+
             bg-blue-600
             hover:bg-blue-700
+
             text-white
-            px-9
+
+            px-8
+            sm:px-9
+
             py-4
+
             rounded-xl
+
             font-semibold
+
             shadow-lg
+
             transition
+
+            shrink-0
             ">
                 Vote Sekarang →
             </a>
 
-
         </div>
-
 
     </section>
 
@@ -1086,39 +1423,46 @@
     mt-4
     ">
 
-
         <div
             class="
         max-w-7xl
         mx-auto
-        px-6
-        py-12
+
+        px-4
+        sm:px-6
+
+        py-10
+        sm:py-12
+
         grid
-        grid-cols-[1.4fr_1fr_1fr_1fr]
-        gap-12
+
+        grid-cols-1
+        sm:grid-cols-2
+        lg:grid-cols-[1.4fr_1fr_1fr_1fr]
+
+        gap-8
+        lg:gap-12
         ">
 
 
             {{-- PICO --}}
+            <div class="sm:col-span-2 lg:col-span-1">
 
-            <div>
-
-
-                <div class="
-                flex
-                items-center
-                gap-3
-                ">
+                <div class="flex items-center gap-3">
 
                     <div
                         class="
                     w-11
                     h-11
+
                     rounded-xl
+
                     bg-blue-600
+
                     flex
                     items-center
                     justify-center
+
                     font-bold
                     text-xl
                     ">
@@ -1144,27 +1488,29 @@
                 <p
                     class="
                 mt-5
+
                 text-sm
                 text-white/60
+
                 leading-6
+
                 max-w-xs
                 ">
                     Platform voting digital untuk berbagai event di Indonesia.
                     Setiap suara menciptakan peluang yang lebih besar.
                 </p>
 
-
             </div>
 
 
 
             {{-- NAV --}}
-
             <div>
 
                 <h3 class="font-bold">
                     Navigasi
                 </h3>
+
 
                 <div
                     class="
@@ -1178,13 +1524,16 @@
                         Beranda
                     </a>
 
-                    <a href="{{ route('home') }}#event" class="block hover:text-white">
+
+                    <a href="{{ route('events.index') }}" class="block hover:text-white">
                         Event
                     </a>
+
 
                     <a href="{{ route('event.detail', $event) }}" class="block hover:text-white">
                         Ranking
                     </a>
+
 
                     <a href="{{ route('home') }}#cara-vote" class="block hover:text-white">
                         Cara Vote
@@ -1197,12 +1546,12 @@
 
 
             {{-- HELP --}}
-
             <div>
 
                 <h3 class="font-bold">
                     Bantuan
                 </h3>
+
 
                 <div
                     class="
@@ -1211,12 +1560,10 @@
                 text-sm
                 text-white/60
                 ">
-
                     <p>Pusat Bantuan</p>
                     <p>Kebijakan Privasi</p>
                     <p>Syarat & Ketentuan</p>
                     <p>FAQ</p>
-
                 </div>
 
             </div>
@@ -1224,12 +1571,12 @@
 
 
             {{-- CONTACT --}}
-
             <div>
 
                 <h3 class="font-bold">
                     Kontak
                 </h3>
+
 
                 <div
                     class="
@@ -1238,21 +1585,20 @@
                 text-sm
                 text-white/60
                 ">
-
-                    <p>
+                    <p class="break-all">
                         ✉ hello@pico.id
                     </p>
 
                     <p>
                         📍 Indonesia
                     </p>
-
                 </div>
 
 
                 <p
                     class="
                 mt-8
+
                 italic
                 text-amber-400
                 ">
@@ -1261,24 +1607,32 @@
 
             </div>
 
-
         </div>
 
 
 
-        <div class="
-        border-t
-        border-white/10
-        ">
+        {{-- COPYRIGHT --}}
+        <div class="border-t border-white/10">
 
             <div
                 class="
             max-w-7xl
             mx-auto
-            px-6
+
+            px-4
+            sm:px-6
+
             py-5
+
             flex
-            justify-between
+            flex-col
+            sm:flex-row
+
+            gap-2
+
+            sm:items-center
+            sm:justify-between
+
             text-xs
             text-white/40
             ">
@@ -1294,7 +1648,6 @@
             </div>
 
         </div>
-
 
     </footer>
 
