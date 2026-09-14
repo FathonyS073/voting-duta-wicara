@@ -600,8 +600,15 @@ class VotingController extends Controller
     {
         return view('voting.help');
     }
+    public function privacy()
+    {
+        return view('voting.privacy');
+    }
 
-
+    public function terms()
+{
+    return view('voting.terms');
+}
 
 
 }

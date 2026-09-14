@@ -2168,9 +2168,13 @@
 
                     <a href="{{ route('help') }}" class="hover:text-white">
                         Pusat Bantuan
+                    </a> <br>
+                    <a href="{{ route('privacy') }}" class="hover:text-white">
+                        Kebijakan Privasi
+                    </a> <br>
+                    <a href="{{ route('terms') }}" class="hover:text-white">
+                        Syarat & Ketentuan
                     </a>
-                    <p>Kebijakan Privasi</p>
-                    <p>Syarat & Ketentuan</p>
                     <p>Hubungi Kami</p>
                     <p>FAQ</p>
 

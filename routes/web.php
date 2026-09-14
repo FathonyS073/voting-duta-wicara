@@ -60,3 +60,15 @@ Route::get(
     [VotingController::class,'help']
 )
 ->name('help');
+
+Route::get(
+    '/kebijakan-privasi',
+    [VotingController::class,'privacy']
+)
+->name('privacy');
+
+Route::get(
+    '/syarat-ketentuan',
+    [VotingController::class,'terms']
+)
+->name('terms');
