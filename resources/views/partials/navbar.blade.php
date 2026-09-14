@@ -152,7 +152,7 @@
             </a>
 
 
-            <a href="{{ route('home') }}#tentang"
+            <a href="{{ route('about') }}"
                 class="
                 hover:text-blue-600
                 transition
@@ -194,7 +194,7 @@
             </a>
 
 
-            <a href="{{ route('home') }}#tentang"
+            <a href="{{ route('about') }}"
                 class="
                 bg-blue-600
                 hover:bg-blue-700
@@ -418,7 +418,7 @@
                 </a>
 
 
-                <a href="{{ route('home') }}#tentang"
+                <a href="{{ route('about') }}"
                     class="
                     mobile-nav-link
 

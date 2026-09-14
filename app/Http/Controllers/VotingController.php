@@ -587,6 +587,10 @@ class VotingController extends Controller
             )
         );
     }
+    public function about()
+    {
+        return view('voting.about');
+    }
 
 
 }

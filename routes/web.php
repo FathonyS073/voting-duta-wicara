@@ -15,6 +15,11 @@ Route::get(
     [VotingController::class, 'events']
 )->name('events.index');
 
+Route::get(
+    '/tentang',
+    [VotingController::class, 'about']
+)->name('about');
+
 
 Route::get(
     '/event/{event}',
