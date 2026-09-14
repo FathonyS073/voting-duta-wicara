@@ -636,24 +636,11 @@ font-bold
 
 
     </section>
+    {{-- ========================================================= --}}
+    {{-- FOOTER --}}
+    {{-- ========================================================= --}}
 
-
-
-
-
-    <footer class="
-bg-[#0a1b3d]
-
-text-white
-
-py-8
-
-text-center
-">
-
-        © {{ date('Y') }} PICO Digital Voting Platform
-
-    </footer>
+    @include('partials.footer')
 
 
 
