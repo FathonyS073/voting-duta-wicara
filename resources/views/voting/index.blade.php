@@ -2166,7 +2166,9 @@
                     text-white/60
                     ">
 
-                    <p>Pusat Bantuan</p>
+                    <a href="{{ route('help') }}" class="hover:text-white">
+                        Pusat Bantuan
+                    </a>
                     <p>Kebijakan Privasi</p>
                     <p>Syarat & Ketentuan</p>
                     <p>Hubungi Kami</p>

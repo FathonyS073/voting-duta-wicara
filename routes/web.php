@@ -20,6 +20,11 @@ Route::get(
     [VotingController::class, 'about']
 )->name('about');
 
+Route::get(
+    '/cara-vote',
+    [VotingController::class,'howToVote']
+)
+->name('how.vote');
 
 Route::get(
     '/event/{event}',
@@ -49,3 +54,9 @@ Route::get(
     '/payment/{invoice}',
     [VotingController::class, 'payment']
 )->name('payment.show');
+
+Route::get(
+    '/bantuan',
+    [VotingController::class,'help']
+)
+->name('help');

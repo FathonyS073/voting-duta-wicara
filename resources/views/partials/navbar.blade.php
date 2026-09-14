@@ -134,16 +134,7 @@
             </a>
 
 
-            <a href="{{ route('home') }}#ranking"
-                class="
-                hover:text-blue-600
-                transition
-                ">
-                Ranking
-            </a>
-
-
-            <a href="{{ route('home') }}#cara-vote"
+            <a href="{{ route('how.vote') }}"
                 class="
                 hover:text-blue-600
                 transition
@@ -362,35 +353,9 @@
                 </a>
 
 
-                <a href="{{ route('home') }}#ranking"
-                    class="
-                    mobile-nav-link
-
-                    flex
-                    items-center
-
-                    px-4
-                    py-3
-
-                    rounded-xl
-
-                    font-medium
-                    text-gray-700
-
-                    hover:bg-blue-50
-                    hover:text-blue-600
-
-                    transition
-                    ">
-                    <span class="w-8">
-                        🏆
-                    </span>
-
-                    Ranking
-                </a>
 
 
-                <a href="{{ route('home') }}#cara-vote"
+                <a href="{{ route('how.vote') }}"
                     class="
                     mobile-nav-link
 
@@ -421,27 +386,20 @@
                 <a href="{{ route('about') }}"
                     class="
                     mobile-nav-link
-
                     flex
                     items-center
-
                     px-4
                     py-3
-
                     rounded-xl
-
                     font-medium
                     text-gray-700
-
                     hover:bg-blue-50
                     hover:text-blue-600
-
                     transition
                     ">
                     <span class="w-8">
                         ℹ️
                     </span>
-
                     Tentang
                 </a>
 

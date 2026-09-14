@@ -591,6 +591,17 @@ class VotingController extends Controller
     {
         return view('voting.about');
     }
+    public function howToVote()
+    {
+        return view('voting.how-to-vote');
+    }
+
+    public function help()
+    {
+        return view('voting.help');
+    }
+
+
 
 
 }
