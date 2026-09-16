@@ -240,6 +240,18 @@ class VotingController extends Controller
         */
     
         $event = $candidate->event;
+
+                /*
+        |--------------------------------------------------------------------------
+        | Validasi Event Aktif
+        |--------------------------------------------------------------------------
+        */
+        
+        abort_if(
+            !$event ||
+            $event->status !== 'active',
+            404
+        );
     
     
         return view(
@@ -269,8 +281,15 @@ class VotingController extends Controller
     
         $candidate->load([
             'event',
-            'categories' => function ($query) {
-                $query->where('categories.status', 1);
+            'categories' => function ($query) use ($candidate) {
+            
+                $query
+                    ->where('categories.status',1)
+                    ->where(
+                        'categories.event_id',
+                        $candidate->event_id
+                    );
+            
             },
         ]);
     
@@ -324,8 +343,19 @@ class VotingController extends Controller
         $candidate->load('event');
 
         $event = $candidate->event;
-
-        abort_if(!$event, 404);
+        
+        
+        /*
+        |--------------------------------------------------------------------------
+        | Validasi Event
+        |--------------------------------------------------------------------------
+        */
+        
+        abort_if(
+            !$event ||
+            $event->status !== 'active',
+            404
+        );
 
 
         /*
@@ -376,7 +406,10 @@ class VotingController extends Controller
         $voteAmount = (int) $validated['vote_amount'];
 
         $votePrice = (int) $category->vote_price;
-
+        abort_if(
+            $votePrice <= 0,
+            400
+        );
         $totalAmount = $voteAmount * $votePrice;
 
 
