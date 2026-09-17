@@ -458,21 +458,55 @@ class VotingController extends Controller
             $transaction->invoice_number
         );
     }
+
+
     public function payment($invoice)
     {
-        $transaction = Transaction::with([
+
+        /*
+        |--------------------------------------------------------------------------
+        | Ambil Transaction
+        |--------------------------------------------------------------------------
+        */
+
+        $transaction = Transaction::where(
+                'invoice_number',
+                $invoice
+            )
+            ->with([
+                'event',
                 'candidate',
-                'category',
+                'category'
             ])
-            ->where('invoice_number', $invoice)
             ->firstOrFail();
+
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Pastikan transaksi valid
+        |--------------------------------------------------------------------------
+        */
+
+        abort_if(
+            !$transaction->event ||
+            !$transaction->candidate ||
+            !$transaction->category,
+            404
+        );
+
 
 
         return view(
             'voting.payment',
-            compact('transaction')
+            compact(
+                'transaction'
+            )
         );
+
     }
+
+
     public function events(Request $request)
     {
         /*
@@ -649,6 +683,31 @@ class VotingController extends Controller
     public function faq()
     {
         return view('voting.faq');
+    }
+
+    public function paymentStatus($invoice)
+    {
+
+        $transaction = Transaction::where(
+            'invoice_number',
+            $invoice
+        )
+        ->with([
+            'event',
+            'candidate',
+            'category'
+        ])
+        ->firstOrFail();
+
+
+
+        return view(
+            'voting.payment-status',
+            compact(
+                'transaction'
+            )
+        );
+
     }
 
 }

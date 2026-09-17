@@ -84,3 +84,12 @@ Route::get(
     [VotingController::class,'faq']
 )
 ->name('faq');
+
+Route::get(
+    '/payment/status/{invoice}',
+    [
+        VotingController::class,
+        'paymentStatus'
+    ]
+)
+->name('payment.status');
