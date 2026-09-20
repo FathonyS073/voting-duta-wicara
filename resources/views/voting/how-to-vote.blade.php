@@ -16,7 +16,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f]">
+<body class="bg-[#FFF9F2] text-[#5A1520]">
 
 
     @include('partials.navbar')
@@ -30,9 +30,9 @@ pt-28
 pb-16
 
 bg-linear-to-br
-from-blue-50
+from-[#FDF6F0]
 via-white
-to-blue-100
+to-[#F5E7D0]
 ">
 
         <div class="
@@ -45,7 +45,7 @@ text-center
 
 
             <p class="
-text-blue-600
+text-[#7A1F2B]
 
 uppercase
 
@@ -192,7 +192,7 @@ h-14
 
 rounded-2xl
 
-bg-blue-600
+bg-[#7A1F2B]
 
 text-white
 
@@ -214,7 +214,7 @@ text-2xl
                     <div class="
 mt-4
 
-text-blue-600
+text-[#D4AF37]
 
 font-bold
 
@@ -265,11 +265,6 @@ leading-6
 
 
     </section>
-
-
-
-
-
     <!-- DETAIL -->
 
     <section class="
@@ -307,7 +302,7 @@ gap-10
                 <div>
 
                     <p class="
-text-blue-600
+text-[#7A1F2B]
 
 uppercase
 
@@ -360,8 +355,9 @@ space-y-4
 ">
 
 
+
                     <div class="
-bg-blue-50
+bg-[#FDF6F0]
 
 rounded-2xl
 
@@ -384,8 +380,10 @@ p-5
 
 
 
+
+
                     <div class="
-bg-blue-50
+bg-[#FDF6F0]
 
 rounded-2xl
 
@@ -408,8 +406,10 @@ p-5
 
 
 
+
+
                     <div class="
-bg-blue-50
+bg-[#FDF6F0]
 
 rounded-2xl
 
@@ -447,6 +447,10 @@ p-5
 
 
 
+
+
+
+
     <!-- FAQ -->
 
     <section class="
@@ -474,6 +478,7 @@ font-bold
 
 
 
+
         <div class="
 mt-10
 
@@ -483,6 +488,7 @@ md:grid-cols-2
 
 gap-5
 ">
+
 
 
             <div class="
@@ -495,11 +501,13 @@ p-6
 border
 ">
 
+
                 <h3 class="font-bold">
 
                     Apakah bisa vote lebih dari satu kali?
 
                 </h3>
+
 
                 <p class="
 text-gray-500
@@ -514,7 +522,11 @@ mt-3
 
                 </p>
 
+
             </div>
+
+
+
 
 
 
@@ -528,11 +540,13 @@ p-6
 border
 ">
 
+
                 <h3 class="font-bold">
 
                     Bagaimana mengetahui hasil vote?
 
                 </h3>
+
 
                 <p class="
 text-gray-500
@@ -547,13 +561,19 @@ mt-3
 
                 </p>
 
+
             </div>
+
 
 
         </div>
 
 
     </section>
+
+
+
+
 
 
 
@@ -572,10 +592,11 @@ pb-16
 ">
 
 
+
         <div class="
 rounded-3xl
 
-bg-[#10204f]
+bg-[#5A1520]
 
 text-white
 
@@ -583,6 +604,7 @@ p-10
 
 text-center
 ">
+
 
 
             <h2 class="
@@ -594,6 +616,8 @@ font-bold
                 Siap Memberikan Dukungan?
 
             </h2>
+
+
 
 
             <p class="
@@ -608,15 +632,17 @@ mt-3
 
 
 
+
+
             <a href="{{ route('home') }}#event"
                 class="
 inline-block
 
 mt-6
 
-bg-yellow-400
+bg-[#D4AF37]
 
-text-[#10204f]
+text-[#5A1520]
 
 px-8
 
@@ -627,18 +653,29 @@ rounded-xl
 font-bold
 ">
 
+
                 Lihat Event
 
+
             </a>
+
+
 
 
         </div>
 
 
     </section>
+
+
+
+
+
+
     {{-- ========================================================= --}}
     {{-- FOOTER --}}
     {{-- ========================================================= --}}
+
 
     @include('partials.footer')
 

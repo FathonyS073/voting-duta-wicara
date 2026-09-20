@@ -16,7 +16,7 @@
 </head>
 
 
-<body class="bg-white text-gray-900 overflow-x-hidden">
+<body class="bg-[#FFF9F2] text-[#2B1B1F] overflow-x-hidden">
 
 
     @include('partials.navbar')
@@ -36,9 +36,9 @@
         lg:pb-20
 
         bg-linear-to-br
-        from-blue-50
+        from-[#FFF9F2]
         via-white
-        to-blue-100
+        to-[#F7E7A9]/40
 
         overflow-hidden
         ">
@@ -68,7 +68,7 @@
                 ">
 
                 <p class="
-                    text-blue-600
+                    text-[#6F1022]
                     font-semibold
                     uppercase
 
@@ -94,14 +94,14 @@
                     font-bold
                     leading-[1.08]
 
-                    text-[#14285a]
+                    text-[#4B0B17]
                     ">
 
                     Platform Voting Digital
 
                     <br>
 
-                    <span class="text-blue-600">
+                    <span class="text-[#6F1022]">
                         untuk Berbagai Event
                     </span>
 
@@ -153,8 +153,8 @@
                     ">
 
                     <a href="#event" class="
-                        bg-blue-600
-                        hover:bg-blue-700
+                        bg-[#6F1022]
+                        hover:bg-[#4B0B17]
 
                         text-white
                         text-center
@@ -177,9 +177,9 @@
 
                     <a href="#tentang" class="
                         border
-                        border-blue-500
+                        border-[#D4AF37]
 
-                        text-blue-600
+                        text-[#6F1022]
                         text-center
 
                         px-7
@@ -191,7 +191,7 @@
 
                         font-semibold
 
-                        hover:bg-blue-50
+                        hover:bg-[#FFF3D6]
                         transition
                         ">
                         + Buat Event
@@ -311,7 +311,7 @@
                     lg:w-96
                     lg:h-96
 
-                    bg-blue-300
+                    bg-[#D4AF37]
 
                     rounded-full
 
@@ -368,7 +368,7 @@
         p-4
         sm:p-5
         border
-        border-gray-100
+        border-[#F1E3C0]
         ">
 
             <form action="{{ route('home') }}#event" method="GET">
@@ -379,7 +379,7 @@
                 gap-2
                 sm:gap-3
                 border
-                border-gray-300
+                border-[#E8D7A8]
                 rounded-full
                 px-4
                 sm:px-5
@@ -419,8 +419,8 @@
 
                     <button type="submit" class="
                     shrink-0
-                    bg-blue-600
-                    hover:bg-blue-700
+                    bg-[#6F1022]
+                    hover:bg-[#4B0B17]
                     text-white
                     w-10
                     h-10
@@ -453,7 +453,7 @@
             ">
 
                 <a href="{{ route('home') }}#event" class="
-                bg-blue-600
+                bg-[#6F1022]
                 text-white
                 px-4
                 sm:px-5
@@ -530,7 +530,7 @@
 
                 Hasil pencarian untuk:
 
-                <strong class="text-[#14285a]">
+                <strong class="text-[#4B0B17]">
                     "{{ $search }}"
                 </strong>
 
@@ -572,7 +572,7 @@
 
 
             <div class="
-                bg-blue-50
+                bg-[#FCECEF]
 
                 rounded-2xl
                 sm:rounded-3xl
@@ -586,7 +586,7 @@
                     sm:text-3xl
 
                     font-bold
-                    text-blue-600
+                    text-[#6F1022]
                     ">
                     500+
                 </h2>
@@ -605,7 +605,7 @@
 
 
             <div class="
-                bg-green-50
+                bg-[#F0F8E8]
 
                 rounded-2xl
                 sm:rounded-3xl
@@ -619,7 +619,7 @@
                     sm:text-3xl
 
                     font-bold
-                    text-green-600
+                    text-[#6F1022]
                     ">
                     50.000+
                 </h2>
@@ -638,7 +638,7 @@
 
 
             <div class="
-                bg-yellow-50
+                bg-[#FFF6D8]
 
                 rounded-2xl
                 sm:rounded-3xl
@@ -652,7 +652,7 @@
                     sm:text-3xl
 
                     font-bold
-                    text-yellow-600
+                    text-[#B8860B]
                     ">
                     1 Juta+
                 </h2>
@@ -671,7 +671,7 @@
 
 
             <div class="
-                bg-purple-50
+                bg-[#F3ECF8]
 
                 rounded-2xl
                 sm:rounded-3xl
@@ -685,7 +685,7 @@
                     sm:text-3xl
 
                     font-bold
-                    text-purple-600
+                    text-[#6F1022]
                     ">
                     24/7
                 </h2>
@@ -736,7 +736,7 @@
                 text-2xl
                 sm:text-3xl
                 font-bold
-                text-[#14285a]
+                text-[#4B0B17]
                 ">
                     @if(!empty($search))
                     Hasil Pencarian
@@ -777,7 +777,7 @@
                 <a href="{{ route('events.index') }}" class="
                 hidden
                 md:inline
-                text-blue-600
+                text-[#6F1022]
                 font-semibold
                 text-sm
                 ">
@@ -799,8 +799,8 @@
                     bg-white
                     items-center
                     justify-center
-                    hover:border-blue-500
-                    hover:text-blue-600
+                    hover:border-[#D4AF37]
+                    hover:text-[#6F1022]
                     transition
                     ">
                     ←
@@ -813,11 +813,11 @@
                     w-10
                     h-10
                     rounded-full
-                    bg-blue-600
+                    bg-[#6F1022]
                     text-white
                     items-center
                     justify-center
-                    hover:bg-blue-700
+                    hover:bg-[#4B0B17]
                     transition
                     ">
                     →
@@ -869,7 +869,7 @@
                     rounded-2xl
 
                     border
-                    border-gray-100
+                    border-[#F1E3C0]
 
                     shadow-md
 
@@ -891,7 +891,7 @@
                         w-full
                         h-40
                         overflow-hidden
-                        bg-gray-100
+                        bg-[#F9F1E5]
                         ">
 
                         @if($event->banner)
@@ -910,8 +910,8 @@
                                 flex
                                 items-center
                                 justify-center
-                                bg-blue-50
-                                text-blue-600
+                                bg-[#FCECEF]
+                                text-[#6F1022]
                                 font-bold
                                 ">
                             PICO
@@ -963,7 +963,7 @@
                             mt-4
                             pt-4
                             border-t
-                            border-gray-100
+                            border-[#F1E3C0]
 
                             flex
                             items-center
@@ -1015,7 +1015,7 @@
 
                             <strong class="
                                 text-sm
-                                text-blue-600
+                                text-[#6F1022]
                                 ">
                                 {{ number_format(
                                     $event->total_votes ?? 0,
@@ -1041,8 +1041,8 @@
                                 w-full
                                 text-center
 
-                                bg-blue-600
-                                hover:bg-blue-700
+                                bg-[#6F1022]
+                                hover:bg-[#4B0B17]
 
                                 text-white
 
@@ -1069,7 +1069,7 @@
 
                 <div class="
                     w-full
-                    bg-blue-50
+                    bg-[#FCECEF]
                     border
                     border-blue-100
                     rounded-2xl
@@ -1136,7 +1136,7 @@
             ">
 
             <p class="
-                text-blue-600
+                text-[#6F1022]
 
                 text-xs
                 sm:text-sm
@@ -1160,7 +1160,7 @@
 
                 font-bold
 
-                text-[#14285a]
+                text-[#4B0B17]
                 ">
                 Bagaimana Cara Vote?
             </h2>
@@ -1213,7 +1213,7 @@
                 border
                 lg:border-0
 
-                border-gray-100
+                border-[#F1E3C0]
 
                 rounded-2xl
 
@@ -1233,7 +1233,7 @@
                     rounded-2xl
                     sm:rounded-3xl
 
-                    bg-blue-50
+                    bg-[#FCECEF]
 
                     flex
                     items-center
@@ -1256,7 +1256,7 @@
 
                     rounded-full
 
-                    bg-blue-600
+                    bg-[#6F1022]
 
                     text-white
                     text-xs
@@ -1308,7 +1308,7 @@
                 border
                 lg:border-0
 
-                border-gray-100
+                border-[#F1E3C0]
 
                 rounded-2xl
 
@@ -1351,7 +1351,7 @@
 
                     rounded-full
 
-                    bg-blue-600
+                    bg-[#6F1022]
 
                     text-white
                     text-xs
@@ -1389,7 +1389,7 @@
                 border
                 lg:border-0
 
-                border-gray-100
+                border-[#F1E3C0]
 
                 rounded-2xl
 
@@ -1432,7 +1432,7 @@
 
                     rounded-full
 
-                    bg-blue-600
+                    bg-[#6F1022]
 
                     text-white
                     text-xs
@@ -1470,7 +1470,7 @@
                 border
                 lg:border-0
 
-                border-gray-100
+                border-[#F1E3C0]
 
                 rounded-2xl
 
@@ -1513,7 +1513,7 @@
 
                     rounded-full
 
-                    bg-blue-600
+                    bg-[#6F1022]
 
                     text-white
                     text-xs
@@ -1551,7 +1551,7 @@
                 border
                 lg:border-0
 
-                border-gray-100
+                border-[#F1E3C0]
 
                 rounded-2xl
 
@@ -1597,7 +1597,7 @@
 
                     rounded-full
 
-                    bg-green-500
+                    bg-[#F0F8E8]0
 
                     text-white
                     text-xs
@@ -1652,9 +1652,9 @@
             sm:rounded-[32px]
 
             bg-linear-to-r
-            from-[#0c2858]
-            via-[#0d3975]
-            to-[#1265c7]
+            from-[#4B0B17]
+            via-[#6F1022]
+            to-[#8B1E3F]
 
             text-white
 
@@ -1685,7 +1685,7 @@
 
                 rounded-full
 
-                bg-blue-300/20
+                bg-[#D4AF37]/20
                 blur-3xl
                 "></div>
 
@@ -1734,7 +1734,7 @@
                     ">
 
                     <p class="
-                        text-blue-200
+                        text-[#F7E7A9]
 
                         text-xs
 
@@ -1798,10 +1798,10 @@
 
                         mt-7
 
-                        bg-[#ffd45c]
-                        hover:bg-[#ffcb37]
+                        bg-[#D4AF37]
+                        hover:bg-[#B8860B]
 
-                        text-[#10204f]
+                        text-[#4B0B17]
 
                         px-7
                         py-3.5

@@ -367,22 +367,13 @@ rounded-xl
 font-bold
 transition
 ">
-
                             💳 Bayar Ulang
-
                         </a>
                     @endif
-
-
                 </div>
             </div>
         </div>
     </section>
-
-
-
-
-
     @include('partials.footer')
 
 

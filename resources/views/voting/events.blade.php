@@ -14,7 +14,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-gray-900 overflow-x-hidden">
+<body class="bg-[#fffaf5] text-[#3b1820] overflow-x-hidden">
 
 
     @include('partials.navbar')
@@ -33,9 +33,9 @@
     sm:pb-14
 
     bg-linear-to-br
-    from-blue-50
+    from-[#fff4e5]
     via-white
-    to-blue-100
+    to-[#f8e7c0]
     ">
 
         <div class="
@@ -51,7 +51,7 @@
 
                 <p
                     class="
-                text-blue-600
+                text-[#7A1F2B]
                 uppercase
                 tracking-[4px]
                 text-xs
@@ -71,7 +71,7 @@
                 lg:text-5xl
 
                 font-extrabold
-                text-[#14285a]
+                text-[#5A1520]
                 ">
                     Temukan Event Voting
                 </h1>
@@ -113,7 +113,7 @@
                     class="
                 bg-white/80
                 border
-                border-blue-100
+                border-[#f1dca8]
                 rounded-2xl
                 p-4
                 ">
@@ -122,7 +122,7 @@
                         class="
                     text-2xl
                     font-extrabold
-                    text-blue-600
+                    text-[#7A1F2B]
                     ">
                         {{ $activeCount }}
                     </p>
@@ -188,7 +188,7 @@
         sm:rounded-3xl
 
         border
-        border-gray-100
+        border-[#f1e3c0]
 
         shadow-lg
 
@@ -251,8 +251,8 @@
                         class="
                     shrink-0
 
-                    bg-blue-600
-                    hover:bg-blue-700
+                    bg-[#7A1F2B]
+                    hover:bg-[#5A1520]
 
                     text-white
 
@@ -309,7 +309,7 @@
                 font-medium
                 transition
 
-                {{ $status === 'all' ? 'bg-blue-600 text-white' : 'border border-gray-200 text-gray-600 hover:border-blue-300' }}
+                {{ $status === 'all' ? 'bg-[#7A1F2B] text-white' : 'border border-gray-200 text-gray-600 hover:border-[#D4AF37]' }}
                 ">
                     Semua Event
                 </a>
@@ -328,8 +328,8 @@
                 transition
 
                 {{ $status === 'active'
-                    ? 'bg-green-600 text-white'
-                    : 'border border-gray-200 text-gray-600 hover:border-green-300' }}
+                    ? 'bg-[#B8860B] text-white'
+                    : 'border border-gray-200 text-gray-600 hover:border-[#D4AF37]' }}
                 ">
                     ● Aktif
                 </a>
@@ -368,8 +368,8 @@
                 transition
 
                 {{ $status === 'finished'
-                    ? 'bg-indigo-600 text-white'
-                    : 'border border-gray-200 text-gray-600 hover:border-indigo-300' }}
+                    ? 'bg-[#7A1F2B] text-white'
+                    : 'border border-gray-200 text-gray-600 hover:border-[#D4AF37]' }}
                 ">
                     Selesai
                 </a>
@@ -413,7 +413,7 @@
                 text-2xl
                 sm:text-3xl
                 font-bold
-                text-[#14285a]
+                text-[#5A1520]
                 ">
                     @if ($status === 'active')
                         Event Aktif
@@ -439,7 +439,7 @@
 
                     Hasil pencarian:
 
-                    <strong class="text-[#14285a]">
+                    <strong class="text-[#5A1520]">
                         "{{ $search }}"
                     </strong>
 
@@ -483,7 +483,7 @@
                 rounded-2xl
 
                 border
-                border-gray-100
+                border-[#f1e3c0]
 
                 shadow-sm
 
@@ -524,13 +524,13 @@
                                 class="
                             w-full
                             h-full
-                            bg-blue-50
+                            bg-[#fff7e8]
 
                             flex
                             items-center
                             justify-center
 
-                            text-blue-600
+                            text-[#7A1F2B]
                             font-bold
                             ">
                                 PICO
@@ -554,7 +554,7 @@
                                 items-center
                                 gap-2
 
-                                bg-green-500
+                                bg-[#B8860B]
                                 text-white
 
                                 px-3
@@ -596,7 +596,7 @@
                             @elseif($event->status === 'finished')
                                 <span
                                     class="
-                                bg-indigo-600
+                                bg-[#7A1F2B]
                                 text-white
 
                                 px-3
@@ -683,7 +683,7 @@
                         pt-4
 
                         border-t
-                        border-gray-100
+                        border-[#f1e3c0]
 
                         space-y-2
 
@@ -729,7 +729,7 @@
 
                                 <strong
                                     class="
-                                {{ $isActive ? 'text-blue-600' : 'text-gray-500' }}
+                                {{ $isActive ? 'text-[#7A1F2B]' : 'text-gray-500' }}
                                 ">
                                     {{ number_format($event->total_votes ?? 0, 0, ',', '.') }}
                                 </strong>
@@ -755,8 +755,8 @@
 
                                 text-center
 
-                                bg-blue-600
-                                hover:bg-blue-700
+                                bg-[#7A1F2B]
+                                hover:bg-[#5A1520]
 
                                 text-white
 
@@ -813,7 +813,7 @@
                 bg-white
 
                 border
-                border-gray-100
+                border-[#f1e3c0]
 
                 rounded-3xl
 
@@ -842,7 +842,7 @@
                     inline-block
                     mt-5
 
-                    text-blue-600
+                    text-[#7A1F2B]
                     font-semibold
                     ">
                         Tampilkan Semua Event
@@ -865,7 +865,7 @@
         pt-7
 
         border-t
-        border-gray-100
+        border-[#f1e3c0]
         ">
 
                 {{ $events->onEachSide(1)->links() }}
@@ -881,324 +881,7 @@
     {{-- FOOTER --}}
     {{-- ========================================================= --}}
 
-    <footer class="
-        bg-[#0a1b3d]
-        text-white
-        ">
-
-        <div
-            class="
-            max-w-7xl
-            mx-auto
-
-            px-4
-            sm:px-6
-
-            py-10
-            sm:py-14
-
-            grid
-
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-[1.5fr_1fr_1fr_1fr]
-
-            gap-9
-            lg:gap-12
-            ">
-
-
-            {{-- BRAND --}}
-            <div class="
-                sm:col-span-2
-                lg:col-span-1
-                ">
-
-                <div class="flex items-center gap-3">
-
-                    <div
-                        class="
-                        w-11
-                        h-11
-                        sm:w-12
-                        sm:h-12
-
-                        rounded-xl
-
-                        bg-blue-600
-
-                        flex
-                        items-center
-                        justify-center
-
-                        font-bold
-
-                        text-xl
-                        sm:text-2xl
-                        ">
-                        P
-                    </div>
-
-
-                    <div>
-
-                        <p
-                            class="
-                            font-bold
-
-                            text-2xl
-                            sm:text-3xl
-                            ">
-                            PICO
-                        </p>
-
-                        <p class="text-xs text-white/50">
-                            Digital Voting Platform
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <p
-                    class="
-                    mt-5
-
-                    text-sm
-                    text-white/60
-
-                    leading-6
-
-                    max-w-sm
-                    ">
-                    Platform voting digital untuk berbagai event di Indonesia.
-                    Setiap suara menciptakan peluang yang lebih besar.
-                </p>
-
-
-
-                <div class="flex gap-3 mt-6">
-
-                    <div
-                        class="
-                        w-9
-                        h-9
-
-                        rounded-lg
-
-                        border
-                        border-white/10
-
-                        flex
-                        items-center
-                        justify-center
-                        ">
-                        IG
-                    </div>
-
-
-                    <div
-                        class="
-                        w-9
-                        h-9
-
-                        rounded-lg
-
-                        border
-                        border-white/10
-
-                        flex
-                        items-center
-                        justify-center
-                        ">
-                        YT
-                    </div>
-
-
-                    <div
-                        class="
-                        w-9
-                        h-9
-
-                        rounded-lg
-
-                        border
-                        border-white/10
-
-                        flex
-                        items-center
-                        justify-center
-                        ">
-                        TT
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            {{-- NAV --}}
-            <div>
-
-                <h3 class="font-bold">
-                    Navigasi
-                </h3>
-
-                <div
-                    class="
-                    mt-5
-
-                    space-y-3
-
-                    text-sm
-                    text-white/60
-                    ">
-
-                    <a href="{{ route('home') }}" class="block hover:text-white">
-                        Beranda
-                    </a>
-
-                    <a href="#event" class="block hover:text-white">
-                        Event
-                    </a>
-
-                    <a href="#cara-vote" class="block hover:text-white">
-                        Cara Vote
-                    </a>
-
-                    <a href="#tentang" class="block hover:text-white">
-                        Tentang PICO
-                    </a>
-
-                </div>
-
-            </div>
-
-
-
-            {{-- HELP --}}
-            <div>
-
-                <h3 class="font-bold">
-                    Bantuan
-                </h3>
-
-                <div
-                    class="
-                    mt-5
-                    space-y-3
-
-                    text-sm
-                    text-white/60
-                    ">
-
-                    <p>Pusat Bantuan</p>
-                    <p>Kebijakan Privasi</p>
-                    <p>Syarat & Ketentuan</p>
-                    <p>Hubungi Kami</p>
-                    <p>FAQ</p>
-
-                </div>
-
-            </div>
-
-
-
-            {{-- CONTACT --}}
-            <div>
-
-                <h3 class="font-bold">
-                    Kontak
-                </h3>
-
-                <div
-                    class="
-                    mt-5
-                    space-y-4
-
-                    text-sm
-                    text-white/60
-                    ">
-
-                    <p class="break-all">
-                        ✉ hello@pico.id
-                    </p>
-
-                    <p>
-                        ☎ +62 xxx xxxx xxxx
-                    </p>
-
-                    <p>
-                        📍 Indonesia
-                    </p>
-
-                </div>
-
-
-                <p
-                    class="
-                    mt-8
-
-                    text-[#ffd45c]
-
-                    italic
-
-                    leading-6
-                    ">
-                    “Setiap suara
-                    <br>
-                    membuat perubahan.”
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-
-        {{-- COPYRIGHT --}}
-        <div class="border-t border-white/10">
-
-            <div
-                class="
-                max-w-7xl
-                mx-auto
-
-                px-4
-                sm:px-6
-
-                py-5
-
-                flex
-                flex-col
-                sm:flex-row
-
-                gap-2
-
-                sm:items-center
-                sm:justify-between
-
-                text-xs
-                text-white/40
-                ">
-
-                <p>
-                    © {{ date('Y') }} PICO. All rights reserved.
-                </p>
-
-                <p>
-                    Dibangun untuk Indonesia ♥
-                </p>
-
-            </div>
-
-        </div>
-
-    </footer>
+    @include('partials.footer')
 
 
 </body>

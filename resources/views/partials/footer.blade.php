@@ -1,9 +1,5 @@
-    {{-- ========================================================= --}}
-    {{-- FOOTER --}}
-    {{-- ========================================================= --}}
-
     <footer class="
-        bg-[#0a1b3d]
+        bg-[#3b1018]
         text-white
         ">
 
@@ -46,7 +42,7 @@
 
                         rounded-xl
 
-                        bg-blue-600
+                        bg-[#7A1F2B]
 
                         flex
                         items-center
@@ -215,7 +211,6 @@
                     text-sm
                     text-white/60
                     ">
-
                     <a href="{{ route('help') }}" class="hover:text-white">
                         Pusat Bantuan
                     </a> <br>
@@ -231,7 +226,9 @@
                     <a href="{{ route('faq') }}" class="hover:text-white">
                         FAQ
                     </a>
+
                 </div>
+
             </div>
 
 
@@ -271,7 +268,7 @@
                     class="
                     mt-8
 
-                    text-[#ffd45c]
+                    text-[#D4AF37]
 
                     italic
 

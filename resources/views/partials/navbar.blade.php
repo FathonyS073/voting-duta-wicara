@@ -49,8 +49,8 @@
                 sm:h-11
 
                 rounded-xl
+                bg-[#6F1022]
 
-                bg-blue-600
 
                 flex
                 items-center
@@ -118,7 +118,7 @@
 
             <a href="{{ route('home') }}"
                 class="
-                hover:text-blue-600
+                hover:text-[#4B0B17]
                 transition
                 ">
                 Home
@@ -127,7 +127,7 @@
 
             <a href="{{ route('events.index') }}"
                 class="
-                hover:text-blue-600
+                hover:text-[#4B0B17]
                 transition
                 ">
                 Event
@@ -136,7 +136,7 @@
 
             <a href="{{ route('how.vote') }}"
                 class="
-                hover:text-blue-600
+                hover:text-[#4B0B17]
                 transition
                 ">
                 Cara Vote
@@ -145,7 +145,7 @@
 
             <a href="{{ route('about') }}"
                 class="
-                hover:text-blue-600
+                hover:text-[#4B0B17]
                 transition
                 ">
                 Tentang
@@ -187,8 +187,8 @@
 
             <a href="{{ route('about') }}"
                 class="
-                bg-blue-600
-                hover:bg-blue-700
+                bg-[#6F1022]
+                hover:bg-[#4B0B17]
 
                 text-white
 
@@ -313,7 +313,7 @@
                     text-gray-700
 
                     hover:bg-blue-50
-                    hover:text-blue-600
+                    hover:text-[#4B0B17]
 
                     transition
                     ">
@@ -341,7 +341,7 @@
                     text-gray-700
 
                     hover:bg-blue-50
-                    hover:text-blue-600
+                    hover:text-[#4B0B17]
 
                     transition
                     ">
@@ -371,7 +371,7 @@
                     text-gray-700
 
                     hover:bg-blue-50
-                    hover:text-blue-600
+                    hover:text-[#4B0B17]
 
                     transition
                     ">
@@ -394,7 +394,7 @@
                     font-medium
                     text-gray-700
                     hover:bg-blue-50
-                    hover:text-blue-600
+                    hover:text-[#4B0B17]
                     transition
                     ">
                     <span class="w-8">
@@ -455,8 +455,8 @@
                     class="
                     text-center
 
-                    bg-blue-600
-                    hover:bg-blue-700
+                    bg-[#6F1022]
+                    hover:bg-[#4B0B17]
 
                     text-white
 
