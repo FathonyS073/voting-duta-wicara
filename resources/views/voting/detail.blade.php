@@ -16,7 +16,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f] overflow-x-hidden">
+<body class="bg-[#fffaf5] text-[#5A1520] overflow-x-hidden">
 
 
     {{-- ========================================================= --}}
@@ -118,7 +118,7 @@
     overflow-hidden
     ">
 
-                <a href="{{ route('home') }}" class="hover:text-blue-600 transition">
+                <a href="{{ route('home') }}" class="hover:text-[#7A1F2B] transition">
                     Event
                 </a>
 
@@ -146,7 +146,7 @@
                 {{-- POSTER / BANNER EVENT --}}
 
                 <div
-                    class="bg-white rounded-2xl sm:rounded-[26px] overflow-hidden shadow-lg border border-blue-10 w-full max-w-[280px] sm:max-w-[320px] lg:max-w-non mx-auto lg:mx- aspect-[4/5] ">
+                    class="bg-white rounded-2xl sm:rounded-[26px] overflow-hidden shadow-lg border border-[#F1E3C0] w-full max-w-[280px] sm:max-w-[320px] lg:max-w-non mx-auto lg:mx- aspect-[4/5] ">
 
                     @if ($event->banner)
                         <img src="{{ asset('storage/' . $event->banner) }}" alt="{{ $event->name }}"
@@ -175,7 +175,7 @@
                         items-center
                         justify-center
                         bg-gradient-to-br
-                        from-blue-700
+                        from-[#5A1520]
                         to-indigo-900
                         text-white
                         text-center
@@ -225,7 +225,7 @@
     sm:rounded-[28px]
 
     border
-    border-blue-100
+    border-[#F5E6C8]
 
     p-5
     sm:p-6
@@ -245,7 +245,7 @@
                     w-64
                     h-64
                     rounded-full
-                    bg-blue-300/20
+                    bg-[#D4AF37]/20
                     blur-3xl
                     ">
                     </div>
@@ -261,8 +261,8 @@
                         inline-flex
                         items-center
                         gap-2
-                        bg-blue-100
-                        text-blue-700
+                        bg-[#F5E6C8]
+                        text-[#5A1520]
                         px-4
                         py-2
                         rounded-full
@@ -275,7 +275,7 @@
                             w-2
                             h-2
                             rounded-full
-                            bg-blue-600
+                            bg-[#7A1F2B]
                             "></span>
 
                             {{ $eventStatus }}
@@ -327,7 +327,7 @@
                             w-8
                             h-8
                             rounded-lg
-                            bg-blue-600
+                            bg-[#7A1F2B]
                             text-white
                             flex
                             items-center
@@ -382,8 +382,8 @@
                                 w-9
                                 h-9
                                 rounded-xl
-                                bg-blue-100
-                                text-blue-600
+                                bg-[#F5E6C8]
+                                text-[#7A1F2B]
                                 flex
                                 items-center
                                 justify-center
@@ -435,14 +435,14 @@ x    grid
                             gap-2
                             bg-white
                             border
-                            border-blue-200
-                            text-blue-700
+                            border-[#E6C86A]
+                            text-[#5A1520]
                             px-5
                             py-3
                             rounded-xl
                             font-semibold
                             shadow-sm
-                            hover:bg-blue-50
+                            hover:bg-[#fff7ed]
                             transition
                             justify-center
                             ">
@@ -458,14 +458,14 @@ x    grid
                             gap-2
                             bg-white
                             border
-                            border-blue-200
-                            text-blue-700
+                            border-[#E6C86A]
+                            text-[#5A1520]
                             px-5
                             py-3
                             rounded-xl
                             font-semibold
                             shadow-sm
-                            hover:bg-blue-50
+                            hover:bg-[#fff7ed]
                             transition
                             ">
                                 ✓ S&K Voting
@@ -479,14 +479,14 @@ x    grid
                             gap-2
                             bg-white
                             border
-                            border-blue-200
-                            text-blue-700
+                            border-[#E6C86A]
+                            text-[#5A1520]
                             px-5
                             py-3
                             rounded-xl
                             font-semibold
                             shadow-sm
-                            hover:bg-blue-50
+                            hover:bg-[#fff7ed]
                             transition
                             ">
                                 FAQ
@@ -610,8 +610,8 @@ x    grid
             xl:flex
             items-center
             gap-2
-            bg-blue-50
-            text-blue-700
+            bg-[#fff7ed]
+            text-[#5A1520]
             px-5
             py-3
             rounded-xl
@@ -790,9 +790,9 @@ x    grid
                                         class="
                                     rounded-3xl
                                     border
-                                    border-blue-200
+                                    border-[#E6C86A]
                                     bg-gradient-to-b
-                                    from-blue-50
+                                    from-[#fff7ed]
                                     to-white
                                     p-5
                                     text-center
@@ -811,8 +811,8 @@ x    grid
                                         rounded-full
                                         overflow-hidden
                                         border-4
-                                        border-blue-200
-                                        bg-blue-100
+                                        border-[#E6C86A]
+                                        bg-[#F5E6C8]
                                         ">
 
                                             @if ($candidate->photo)
@@ -828,7 +828,7 @@ x    grid
                                                 justify-center
                                                 text-3xl
                                                 font-bold
-                                                text-blue-500
+                                                text-[#fff7ed]
                                                 ">
                                                     {{ mb_substr($candidate->name, 0, 1) }}
                                                 </div>
@@ -862,8 +862,8 @@ x    grid
                                             class="
                                         block
                                         mt-4
-                                        bg-blue-600
-                                        hover:bg-blue-700
+                                        bg-[#7A1F2B]
+                                        hover:bg-[#5A1520]
                                         text-white
                                         py-3
                                         rounded-xl
@@ -975,8 +975,8 @@ x    grid
                                             class="
                                         block
                                         mt-4
-                                        bg-blue-600
-                                        hover:bg-blue-700
+                                        bg-[#7A1F2B]
+                                        hover:bg-[#5A1520]
                                         text-white
                                         py-3
                                         rounded-xl
@@ -1079,8 +1079,8 @@ x    grid
                                             class="
                                         block
                                         mt-4
-                                        bg-blue-600
-                                        hover:bg-blue-700
+                                        bg-[#7A1F2B]
+                                        hover:bg-[#5A1520]
                                         text-white
                                         py-3
                                         rounded-xl
@@ -1136,7 +1136,7 @@ x    grid
                                         w-11
                                         h-11
                                         rounded-xl
-                                        bg-blue-50
+                                        bg-[#fff7ed]
                                         flex
                                         items-center
                                         justify-center
@@ -1208,11 +1208,11 @@ x    grid
     text-center
 
     border
-    border-blue-300
+    border-[#D4AF37]
 
-    text-blue-600
+    text-[#7A1F2B]
 
-    hover:bg-blue-600
+    hover:bg-[#7A1F2B]
     hover:text-white
 
     py-2
@@ -1230,7 +1230,7 @@ x    grid
                         @else
                             <div
                                 class="
-                            bg-blue-50
+                            bg-[#fff7ed]
                             rounded-3xl
                             p-12
                             text-center
@@ -1323,7 +1323,7 @@ x    grid
                                 px-4
                                 py-2.5
                                 outline-none
-                                focus:border-blue-500 w-full
+                                focus:border-[#fff7ed] w-full
                                 ">
 
 
@@ -1351,7 +1351,7 @@ x    grid
 
                                 <button type="submit"
                                     class="
-    bg-blue-600
+    bg-[#7A1F2B]
     text-white
     px-5
     py-3
@@ -1398,8 +1398,8 @@ x    grid
                     flex
                     items-center
                     justify-center
-                    bg-blue-50
-                    text-blue-600
+                    bg-[#fff7ed]
+                    text-[#7A1F2B]
                     text-5xl
                     font-bold
                     ">
@@ -1464,7 +1464,7 @@ x    grid
 
                                             <strong
                                                 class="
-                    text-blue-600
+                    text-[#7A1F2B]
                     text-base
                     ">
                                                 {{ number_format($candidate->total_votes ?? 0, 0, ',', '.') }}
@@ -1483,9 +1483,9 @@ x    grid
                     w-full
                     text-center
                     border
-                    border-blue-200
-                    text-blue-600
-                    hover:bg-blue-50
+                    border-[#E6C86A]
+                    text-[#7A1F2B]
+                    hover:bg-[#fff7ed]
                     py-3
                     rounded-xl
                     font-semibold
@@ -1501,8 +1501,8 @@ x    grid
                     w-full
                     mt-2
                     text-center
-                    bg-blue-600
-                    hover:bg-blue-700
+                    bg-[#7A1F2B]
+                    hover:bg-[#5A1520]
                     text-white
                     py-3
                     rounded-xl
@@ -1526,7 +1526,7 @@ x    grid
         col-span-3
         text-center
         py-16
-        bg-blue-50
+        bg-[#fff7ed]
         rounded-3xl
         ">
 
@@ -1577,7 +1577,7 @@ x    grid
                         <div
                             class="
                         mt-8
-                        bg-blue-50
+                        bg-[#fff7ed]
                         rounded-3xl
                         px-8
                         py-14
@@ -1668,10 +1668,10 @@ x    grid
                                     @foreach ($event->categories as $category)
                                         <span
                                             class="
-                                        bg-blue-50
-                                        text-blue-700
+                                        bg-[#fff7ed]
+                                        text-[#5A1520]
                                         border
-                                        border-blue-100
+                                        border-[#F5E6C8]
                                         px-4
                                         py-2
                                         rounded-full
@@ -1726,7 +1726,7 @@ x    grid
                             Detail Event
                         </h3>
 
-                        <span class="text-blue-600 text-sm">
+                        <span class="text-[#7A1F2B] text-sm">
                             PICO
                         </span>
 
@@ -1792,7 +1792,7 @@ x    grid
                             Total Vote
                         </span>
 
-                        <strong class="text-blue-600">
+                        <strong class="text-[#7A1F2B]">
                             {{ number_format($totalEventVotes, 0, ',', '.') }}
                         </strong>
 
@@ -1863,7 +1863,7 @@ x    grid
                     px-4
                     py-3
                     outline-none
-                    focus:border-blue-500
+                    focus:border-[#fff7ed]
                     ">
 
                         <option value="">
@@ -1915,7 +1915,7 @@ x    grid
                         class="
                     mt-5
                     w-full
-                    bg-blue-600
+                    bg-[#7A1F2B]
                     text-white
                     py-3
                     rounded-xl
@@ -1941,7 +1941,7 @@ x    grid
                 to-[#f7f5ff]
                 rounded-[24px]
                 border
-                border-blue-100
+                border-[#F5E6C8]
                 p-5
                 ">
 
@@ -2039,11 +2039,11 @@ x    grid
     <section class=" max-w-7xl mx-auto px-4 sm:px-6 pb-8 ">
 
         <div
-            class=" relative overflow-hidden rounded-2xl sm:rounded-[28px] bg-gradient-to-r from-[#e7f1ff] via-white to-[#dfeaff] border border-blue-100 px-5 sm:px-8 lg:px-10 py-6 sm:py-8 flex flex-col lg:flex-row lg:items-center lg:justify-between. gap-6 ">
+            class=" relative overflow-hidden rounded-2xl sm:rounded-[28px] bg-gradient-to-r from-[#e7f1ff] via-white to-[#dfeaff] border border-[#F5E6C8] px-5 sm:px-8 lg:px-10 py-6 sm:py-8 flex flex-col lg:flex-row lg:items-center lg:justify-between. gap-6 ">
 
             <div>
 
-                <p class="text-sm text-blue-600 font-semibold">
+                <p class="text-sm text-[#7A1F2B] font-semibold">
                     BERSAMA PICO
                 </p>
 
@@ -2065,8 +2065,8 @@ x    grid
 
             <button type="button" id="ctaVoteButton"
                 class="
-            bg-blue-600
-            hover:bg-blue-700
+            bg-[#7A1F2B]
+            hover:bg-[#5A1520]
             text-white
             px-8
             py-3
@@ -2119,12 +2119,12 @@ x    grid
                         tab.dataset.eventTab === tabName;
 
                     tab.classList.toggle(
-                        'border-blue-600',
+                        'border-[#7A1F2B]',
                         active
                     );
 
                     tab.classList.toggle(
-                        'text-blue-600',
+                        'text-[#7A1F2B]',
                         active
                     );
 
