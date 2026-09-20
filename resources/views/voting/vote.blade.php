@@ -16,7 +16,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f] overflow-x-hidden">
+<body class="bg-[#fffaf5] text-[#5A1520] overflow-x-hidden">
 
 
     @include('partials.navbar')
@@ -64,7 +64,7 @@
                 <a href="{{ route('home') }}"
                     class="
                 shrink-0
-                hover:text-blue-600
+                hover:text-[#7A1F2B]
                 transition
                 ">
                     Beranda
@@ -82,7 +82,7 @@
                 max-w-[110px]
                 sm:max-w-xs
 
-                hover:text-blue-600
+                hover:text-[#7A1F2B]
                 transition
                 ">
                     {{ $event->name }}
@@ -100,7 +100,7 @@
                 max-w-[90px]
                 sm:max-w-xs
 
-                hover:text-blue-600
+                hover:text-[#7A1F2B]
                 transition
                 ">
                     {{ $candidate->name }}
@@ -145,12 +145,12 @@
             <div
                 class="
             bg-linear-to-r
-            from-[#e9f2ff]
+            from-[#fff7ed]
             via-white
-            to-[#edf4ff]
+            to-[#f5e6c8]
 
             border
-            border-blue-100
+            border-[#F1E3C0]
 
             rounded-2xl
             sm:rounded-[28px]
@@ -165,7 +165,7 @@
 
                 <p
                     class="
-                text-blue-600
+                text-[#7A1F2B]
 
                 text-xs
 
@@ -301,9 +301,9 @@
                         items-center
                         justify-center
 
-                        bg-blue-50
+                        bg-[#fff7ed]
 
-                        text-blue-600
+                        text-[#7A1F2B]
 
                         text-5xl
                         sm:text-6xl
@@ -322,7 +322,7 @@
 
                     <p
                         class="
-                    text-blue-600
+                    text-[#7A1F2B]
 
                     text-xs
 
@@ -391,7 +391,7 @@
 
                         <strong
                             class="
-                        text-blue-600
+                        text-[#7A1F2B]
                         text-lg
                         ">
                             {{ number_format($totalVotes, 0, ',', '.') }}
@@ -410,9 +410,9 @@
                     w-full
 
                     border
-                    border-blue-200
+                    border-[#D4AF37]
 
-                    text-blue-600
+                    text-[#7A1F2B]
 
                     py-3
 
@@ -423,7 +423,7 @@
 
                     font-semibold
 
-                    hover:bg-blue-50
+                    hover:bg-[#fff7ed]
                     transition
                     ">
                         Lihat Profil Kandidat
@@ -474,7 +474,7 @@
                             class="
                         text-xs
 
-                        text-blue-600
+                        text-[#7A1F2B]
 
                         tracking-[3px]
 
@@ -547,7 +547,7 @@
 
                                     transition
 
-                                    hover:border-blue-200
+                                    hover:border-[#D4AF37]
                                     ">
 
                                         <input type="radio" name="category_id" value="{{ $category->id }}"
@@ -647,7 +647,7 @@
 
                                             <strong
                                                 class="
-                                            text-blue-600
+                                            text-[#7A1F2B]
 
                                             text-sm
                                             sm:text-base
@@ -708,7 +708,7 @@
                             class="
                         text-xs
 
-                        text-blue-600
+                        text-[#7A1F2B]
 
                         tracking-[3px]
 
@@ -843,7 +843,7 @@
                                 border-2
                                 border-gray-100
 
-                                focus:border-blue-400
+                                focus:border-[#D4AF37]
 
                                 outline-none
 
@@ -895,11 +895,11 @@
                     sm:mt-9
 
                     bg-linear-to-br
-                    from-[#f7f9ff]
-                    to-[#eef4ff]
+                    from-[#fffaf5]
+                    to-[#fff7ed]
 
                     border
-                    border-blue-100
+                    border-[#F1E3C0]
 
                     rounded-2xl
                     sm:rounded-[24px]
@@ -1053,7 +1053,7 @@
                             <div
                                 class="
                             border-t
-                            border-blue-100
+                            border-[#F1E3C0]
 
                             pt-5
                             mt-5
@@ -1087,7 +1087,7 @@
 
                                 font-extrabold
 
-                                text-blue-600
+                                text-[#7A1F2B]
                                 ">
                                     Rp0
                                 </strong>
@@ -1113,8 +1113,8 @@
 
                     w-full
 
-                    bg-blue-600
-                    hover:bg-blue-700
+                bg-[#7A1F2B]
+                hover:bg-[#5A1520]
 
                     text-white
 
@@ -1310,8 +1310,8 @@
                     if (radio.checked) {
 
                         card.classList.add(
-                            'border-blue-500',
-                            'bg-blue-50'
+                            'border-[#D4AF37]',
+                            'bg-[#fff7ed]'
                         );
 
 
@@ -1321,8 +1321,8 @@
 
 
                         check.classList.add(
-                            'bg-blue-600',
-                            'border-blue-600'
+                            'bg-[#7A1F2B]',
+                            'border-[#7A1F2B]'
                         );
 
 
@@ -1333,8 +1333,8 @@
                     } else {
 
                         card.classList.remove(
-                            'border-blue-500',
-                            'bg-blue-50'
+                            'border-[#D4AF37]',
+                            'bg-[#fff7ed]'
                         );
 
 
@@ -1344,8 +1344,8 @@
 
 
                         check.classList.remove(
-                            'bg-blue-600',
-                            'border-blue-600'
+                            'bg-[#7A1F2B]',
+                            'border-[#7A1F2B]'
                         );
 
 
@@ -1380,9 +1380,9 @@
                     if (amount === selectedVote) {
 
                         button.classList.add(
-                            'border-blue-500',
-                            'bg-blue-50',
-                            'text-blue-600'
+                            'border-[#D4AF37]',
+                            'bg-[#fff7ed]',
+                            'text-[#7A1F2B]'
                         );
 
 
@@ -1393,9 +1393,9 @@
                     } else {
 
                         button.classList.remove(
-                            'border-blue-500',
-                            'bg-blue-50',
-                            'text-blue-600'
+                            'border-[#D4AF37]',
+                            'bg-[#fff7ed]',
+                            'text-[#7A1F2B]'
                         );
 
 

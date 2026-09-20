@@ -18,7 +18,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f]">
+<body class="bg-[#fffaf5] text-[#5A1520]">
 
 
     @include('partials.navbar')
@@ -35,9 +35,9 @@ pt-32
 pb-16
 overflow-hidden
 bg-gradient-to-br
-from-blue-50
+from-[#fff7ed]
 via-white
-to-blue-100
+to-[#f5e6c8]
 ">
 
 
@@ -149,7 +149,7 @@ mt-1
 
                     <div class="
 mt-5
-bg-blue-50
+bg-[#fff7ed]
 rounded-2xl
 p-4
 ">
@@ -184,15 +184,6 @@ mt-1
 
 
             </div>
-
-
-
-
-
-
-
-
-
             <!-- ========================= -->
             <!-- PAYMENT -->
             <!-- ========================= -->
@@ -271,16 +262,7 @@ text-sm
 
 
                 </div>
-
-
-
-
-
-
-
-
                 <!-- Detail -->
-
                 <div class="
 mt-6
 space-y-5
@@ -394,8 +376,8 @@ font-semibold
                 <div class="
 mt-8
 bg-gradient-to-r
-from-blue-50
-to-blue-100
+from-[#fff7ed]
+to-[#f5e6c8]
 rounded-3xl
 p-6
 ">
@@ -424,7 +406,7 @@ font-semibold
                         <span class="
 text-3xl
 font-bold
-text-blue-600
+text-[#7A1F2B]
 ">
 
                             Rp {{ number_format($transaction->total_amount) }}
@@ -457,8 +439,8 @@ space-y-3
                     <button
                         class="
 w-full
-bg-blue-600
-hover:bg-blue-700
+bg-[#7A1F2B]
+hover:bg-[#5A1520]
 text-white
 py-4
 rounded-xl
@@ -480,12 +462,12 @@ block
 w-full
 border-2
 border-blue-600
-text-blue-600
+text-[#7A1F2B]
 py-4
 rounded-xl
 font-bold
 text-center
-hover:bg-blue-50
+hover:bg-[#fff7ed]
 transition
 ">
 
