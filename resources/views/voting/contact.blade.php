@@ -17,7 +17,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f]">
+<body class="bg-[#fffaf5] text-[#5A1520]">
 
 
     @include('partials.navbar')
@@ -34,9 +34,9 @@ pb-16
 
 bg-linear-to-br
 
-from-blue-50
+from-[#fff7ed]
 via-white
-to-blue-100
+to-[#f5e6c8]
 ">
 
 
@@ -51,7 +51,7 @@ text-center
 
 
             <p class="
-text-blue-600
+text-[#7A1F2B]
 
 uppercase
 
@@ -114,6 +114,8 @@ mx-auto
 
 
 
+
+
     <!-- CONTACT CONTENT -->
 
     <section class="
@@ -151,7 +153,7 @@ space-y-6
                 <div>
 
                     <p class="
-text-blue-600
+text-[#7A1F2B]
 
 uppercase
 
@@ -209,6 +211,7 @@ bg-white
 rounded-3xl
 
 border
+border-[#F1E3C0]
 
 p-6
 
@@ -227,7 +230,7 @@ h-14
 
 rounded-2xl
 
-bg-blue-50
+bg-[#fff7ed]
 
 flex
 
@@ -258,7 +261,7 @@ font-bold
 
 text-lg
 
-text-blue-600
+text-[#7A1F2B]
 ">
                             support@Vooters.id
                         </h3>
@@ -283,6 +286,7 @@ bg-white
 rounded-3xl
 
 border
+border-[#F1E3C0]
 
 p-6
 
@@ -355,6 +359,7 @@ bg-white
 rounded-3xl
 
 border
+border-[#F1E3C0]
 
 p-6
 ">
@@ -389,9 +394,9 @@ py-3
 
 rounded-xl
 
-bg-blue-50
+bg-[#fff7ed]
 
-text-blue-600
+text-[#7A1F2B]
 
 font-semibold
 ">
@@ -406,9 +411,9 @@ py-3
 
 rounded-xl
 
-bg-blue-50
+bg-[#fff7ed]
 
-text-blue-600
+text-[#7A1F2B]
 
 font-semibold
 ">
@@ -423,9 +428,9 @@ py-3
 
 rounded-xl
 
-bg-blue-50
+bg-[#fff7ed]
 
-text-blue-600
+text-[#7A1F2B]
 
 font-semibold
 ">
@@ -450,6 +455,7 @@ font-semibold
 
 
 
+
             <!-- FORM -->
 
             <div class="
@@ -458,6 +464,7 @@ bg-white
 rounded-3xl
 
 border
+border-[#F1E3C0]
 
 shadow-sm
 
@@ -520,6 +527,7 @@ mt-2
 w-full
 
 border
+border-[#E8D7A8]
 
 rounded-xl
 
@@ -531,7 +539,7 @@ outline-none
 
 focus:ring-2
 
-focus:ring-blue-500
+focus:ring-[#D4AF37]
 ">
 
                     </div>
@@ -559,6 +567,7 @@ mt-2
 w-full
 
 border
+border-[#E8D7A8]
 
 rounded-xl
 
@@ -570,7 +579,7 @@ outline-none
 
 focus:ring-2
 
-focus:ring-blue-500
+focus:ring-[#D4AF37]
 ">
 
                     </div>
@@ -599,6 +608,7 @@ mt-2
 w-full
 
 border
+border-[#E8D7A8]
 
 rounded-xl
 
@@ -610,7 +620,7 @@ outline-none
 
 focus:ring-2
 
-focus:ring-blue-500
+focus:ring-[#D4AF37]
 "></textarea>
 
 
@@ -624,7 +634,7 @@ focus:ring-blue-500
                         class="
 w-full
 
-bg-blue-600
+bg-[#7A1F2B]
 
 text-white
 
@@ -634,7 +644,7 @@ rounded-xl
 
 font-bold
 
-hover:bg-blue-700
+hover:bg-[#5A1520]
 ">
 
                         Kirim Pesan
@@ -664,6 +674,8 @@ hover:bg-blue-700
 
 
 
+
+
     <!-- CTA -->
 
     <section class="
@@ -680,7 +692,7 @@ pb-16
         <div class="
 rounded-3xl
 
-bg-[#10204f]
+bg-[#5A1520]
 
 text-white
 
@@ -720,9 +732,9 @@ inline-block
 
 mt-6
 
-bg-yellow-400
+bg-[#D4AF37]
 
-text-[#10204f]
+text-[#5A1520]
 
 px-8
 
@@ -742,6 +754,8 @@ font-bold
 
 
     </section>
+
+
     {{-- ========================================================= --}}
     {{-- FOOTER --}}
     {{-- ========================================================= --}}

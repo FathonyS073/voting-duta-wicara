@@ -16,7 +16,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f]">
+<body class="bg-[#fffaf5] text-[#5A1520]">
 
 
     @include('partials.navbar')
@@ -30,9 +30,9 @@ pt-28
 pb-16
 
 bg-linear-to-br
-from-blue-50
+from-[#fff7ed]
 via-white
-to-blue-100
+to-[#f5e6c8]
 ">
 
 
@@ -47,7 +47,7 @@ text-center
 
 
             <p class="
-text-blue-600
+text-[#7A1F2B]
 
 uppercase
 
@@ -129,6 +129,7 @@ rounded-3xl
 shadow-xl
 
 border
+border-[#F1E3C0]
 
 p-5
 ">
@@ -142,6 +143,7 @@ items-center
 gap-3
 
 border
+border-[#E8D7A8]
 
 rounded-full
 
@@ -310,6 +312,7 @@ bg-white
 rounded-2xl
 
 border
+border-[#F1E3C0]
 
 p-5
 
@@ -336,7 +339,7 @@ items-center
 
 
                                 <span class="
-text-blue-600
+text-[#7A1F2B]
 ">
                                     +
                                 </span>
@@ -395,7 +398,7 @@ pb-16
 
 
         <div class="
-bg-[#10204f]
+bg-[#5A1520]
 
 rounded-3xl
 
@@ -438,9 +441,9 @@ inline-block
 
 mt-6
 
-bg-yellow-400
+bg-[#D4AF37]
 
-text-[#10204f]
+text-[#5A1520]
 
 px-8
 
@@ -460,6 +463,8 @@ font-bold
 
 
     </section>
+
+
     {{-- ========================================================= --}}
     {{-- FOOTER --}}
     {{-- ========================================================= --}}

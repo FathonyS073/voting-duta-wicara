@@ -16,7 +16,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f]">
+<body class="bg-[#fffaf5] text-[#5A1520]">
 
 
     @include('partials.navbar')
@@ -30,9 +30,9 @@ pt-28
 pb-16
 
 bg-linear-to-br
-from-blue-50
+from-[#fff7ed]
 via-white
-to-blue-100
+to-[#f5e6c8]
 ">
 
 
@@ -51,7 +51,7 @@ uppercase
 
 tracking-[4px]
 
-text-blue-600
+text-[#7A1F2B]
 
 text-sm
 
@@ -114,6 +114,7 @@ rounded-full
 shadow-lg
 
 border
+border-[#E8D7A8]
 
 flex
 
@@ -232,6 +233,7 @@ mt-10
 bg-white
 
 border
+border-[#F1E3C0]
 
 rounded-3xl
 
@@ -249,7 +251,7 @@ h-14
 
 rounded-2xl
 
-bg-blue-50
+bg-[#fff7ed]
 
 flex
 
@@ -318,7 +320,7 @@ bg-white
 
 border-y
 
-border-gray-100
+border-[#F1E3C0]
 ">
 
 
@@ -337,7 +339,7 @@ py-16
 
 
                 <p class="
-text-blue-600
+text-[#7A1F2B]
 
 uppercase
 
@@ -414,13 +416,14 @@ mt-10
 
                 @foreach ($faq as $item)
                     <div class="
-bg-[#f8faff]
+bg-[#fffaf5]
 
 rounded-2xl
 
 p-6
 
 border
+border-[#F1E3C0]
 ">
 
 
@@ -483,7 +486,7 @@ py-16
 
         <div
             class="
-bg-[#10204f]
+bg-[#5A1520]
 
 rounded-3xl
 
@@ -510,7 +513,7 @@ gap-8
 
 
                 <p class="
-text-blue-200
+text-[#E8C96B]
 
 uppercase
 
@@ -560,9 +563,9 @@ space-y-3
                     class="
 block
 
-bg-white
+bg-[#D4AF37]
 
-text-[#10204f]
+text-[#5A1520]
 
 px-7
 
@@ -587,7 +590,7 @@ block
 
 border
 
-border-white/30
+border-[#D4AF37]/50
 
 px-7
 
@@ -598,6 +601,10 @@ rounded-xl
 font-semibold
 
 text-center
+
+hover:bg-white/10
+
+transition
 ">
 
                     WhatsApp Support
@@ -613,6 +620,8 @@ text-center
 
 
     </section>
+
+
     {{-- ========================================================= --}}
     {{-- FOOTER --}}
     {{-- ========================================================= --}}
