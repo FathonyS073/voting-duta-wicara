@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        PICO - Digital Voting Platform
+        Vooters - Digital Voting Platform
     </title>
 
     @vite(['resources/css/app.css'])
@@ -125,7 +125,7 @@
                     mx-auto
                     lg:mx-0
                     ">
-                    PICO memudahkan Anda untuk membuat,
+                    Vooters memudahkan Anda untuk membuat,
                     mengikuti, dan mengelola voting online
                     dengan aman, mudah, dan realtime.
                     Dukung talenta, karya, dan komunitas favorit Anda.
@@ -221,7 +221,7 @@
 
                     <div class="flex -space-x-3">
 
-                        <img src="{{ asset('Images/people1.webp') }}" alt="Pengguna PICO" class="
+                        <img src="{{ asset('Images/people1.webp') }}" alt="Pengguna Vooters" class="
                             w-9
                             h-9
                             sm:w-10
@@ -234,7 +234,7 @@
                             border-white
                             ">
 
-                        <img src="{{ asset('Images/people2.webp') }}" alt="Pengguna PICO" class="
+                        <img src="{{ asset('Images/people2.webp') }}" alt="Pengguna Vooters" class="
                             w-9
                             h-9
                             sm:w-10
@@ -247,7 +247,7 @@
                             border-white
                             ">
 
-                        <img src="{{ asset('Images/people3.webp') }}" alt="Pengguna PICO" class="
+                        <img src="{{ asset('Images/people3.webp') }}" alt="Pengguna Vooters" class="
                             w-9
                             h-9
                             sm:w-10
@@ -320,7 +320,7 @@
                     "></div>
 
 
-                <img src="{{ asset('Images/hero.webp') }}" alt="Platform Voting Digital PICO" class="
+                <img src="{{ asset('Images/hero.webp') }}" alt="Platform Voting Digital Vooters" class="
                     relative
 
                     w-full
@@ -914,7 +914,7 @@
                                 text-[#6F1022]
                                 font-bold
                                 ">
-                            PICO
+                            Vooters
                         </div>
 
                         @endif
@@ -1763,7 +1763,7 @@
 
                         <br>
 
-                        Kelola Voting dengan PICO
+                        Kelola Voting dengan Vooters
                     </h2>
 
 

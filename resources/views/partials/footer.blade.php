@@ -33,28 +33,15 @@
 
                 <div class="flex items-center gap-3">
 
-                    <div
+                    <img src="{{ asset('Images/logo.webp') }}" alt="PICO"
                         class="
-                        w-11
-                        h-11
-                        sm:w-12
-                        sm:h-12
+                h-14
+                sm:h-13
+                lg:h-14
+                w-auto
+                object-contain
+                ">
 
-                        rounded-xl
-
-                        bg-[#7A1F2B]
-
-                        flex
-                        items-center
-                        justify-center
-
-                        font-bold
-
-                        text-xl
-                        sm:text-2xl
-                        ">
-                        P
-                    </div>
 
 
                     <div>
@@ -66,7 +53,7 @@
                             text-2xl
                             sm:text-3xl
                             ">
-                            PICO
+                            Vooters
                         </p>
 
                         <p class="text-xs text-white/50">
@@ -187,7 +174,7 @@
                     </a>
 
                     <a href="#tentang" class="block hover:text-white">
-                        Tentang PICO
+                        Tentang Vooters
                     </a>
 
                 </div>
@@ -250,7 +237,7 @@
                     ">
 
                     <p class="break-all">
-                        ✉ hello@pico.id
+                        ✉ hello@Vooters.id
                     </p>
 
                     <p>
@@ -313,7 +300,7 @@
                 ">
 
                 <p>
-                    © {{ date('Y') }} PICO. All rights reserved.
+                    © {{ date('Y') }} Vooters. All rights reserved.
                 </p>
 
                 <p>

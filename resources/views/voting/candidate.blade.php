@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        {{ $candidate->name }} - {{ $event->name }} - PICO
+        {{ $candidate->name }} - {{ $event->name }} - Vooters
     </title>
 
     @vite(['resources/css/app.css'])
@@ -300,7 +300,7 @@
                     text-xs
                     font-bold
                     ">
-                        Kandidat PICO
+                        Kandidat Vooters
                     </p>
 
 

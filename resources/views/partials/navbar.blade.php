@@ -32,66 +32,25 @@
         {{-- ===================================================== --}}
         {{-- LOGO --}}
         {{-- ===================================================== --}}
+        {{-- ===================================================== --}}
+        {{-- LOGO --}}
+        {{-- ===================================================== --}}
 
         <a href="{{ route('home') }}"
             class="
             flex
             items-center
-            gap-3
             shrink-0
             ">
 
-            <div
+            <img src="{{ asset('Images/logo.webp') }}" alt="PICO"
                 class="
-                w-10
-                h-10
-                sm:w-11
-                sm:h-11
-
-                rounded-xl
-                bg-[#6F1022]
-
-
-                flex
-                items-center
-                justify-center
-
-                text-white
-                font-bold
-
-                text-xl
-                sm:text-2xl
-
-                shadow-lg
+                h-14
+                sm:h-13
+                lg:h-14
+                w-auto
+                object-contain
                 ">
-                P
-            </div>
-
-
-            <div class="leading-tight">
-
-                <h1
-                    class="
-                    font-bold
-                    text-lg
-                    sm:text-xl
-                    ">
-                    PICO
-                </h1>
-
-
-                <p
-                    class="
-                    hidden
-                    sm:block
-
-                    text-xs
-                    text-gray-500
-                    ">
-                    Digital Voting Platform
-                </p>
-
-            </div>
 
         </a>
 

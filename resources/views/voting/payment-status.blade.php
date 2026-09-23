@@ -17,7 +17,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f]">
+<body class="bg-[#fffaf5] text-[#5A1520]">
 
 
     @include('partials.navbar')
@@ -96,8 +96,8 @@ text-gray-500
 w-20
 h-20
 rounded-full
-bg-yellow-100
-text-yellow-600
+bg-[#F5E6C8]
+text-[#7A1F2B]
 flex
 items-center
 justify-center
@@ -180,7 +180,7 @@ text-gray-500
                 <div class="
 mt-8
 
-bg-blue-50
+bg-[#fff7ed]
 
 rounded-2xl
 
@@ -282,7 +282,7 @@ justify-between
 
                             <span class="
 font-bold
-text-blue-600
+text-[#7A1F2B]
 ">
 
                                 Rp {{ number_format($transaction->total_amount) }}
@@ -305,8 +305,8 @@ text-blue-600
                             class="
 block
 w-full
-bg-blue-600
-hover:bg-blue-700
+bg-[#7A1F2B]
+hover:bg-[#5A1520]
 text-white
 py-4
 rounded-xl
@@ -326,8 +326,8 @@ block
 w-full
 border-2
 border-blue-600
-text-blue-600
-hover:bg-blue-50
+text-[#7A1F2B]
+hover:bg-[#fff7ed]
 py-4
 rounded-xl
 font-bold
@@ -342,8 +342,8 @@ transition
                             class="
 block
 w-full
-bg-blue-600
-hover:bg-blue-700
+bg-[#7A1F2B]
+hover:bg-[#5A1520]
 text-white
 py-4
 rounded-xl
@@ -359,8 +359,8 @@ transition
                             class="
 block
 w-full
-bg-blue-600
-hover:bg-blue-700
+bg-[#7A1F2B]
+hover:bg-[#5A1520]
 text-white
 py-4
 rounded-xl

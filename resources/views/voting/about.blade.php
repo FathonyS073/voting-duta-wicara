@@ -9,7 +9,7 @@
 
 
     <title>
-        Tentang PICO - Digital Voting Platform
+        Tentang Vooters - Digital Voting Platform
     </title>
 
 
@@ -104,7 +104,7 @@ tracking-[3px]
 sm:tracking-[4px]
 ">
 
-                    Tentang PICO
+                    Tentang Vooters
 
                 </p>
 
@@ -157,7 +157,7 @@ max-w-xl
 ">
 
 
-                    PICO adalah platform voting digital yang dirancang
+                    Vooters adalah platform voting digital yang dirancang
                     untuk membantu penyelenggara mengelola berbagai event
                     voting secara lebih mudah, terstruktur, dan profesional.
                     Pengguna dapat menemukan event, mengenal finalis,
@@ -236,7 +236,7 @@ transition
 
 
 
-                    <a href="#mengapa-pico"
+                    <a href="#mengapa-Vooters"
                         class="
 inline-flex
 
@@ -271,7 +271,7 @@ transition
 ">
 
 
-                        Pelajari PICO
+                        Pelajari Vooters
 
 
                     </a>
@@ -409,7 +409,7 @@ font-bold
 
                                     <p class="font-bold">
 
-                                        Dashboard PICO
+                                        Dashboard Vooters
 
                                     </p>
 
@@ -691,11 +691,11 @@ text-white/60
 
     </section>
     {{-- ========================================================= --}}
-    {{-- MENGENAL PICO --}}
+    {{-- MENGENAL Vooters --}}
     {{-- ========================================================= --}}
 
 
-    <section id="mengapa-pico" class="
+    <section id="mengapa-Vooters" class="
 py-16
 sm:py-20
 
@@ -736,7 +736,7 @@ text-sm
 font-semibold
 ">
 
-                    Mengenal PICO
+                    Mengenal Vooters
 
                 </p>
 
@@ -774,7 +774,7 @@ leading-8
 ">
 
 
-                    PICO menghubungkan penyelenggara event dan
+                    Vooters menghubungkan penyelenggara event dan
                     masyarakat dalam satu ekosistem voting digital.
                     Sistem dirancang untuk memberikan pengalaman
                     voting yang mudah, transparan, dan terpercaya.
@@ -1075,7 +1075,7 @@ leading-7
 
     </section>
     {{-- ========================================================= --}}
-    {{-- VISI PICO --}}
+    {{-- VISI Vooters --}}
     {{-- ========================================================= --}}
 
 
@@ -1126,7 +1126,7 @@ text-sm
 font-semibold
 ">
 
-                        Visi PICO
+                        Visi Vooters
 
                     </p>
 
@@ -1163,7 +1163,7 @@ leading-8
 ">
 
 
-                        PICO hadir dengan tujuan membangun
+                        Vooters hadir dengan tujuan membangun
                         ekosistem voting digital yang dapat
                         digunakan oleh berbagai penyelenggara
                         event dengan sistem yang aman,
@@ -1457,7 +1457,7 @@ sm:text-4xl
 font-bold
 ">
 
-                Siap Menggunakan PICO?
+                Siap Menggunakan Vooters?
 
             </h2>
 
