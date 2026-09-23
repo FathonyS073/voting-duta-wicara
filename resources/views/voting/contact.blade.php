@@ -10,6 +10,7 @@
     <title>
         Hubungi Kami - Vooters
     </title>
+    <link rel="icon" type="image/webp" href="{{ asset('Images/logo.webp') }}">
 
 
     @vite(['resources/css/app.css'])

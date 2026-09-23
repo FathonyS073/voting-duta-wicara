@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Semua Event - Vooters</title>
+    <link rel="icon" type="image/webp" href="{{ asset('Images/logo.webp') }}">
 
     @vite(['resources/css/app.css'])
 

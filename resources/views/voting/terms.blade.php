@@ -17,7 +17,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f]">
+<body class="bg-[#fffaf5] text-[#5A1520]">
 
 
     @include('partials.navbar')
@@ -32,9 +32,9 @@ pb-14
 
 bg-linear-to-br
 
-from-blue-50
+from-[#fff7ed]
 via-white
-to-blue-100
+to-[#f5e6c8]
 ">
 
 
@@ -53,7 +53,7 @@ uppercase
 
 tracking-[4px]
 
-text-blue-600
+text-[#7A1F2B]
 
 font-semibold
 
@@ -731,11 +731,11 @@ leading-8
             <!-- CONTACT -->
 
             <div class="
-bg-blue-50
+bg-[#fff7ed]
 
 border
 
-border-blue-100
+border-[#F1E3C0]
 
 rounded-3xl
 
@@ -769,7 +769,7 @@ leading-7
                 <p class="
 mt-3
 
-text-blue-600
+text-[#7A1F2B]
 
 font-semibold
 ">

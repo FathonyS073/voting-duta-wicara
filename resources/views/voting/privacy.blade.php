@@ -18,7 +18,7 @@
 </head>
 
 
-<body class="bg-[#f8faff] text-[#10204f]">
+<body class="bg-[#fffaf5] text-[#5A1520]">
 
 
     @include('partials.navbar')
@@ -35,9 +35,9 @@ pb-14
 
 bg-linear-to-br
 
-from-blue-50
+from-[#fff7ed]
 via-white
-to-blue-100
+to-[#f5e6c8]
 ">
 
 
@@ -56,7 +56,7 @@ uppercase
 
 tracking-[4px]
 
-text-blue-600
+text-[#7A1F2B]
 
 font-semibold
 
@@ -141,6 +141,7 @@ bg-white
 rounded-3xl
 
 border
+border-[#F1E3C0]
 
 shadow-sm
 
@@ -649,7 +650,7 @@ leading-8
             <!-- CONTACT BOX -->
 
             <div class="
-bg-blue-50
+bg-[#fff7ed]
 
 rounded-3xl
 
@@ -657,7 +658,7 @@ p-6
 
 border
 
-border-blue-100
+border-[#F1E3C0]
 ">
 
 
@@ -692,7 +693,7 @@ mt-3
 
 font-semibold
 
-text-blue-600
+text-[#7A1F2B]
 ">
 
                     support@Vooters.id
@@ -708,6 +709,8 @@ text-blue-600
 
 
     </section>
+
+
     {{-- ========================================================= --}}
     {{-- FOOTER --}}
     {{-- ========================================================= --}}
