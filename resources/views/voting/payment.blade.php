@@ -9,7 +9,7 @@
 
 
     <title>
-        Pembayaran Vote - PICO
+        Pembayaran Vote - Vooters
     </title>
 
 
@@ -461,7 +461,7 @@ transition
 block
 w-full
 border-2
-border-blue-600
+border-[#D4AF37]
 text-[#7A1F2B]
 py-4
 rounded-xl
@@ -485,7 +485,7 @@ text-sm
 text-gray-400
 ">
 
-                        🔒 Pembayaran akan diproses melalui payment gateway PICO.
+                        🔒 Pembayaran akan diproses melalui payment gateway Vooters.
 
                     </p>
 

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        Status Pembayaran - PICO
+        Status Pembayaran - Vooters
     </title>
 
 
@@ -325,7 +325,8 @@ transition
 block
 w-full
 border-2
-border-blue-600
+border-[#D4AF37]
+
 text-[#7A1F2B]
 hover:bg-[#fff7ed]
 py-4

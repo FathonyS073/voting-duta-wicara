@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        {{ $event->name }} - PICO
+        {{ $event->name }} - Vooters
     </title>
 
     @vite(['resources/css/app.css'])
@@ -20,7 +20,7 @@
 
 
     {{-- ========================================================= --}}
-    {{-- NAVBAR PICO --}}
+    {{-- NAVBAR Vooters --}}
     {{-- ========================================================= --}}
 
     @include('partials.navbar')
@@ -339,7 +339,7 @@
 
 
                             <strong>
-                                PICO
+                                Vooters
                             </strong>
 
                         </div>
@@ -410,7 +410,7 @@
                         ">
 
                             {{ \Illuminate\Support\Str::limit(
-                                $event->description ?: 'Ikuti event ini dan berikan dukungan kepada kandidat favorit Anda melalui PICO.',
+                                $event->description ?: 'Ikuti event ini dan berikan dukungan kepada kandidat favorit Anda melalui Vooters.',
                                 260,
                             ) }}
 
@@ -843,7 +843,7 @@ x    grid
 
 
                                         <p class="text-sm text-gray-500 mt-1">
-                                            {{ $candidate->city ?: 'Finalis PICO' }}
+                                            {{ $candidate->city ?: 'Finalis Vooters' }}
                                         </p>
 
 
@@ -956,7 +956,7 @@ x    grid
 
 
                                         <p class="text-sm text-gray-500 mt-1">
-                                            {{ $candidate->city ?: 'Finalis PICO' }}
+                                            {{ $candidate->city ?: 'Finalis Vooters' }}
                                         </p>
 
 
@@ -1060,7 +1060,7 @@ x    grid
 
 
                                         <p class="text-sm text-gray-500 mt-1">
-                                            {{ $candidate->city ?: 'Finalis PICO' }}
+                                            {{ $candidate->city ?: 'Finalis Vooters' }}
                                         </p>
 
 
@@ -1180,7 +1180,7 @@ x    grid
                                                 </p>
 
                                                 <p class="text-xs text-gray-500 mt-1">
-                                                    {{ $candidate->education ?: ($candidate->city ?: 'Finalis PICO') }}
+                                                    {{ $candidate->education ?: ($candidate->city ?: 'Finalis Vooters') }}
                                                 </p>
 
                                             </div>
@@ -1727,7 +1727,7 @@ x    grid
                         </h3>
 
                         <span class="text-[#7A1F2B] text-sm">
-                            PICO
+                            Vooters
                         </span>
 
                     </div>
@@ -2044,7 +2044,7 @@ x    grid
             <div>
 
                 <p class="text-sm text-[#7A1F2B] font-semibold">
-                    BERSAMA PICO
+                    BERSAMA Vooters
                 </p>
 
                 <h2

@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Semua Event - PICO</title>
+    <title>Semua Event - Vooters</title>
 
     @vite(['resources/css/app.css'])
 
@@ -58,7 +58,7 @@
                 sm:text-sm
                 font-semibold
                 ">
-                    Jelajahi PICO
+                    Jelajahi Vooters
                 </p>
 
 
@@ -86,7 +86,7 @@
                 leading-7
                 max-w-2xl
                 ">
-                    Jelajahi berbagai event voting di PICO.
+                    Jelajahi berbagai event voting di Vooters.
                     Dukung kandidat favorit Anda pada event yang masih aktif
                     atau lihat hasil dari event yang telah ditutup.
                 </p>
@@ -533,7 +533,7 @@
                             text-[#7A1F2B]
                             font-bold
                             ">
-                                PICO
+                                Vooters
                             </div>
                         @endif
 

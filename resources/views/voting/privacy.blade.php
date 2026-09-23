@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        Kebijakan Privasi - PICO
+        Kebijakan Privasi - Vooters
     </title>
 
 
@@ -76,7 +76,7 @@ md:text-5xl
 font-extrabold
 ">
 
-                Kebijakan Privasi PICO
+                Kebijakan Privasi Vooters
 
             </h1>
 
@@ -92,7 +92,7 @@ leading-8
 
                 Kami berkomitmen menjaga keamanan dan
                 kerahasiaan informasi pengguna dalam
-                menggunakan layanan Digital Voting Platform PICO.
+                menggunakan layanan Digital Voting Platform Vooters.
 
             </p>
 
@@ -178,12 +178,12 @@ leading-8
 ">
 
                     Kebijakan Privasi ini menjelaskan bagaimana
-                    PICO mengumpulkan, menggunakan, menyimpan,
+                    Vooters mengumpulkan, menggunakan, menyimpan,
                     dan melindungi informasi pengguna ketika
                     mengakses serta menggunakan layanan voting
                     digital kami.
 
-                    Dengan menggunakan platform PICO, pengguna
+                    Dengan menggunakan platform Vooters, pengguna
                     dianggap telah memahami dan menyetujui
                     kebijakan privasi ini.
 
@@ -220,7 +220,7 @@ text-gray-600
 leading-8
 ">
 
-                    Dalam menyediakan layanan, PICO dapat
+                    Dalam menyediakan layanan, Vooters dapat
                     mengumpulkan beberapa informasi seperti:
 
                 </p>
@@ -376,7 +376,7 @@ text-gray-600
 leading-8
 ">
 
-                    PICO menerapkan langkah keamanan yang
+                    Vooters menerapkan langkah keamanan yang
                     dirancang untuk menjaga data pengguna dari
                     akses, perubahan, atau penggunaan tanpa
                     izin.
@@ -419,11 +419,11 @@ text-gray-600
 leading-8
 ">
 
-                    PICO tidak menyimpan informasi sensitif
+                    Vooters tidak menyimpan informasi sensitif
                     seperti nomor kartu pembayaran pengguna.
 
                     Data pembayaran diproses melalui layanan
-                    pembayaran yang bekerja sama dengan PICO
+                    pembayaran yang bekerja sama dengan Vooters
                     sesuai mekanisme yang berlaku.
 
                 </p>
@@ -462,7 +462,7 @@ leading-8
 ">
 
                     Informasi kandidat dan event yang ditampilkan
-                    pada PICO dapat berasal dari penyelenggara
+                    pada Vooters dapat berasal dari penyelenggara
                     event.
 
                     Penyelenggara bertanggung jawab memastikan
@@ -504,7 +504,7 @@ text-gray-600
 leading-8
 ">
 
-                    PICO dapat menggunakan cookie atau teknologi
+                    Vooters dapat menggunakan cookie atau teknologi
                     serupa untuk membantu meningkatkan pengalaman
                     pengguna, analisis penggunaan, serta menjaga
                     fungsi layanan.
@@ -544,7 +544,7 @@ text-gray-600
 leading-8
 ">
 
-                    PICO tidak menjual atau memperdagangkan data
+                    Vooters tidak menjual atau memperdagangkan data
                     pribadi pengguna.
 
                     Informasi hanya dapat dibagikan apabila
@@ -589,7 +589,7 @@ leading-8
 
                     Pengguna memiliki hak untuk memperoleh
                     informasi mengenai penggunaan data mereka
-                    serta dapat menghubungi PICO apabila memiliki
+                    serta dapat menghubungi Vooters apabila memiliki
                     pertanyaan atau permintaan terkait privasi.
 
                 </p>
@@ -627,7 +627,7 @@ text-gray-600
 leading-8
 ">
 
-                    PICO dapat memperbarui Kebijakan Privasi ini
+                    Vooters dapat memperbarui Kebijakan Privasi ini
                     dari waktu ke waktu untuk menyesuaikan
                     perkembangan layanan maupun regulasi yang
                     berlaku.
@@ -681,7 +681,7 @@ leading-7
 ">
 
                     Apabila Anda memiliki pertanyaan mengenai
-                    Kebijakan Privasi PICO, silakan hubungi:
+                    Kebijakan Privasi Vooters, silakan hubungi:
 
                 </p>
 
@@ -695,7 +695,7 @@ font-semibold
 text-blue-600
 ">
 
-                    support@pico.id
+                    support@Vooters.id
 
                 </p>
 

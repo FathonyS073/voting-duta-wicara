@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        Hubungi Kami - PICO
+        Hubungi Kami - Vooters
     </title>
 
 
@@ -62,7 +62,7 @@ text-sm
 font-semibold
 ">
 
-                Contact PICO
+                Contact Vooters
 
             </p>
 
@@ -97,7 +97,7 @@ mx-auto
 
                 Kami siap membantu pertanyaan, kendala,
                 maupun kebutuhan kerja sama terkait platform
-                Digital Voting PICO.
+                Digital Voting Vooters.
 
             </p>
 
@@ -173,7 +173,7 @@ font-bold
 mt-3
 ">
 
-                        Mari Terhubung Dengan Tim PICO
+                        Mari Terhubung Dengan Tim Vooters
 
                     </h2>
 
@@ -188,7 +188,7 @@ leading-8
 
                         Apabila Anda memiliki pertanyaan mengenai
                         event, voting, kerja sama, atau layanan
-                        PICO, silakan hubungi kami melalui kontak
+                        Vooters, silakan hubungi kami melalui kontak
                         berikut.
 
                     </p>
@@ -260,7 +260,7 @@ text-lg
 
 text-blue-600
 ">
-                            support@pico.id
+                            support@Vooters.id
                         </h3>
 
 
@@ -366,7 +366,7 @@ font-bold
 text-xl
 ">
 
-                        Ikuti PICO
+                        Ikuti Vooters
 
                     </h3>
 
@@ -486,7 +486,7 @@ mt-2
 text-sm
 ">
 
-                    Isi formulir berikut dan tim PICO akan
+                    Isi formulir berikut dan tim Vooters akan
                     menghubungi Anda.
 
                 </p>
@@ -707,7 +707,7 @@ mt-3
 text-white/70
 ">
 
-                Hubungi tim PICO melalui WhatsApp untuk
+                Hubungi tim Vooters melalui WhatsApp untuk
                 respon lebih cepat.
 
             </p>

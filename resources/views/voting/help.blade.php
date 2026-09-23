@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        Pusat Bantuan - PICO
+        Pusat Bantuan - Vooters
     </title>
 
     @vite(['resources/css/app.css'])
@@ -57,7 +57,7 @@ text-sm
 
 font-semibold
 ">
-                PICO Help Center
+                Vooters Help Center
             </p>
 
 
@@ -91,7 +91,7 @@ leading-8
 
                 Temukan jawaban seputar voting,
                 pembayaran, event, dan penggunaan
-                platform PICO.
+                platform Vooters.
 
             </p>
 
@@ -399,7 +399,7 @@ mt-10
 
                         [
                             'q' => 'Bagaimana jika pembayaran gagal?',
-                            'a' => 'Silakan cek kembali transaksi atau hubungi bantuan PICO.',
+                            'a' => 'Silakan cek kembali transaksi atau hubungi bantuan Vooters.',
                         ],
 
                         [
@@ -530,7 +530,7 @@ font-bold
 mt-3
 ">
 
-                    Hubungi Tim Support PICO
+                    Hubungi Tim Support Vooters
 
                 </h2>
 
@@ -556,7 +556,7 @@ space-y-3
 ">
 
 
-                <a href="mailto:support@pico.id"
+                <a href="mailto:support@Vooters.id"
                     class="
 block
 
@@ -575,7 +575,7 @@ font-bold
 text-center
 ">
 
-                    ✉ support@pico.id
+                    ✉ support@Vooters.id
 
                 </a>
 

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        FAQ - PICO
+        FAQ - Vooters
     </title>
 
     @vite(['resources/css/app.css'])
@@ -90,7 +90,7 @@ mx-auto
 ">
 
                 Temukan jawaban mengenai penggunaan
-                platform voting digital PICO.
+                platform voting digital Vooters.
 
             </p>
 
@@ -199,7 +199,7 @@ py-16
 
                     'items' => [
                         [
-                            'q' => 'Bagaimana cara melakukan voting di PICO?',
+                            'q' => 'Bagaimana cara melakukan voting di Vooters?',
                             'a' =>
                                 'Pilih event yang tersedia, pilih kandidat favorit, tentukan jumlah vote, kemudian lanjutkan proses pembayaran.',
                         ],
@@ -228,12 +228,12 @@ py-16
 
                         [
                             'q' => 'Metode pembayaran apa yang tersedia?',
-                            'a' => 'Metode pembayaran mengikuti sistem pembayaran yang digunakan oleh PICO.',
+                            'a' => 'Metode pembayaran mengikuti sistem pembayaran yang digunakan oleh Vooters.',
                         ],
 
                         [
                             'q' => 'Apa yang dilakukan jika pembayaran gagal?',
-                            'a' => 'Silakan periksa status transaksi atau hubungi tim bantuan PICO.',
+                            'a' => 'Silakan periksa status transaksi atau hubungi tim bantuan Vooters.',
                         ],
                     ],
                 ],
@@ -244,7 +244,7 @@ py-16
                     'items' => [
                         [
                             'q' => 'Siapa yang dapat membuat event?',
-                            'a' => 'Event dapat dibuat oleh penyelenggara yang bekerja sama dengan PICO.',
+                            'a' => 'Event dapat dibuat oleh penyelenggara yang bekerja sama dengan Vooters.',
                         ],
 
                         [
@@ -425,7 +425,7 @@ mt-3
 text-white/70
 ">
 
-                Tim PICO siap membantu menyelesaikan
+                Tim Vooters siap membantu menyelesaikan
                 kendala Anda.
 
             </p>

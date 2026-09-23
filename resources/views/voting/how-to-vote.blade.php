@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        Cara Vote - PICO
+        Cara Vote - Vooters
     </title>
 
     @vite(['resources/css/app.css'])
@@ -55,7 +55,7 @@ text-sm
 
 font-semibold
 ">
-                Panduan PICO
+                Panduan Vooters
             </p>
 
 
@@ -89,7 +89,7 @@ leading-8
 
                 Ikuti langkah sederhana berikut untuk memberikan
                 dukungan kepada kandidat favorit Anda melalui
-                platform PICO.
+                platform Vooters.
 
             </p>
 
@@ -337,7 +337,7 @@ mt-5
 leading-8
 ">
 
-                        PICO menyediakan proses voting digital yang
+                        Vooters menyediakan proses voting digital yang
                         dirancang agar pengguna dapat memberikan
                         dukungan tanpa proses yang rumit.
 

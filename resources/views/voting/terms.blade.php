@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        Syarat & Ketentuan - PICO
+        Syarat & Ketentuan - Vooters
     </title>
 
 
@@ -73,7 +73,7 @@ md:text-5xl
 font-extrabold
 ">
 
-                Syarat & Ketentuan PICO
+                Syarat & Ketentuan Vooters
 
             </h1>
 
@@ -88,7 +88,7 @@ leading-8
 ">
 
                 Ketentuan penggunaan layanan Digital Voting
-                Platform PICO bagi pengguna, penyelenggara,
+                Platform Vooters bagi pengguna, penyelenggara,
                 dan seluruh pihak yang menggunakan layanan kami.
 
             </p>
@@ -172,12 +172,12 @@ text-gray-600
 leading-8
 ">
 
-                    Dengan mengakses dan menggunakan platform PICO,
+                    Dengan mengakses dan menggunakan platform Vooters,
                     pengguna dianggap telah membaca, memahami,
                     dan menyetujui seluruh Syarat & Ketentuan yang
                     berlaku.
 
-                    PICO berhak melakukan perubahan layanan,
+                    Vooters berhak melakukan perubahan layanan,
                     fitur, maupun ketentuan penggunaan apabila
                     diperlukan.
 
@@ -230,7 +230,7 @@ text-gray-600
 ">
 
                     <li>
-                        PICO adalah platform digital untuk pengelolaan
+                        Vooters adalah platform digital untuk pengelolaan
                         dan pelaksanaan voting online.
                     </li>
 
@@ -243,7 +243,7 @@ text-gray-600
 
                     <li>
                         Penyelenggara adalah pihak yang membuat dan
-                        mengelola event pada PICO.
+                        mengelola event pada Vooters.
                     </li>
 
 
@@ -285,7 +285,7 @@ text-gray-600
 leading-8
 ">
 
-                    Pengguna wajib menggunakan PICO secara wajar
+                    Pengguna wajib menggunakan Vooters secara wajar
                     dan tidak diperbolehkan melakukan tindakan
                     yang dapat mengganggu keamanan atau operasional
                     sistem.
@@ -357,7 +357,7 @@ text-gray-600
 leading-8
 ">
 
-                    Setiap vote yang dilakukan melalui PICO harus
+                    Setiap vote yang dilakukan melalui Vooters harus
                     mengikuti mekanisme yang telah ditentukan oleh
                     masing-masing event.
 
@@ -392,7 +392,7 @@ text-gray-600
 
 
                     <li>
-                        PICO dapat membatalkan vote yang terbukti
+                        Vooters dapat membatalkan vote yang terbukti
                         melanggar ketentuan.
                     </li>
 
@@ -429,7 +429,7 @@ text-gray-600
 leading-8
 ">
 
-                    Beberapa event pada PICO dapat menggunakan
+                    Beberapa event pada Vooters dapat menggunakan
                     mekanisme voting berbayar.
 
                     Pengguna bertanggung jawab memastikan data
@@ -558,7 +558,7 @@ text-2xl
 
 font-bold
 ">
-                    7. Hak dan Kewenangan PICO
+                    7. Hak dan Kewenangan Vooters
                 </h2>
 
 
@@ -570,7 +570,7 @@ text-gray-600
 leading-8
 ">
 
-                    PICO berhak:
+                    Vooters berhak:
 
                 </p>
 
@@ -639,7 +639,7 @@ text-gray-600
 leading-8
 ">
 
-                    PICO berusaha menjaga layanan tetap tersedia,
+                    Vooters berusaha menjaga layanan tetap tersedia,
                     namun tidak menjamin sistem selalu bebas dari
                     gangguan akibat faktor teknis, jaringan,
                     pemeliharaan, atau kondisi di luar kendali.
@@ -677,7 +677,7 @@ leading-8
 ">
 
                     Apabila terjadi permasalahan terkait penggunaan
-                    layanan PICO, pengguna dan pihak terkait
+                    layanan Vooters, pengguna dan pihak terkait
                     diharapkan menyelesaikan melalui komunikasi
                     terlebih dahulu secara baik.
 
@@ -713,7 +713,7 @@ text-gray-600
 leading-8
 ">
 
-                    Dengan menggunakan layanan PICO, pengguna
+                    Dengan menggunakan layanan Vooters, pengguna
                     menyatakan telah membaca dan menyetujui seluruh
                     ketentuan yang tercantum dalam halaman ini.
 
@@ -761,7 +761,7 @@ leading-7
 ">
 
                     Untuk pertanyaan mengenai Syarat & Ketentuan
-                    PICO, silakan hubungi:
+                    Vooters, silakan hubungi:
 
                 </p>
 
@@ -773,7 +773,7 @@ text-blue-600
 
 font-semibold
 ">
-                    support@pico.id
+                    support@Vooters.id
                 </p>
 
 
