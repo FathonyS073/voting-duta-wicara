@@ -2,14 +2,13 @@
 
 namespace App\Filament\Resources\Events\Schemas;
 
-use Filament\Schemas\Schema;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
-
+use Filament\Schemas\Schema;
 
 class EventForm
 {
@@ -17,12 +16,6 @@ class EventForm
     {
         return $schema
             ->components([
-
-                /*
-                |--------------------------------------------------------------------------
-                | Informasi Event
-                |--------------------------------------------------------------------------
-                */
 
                 Section::make('Informasi Event')
                     ->schema([
@@ -32,13 +25,14 @@ class EventForm
                             ->required()
                             ->maxLength(255),
 
-
                         TextInput::make('slug')
                             ->label('Slug Event')
                             ->required()
                             ->unique(ignoreRecord: true)
-                            ->maxLength(255),
-
+                            ->maxLength(255)
+                            ->helperText(
+                                'Digunakan sebagai URL halaman event.'
+                            ),
 
                         Textarea::make('description')
                             ->label('Deskripsi Event')
@@ -49,13 +43,6 @@ class EventForm
                     ->columns(2),
 
 
-
-                /*
-                |--------------------------------------------------------------------------
-                | Media Event
-                |--------------------------------------------------------------------------
-                */
-
                 Section::make('Media Event')
                     ->schema([
 
@@ -63,25 +50,19 @@ class EventForm
                             ->label('Logo Event')
                             ->image()
                             ->disk('public')
-                            ->directory('events/logo'),
-
+                            ->directory('events/logo')
+                            ->visibility('public'),
 
                         FileUpload::make('banner')
                             ->label('Banner Event')
                             ->image()
                             ->disk('public')
-                            ->directory('events/banner'),
+                            ->directory('events/banner')
+                            ->visibility('public'),
 
                     ])
                     ->columns(2),
 
-
-
-                /*
-                |--------------------------------------------------------------------------
-                | Periode Voting
-                |--------------------------------------------------------------------------
-                */
 
                 Section::make('Periode Voting')
                     ->schema([
@@ -89,7 +70,6 @@ class EventForm
                         DatePicker::make('start_date')
                             ->label('Tanggal Mulai')
                             ->required(),
-
 
                         DatePicker::make('end_date')
                             ->label('Tanggal Selesai')
@@ -100,29 +80,23 @@ class EventForm
                     ->columns(2),
 
 
-
-                /*
-                |--------------------------------------------------------------------------
-                | Status Event
-                |--------------------------------------------------------------------------
-                */
-
                 Section::make('Status Event')
                     ->schema([
 
                         Select::make('status')
                             ->label('Status')
                             ->options([
-
                                 'draft' => 'Draft',
                                 'active' => 'Aktif',
                                 'closed' => 'Ditutup',
                                 'finished' => 'Selesai',
-
                             ])
                             ->default('draft')
                             ->required()
-                            ->native(false),
+                            ->native(false)
+                            ->helperText(
+                                'Hanya event aktif yang seharusnya menerima voting.'
+                            ),
 
                     ]),
 
