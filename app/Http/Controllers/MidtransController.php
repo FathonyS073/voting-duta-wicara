@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PaymentLog;
 use App\Models\Transaction;
 use App\Models\Vote;
 use App\Services\MidtransService;
@@ -14,15 +15,18 @@ class MidtransController extends Controller
 {
     protected MidtransService $midtransService;
 
+
     public function __construct(MidtransService $midtransService)
     {
         $this->midtransService = $midtransService;
     }
 
 
-    /**
-     * Generate Snap Token
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | Generate Midtrans Snap Token
+    |--------------------------------------------------------------------------
+    */
     public function token(string $invoice)
     {
         try {
@@ -35,6 +39,12 @@ class MidtransController extends Controller
                 ->where('invoice_number', $invoice)
                 ->firstOrFail();
 
+
+            /*
+            |--------------------------------------------------------------------------
+            | Transaksi yang sudah dibayar tidak boleh membuat token baru
+            |--------------------------------------------------------------------------
+            */
 
             if ($transaction->payment_status === 'paid') {
 
@@ -69,12 +79,21 @@ class MidtransController extends Controller
     }
 
 
-    /**
-     * Midtrans Notification / Webhook
-     */
+
+    /*
+    |--------------------------------------------------------------------------
+    | Midtrans Notification / Webhook
+    |--------------------------------------------------------------------------
+    */
     public function notification(Request $request)
     {
         try {
+
+            /*
+            |--------------------------------------------------------------------------
+            | Ambil Notification Midtrans
+            |--------------------------------------------------------------------------
+            */
 
             $notification = new \Midtrans\Notification();
 
@@ -85,6 +104,16 @@ class MidtransController extends Controller
 
             $fraudStatus = $notification->fraud_status ?? null;
 
+            $paymentMethod = $notification->payment_type ?? null;
+
+            $paymentReference = $notification->transaction_id ?? null;
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Pastikan transaksi tersedia
+            |--------------------------------------------------------------------------
+            */
 
             $transaction = Transaction::where(
                 'invoice_number',
@@ -98,6 +127,7 @@ class MidtransController extends Controller
                     'order_id' => $orderId,
                 ]);
 
+
                 return response()->json([
                     'message' => 'Transaction not found.',
                 ], 404);
@@ -105,39 +135,114 @@ class MidtransController extends Controller
             }
 
 
+
             /*
-             * SUCCESS
-             */
-            if (
-                $transactionStatus === 'settlement' ||
-                (
-                    $transactionStatus === 'capture' &&
-                    $fraudStatus === 'accept'
-                )
+            |--------------------------------------------------------------------------
+            | Simpan semua Webhook ke Payment Log
+            |--------------------------------------------------------------------------
+            |
+            | Payment Log boleh memiliki notification berulang.
+            |
+            | Contoh:
+            |
+            | pending
+            | settlement
+            | settlement
+            |
+            | semuanya tetap dicatat.
+            |
+            */
+
+            PaymentLog::create([
+                'transaction_id' => $transaction->id,
+                'gateway' => 'midtrans',
+                'status' => $transactionStatus,
+                'response' => $request->all(),
+            ]);
+
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Atomic Payment Processing
+            |--------------------------------------------------------------------------
+            |
+            | lockForUpdate() memastikan dua webhook tidak memproses
+            | transaction yang sama secara bersamaan.
+            |
+            */
+
+            DB::transaction(function () use (
+                $orderId,
+                $transactionStatus,
+                $fraudStatus,
+                $paymentMethod,
+                $paymentReference
             ) {
 
-                DB::transaction(function () use (
-                    $transaction,
-                    $notification
-                ) {
+                /*
+                |--------------------------------------------------------------------------
+                | Ambil ulang transaction + LOCK ROW
+                |--------------------------------------------------------------------------
+                */
+
+                $transaction = Transaction::where(
+                    'invoice_number',
+                    $orderId
+                )
+                    ->lockForUpdate()
+                    ->firstOrFail();
+
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | PAYMENT SUCCESS
+                |--------------------------------------------------------------------------
+                */
+
+                $isSuccess =
+                    $transactionStatus === 'settlement' ||
+                    (
+                        $transactionStatus === 'capture' &&
+                        $fraudStatus === 'accept'
+                    );
+
+
+                if ($isSuccess) {
 
                     /*
-                     * Update transaction menjadi paid
-                     */
+                    |--------------------------------------------------------------------------
+                    | Update menjadi PAID
+                    |--------------------------------------------------------------------------
+                    |
+                    | paid_at tidak ditimpa jika sebelumnya sudah ada.
+                    |
+                    */
+
                     $transaction->update([
                         'payment_status' => 'paid',
-                        'payment_reference' => $notification->transaction_id,
+                        'payment_method' => $paymentMethod
+                            ?? $transaction->payment_method,
+                        'payment_reference' => $paymentReference
+                            ?? $transaction->payment_reference,
                         'paid_at' => $transaction->paid_at ?? now(),
                     ]);
 
 
                     /*
-                     * Buat record vote
-                     *
-                     * firstOrCreate digunakan agar
-                     * satu transaksi hanya menghasilkan
-                     * satu record vote.
-                     */
+                    |--------------------------------------------------------------------------
+                    | Buat Vote
+                    |--------------------------------------------------------------------------
+                    |
+                    | Perlindungan sekarang memiliki 3 lapisan:
+                    |
+                    | 1. lockForUpdate()
+                    | 2. firstOrCreate()
+                    | 3. UNIQUE votes.transaction_id
+                    |
+                    */
+
                     Vote::firstOrCreate(
                         [
                             'transaction_id' => $transaction->id,
@@ -150,40 +255,91 @@ class MidtransController extends Controller
                         ]
                     );
 
-                });
 
-            }
+                    return;
+                }
+
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | JANGAN TURUNKAN STATUS TRANSAKSI YANG SUDAH PAID
+                |--------------------------------------------------------------------------
+                |
+                | Misalnya webhook datang:
+                |
+                | settlement
+                | lalu pending terlambat
+                |
+                | transaksi tetap PAID.
+                |
+                */
+
+                if ($transaction->payment_status === 'paid') {
+                    return;
+                }
+
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | PAYMENT PENDING
+                |--------------------------------------------------------------------------
+                */
+
+                if ($transactionStatus === 'pending') {
+
+                    $transaction->update([
+                        'payment_status' => 'pending',
+                        'payment_method' => $paymentMethod
+                            ?? $transaction->payment_method,
+                        'payment_reference' => $paymentReference
+                            ?? $transaction->payment_reference,
+                    ]);
+
+
+                    return;
+                }
+
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | PAYMENT FAILED
+                |--------------------------------------------------------------------------
+                */
+
+                if (
+                    in_array(
+                        $transactionStatus,
+                        [
+                            'deny',
+                            'cancel',
+                            'expire',
+                        ],
+                        true
+                    )
+                ) {
+
+                    $transaction->update([
+                        'payment_status' => 'failed',
+                        'payment_method' => $paymentMethod
+                            ?? $transaction->payment_method,
+                        'payment_reference' => $paymentReference
+                            ?? $transaction->payment_reference,
+                    ]);
+
+                }
+
+            });
+
 
 
             /*
-             * PENDING
-             */
-            elseif ($transactionStatus === 'pending') {
-
-                $transaction->update([
-                    'payment_status' => 'pending',
-                    'payment_reference' => $notification->transaction_id,
-                ]);
-
-            }
-
-
-            /*
-             * FAILED
-             */
-            elseif (
-                $transactionStatus === 'deny' ||
-                $transactionStatus === 'cancel' ||
-                $transactionStatus === 'expire'
-            ) {
-
-                $transaction->update([
-                    'payment_status' => 'failed',
-                    'payment_reference' => $notification->transaction_id,
-                ]);
-
-            }
-
+            |--------------------------------------------------------------------------
+            | Success Response
+            |--------------------------------------------------------------------------
+            */
 
             return response()->json([
                 'message' => 'Notification received.',

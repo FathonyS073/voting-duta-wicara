@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources\PaymentLogs\Schemas;
 
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class PaymentLogForm
@@ -12,16 +13,29 @@ class PaymentLogForm
     {
         return $schema
             ->components([
-                TextInput::make('transaction_id')
-                    ->required()
-                    ->numeric(),
+
+                Select::make('transaction_id')
+                    ->label('Transaction')
+                    ->relationship(
+                        'transaction',
+                        'invoice_number'
+                    )
+                    ->disabled(),
+
                 TextInput::make('gateway')
-                    ->default(null),
+                    ->label('Gateway')
+                    ->disabled(),
+
                 TextInput::make('status')
-                    ->default(null),
+                    ->label('Status')
+                    ->disabled(),
+
                 Textarea::make('response')
-                    ->default(null)
+                    ->label('Response / Payload')
+                    ->rows(12)
+                    ->disabled()
                     ->columnSpanFull(),
+
             ]);
     }
 }
