@@ -264,7 +264,7 @@ text-lg
 
 text-[#7A1F2B]
 ">
-                            support@Vooters.id
+                            vooters.id@gmail.com
                         </h3>
 
 

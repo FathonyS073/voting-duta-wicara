@@ -93,3 +93,14 @@ Route::get(
     ]
 )
 ->name('payment.status');
+
+Route::post(
+    '/payment/{invoice}/token',
+    [MidtransController::class, 'token']
+)->name('payment.token');
+
+
+Route::post(
+    '/midtrans/notification',
+    [MidtransController::class, 'notification']
+)->name('midtrans.notification');

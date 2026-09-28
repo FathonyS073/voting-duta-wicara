@@ -85,57 +85,88 @@
 
                 <div class="flex gap-3 mt-6">
 
+                    {{-- INSTAGRAM --}}
                     <div
                         class="
-                        w-9
-                        h-9
+        w-9
+        h-9
+        rounded-lg
+        border
+        border-white/10
+        flex
+        items-center
+        justify-center
+        text-white/70
+        hover:text-[#D4AF37]
+        hover:border-[#D4AF37]/50
+        transition
+        ">
 
-                        rounded-lg
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" class="w-5 h-5">
 
-                        border
-                        border-white/10
+                            <rect x="3" y="3" width="18" height="18" rx="5" ry="5" />
 
-                        flex
-                        items-center
-                        justify-center
-                        ">
-                        IG
+                            <circle cx="12" cy="12" r="4" />
+
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+
+                        </svg>
+
                     </div>
 
 
+                    {{-- YOUTUBE --}}
                     <div
                         class="
-                        w-9
-                        h-9
+        w-9
+        h-9
+        rounded-lg
+        border
+        border-white/10
+        flex
+        items-center
+        justify-center
+        text-white/70
+        hover:text-[#D4AF37]
+        hover:border-[#D4AF37]/50
+        transition
+        ">
 
-                        rounded-lg
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
 
-                        border
-                        border-white/10
+                            <path
+                                d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z" />
 
-                        flex
-                        items-center
-                        justify-center
-                        ">
-                        YT
+                        </svg>
+
                     </div>
 
 
+                    {{-- TIKTOK --}}
                     <div
                         class="
-                        w-9
-                        h-9
+        w-9
+        h-9
+        rounded-lg
+        border
+        border-white/10
+        flex
+        items-center
+        justify-center
+        text-white/70
+        hover:text-[#D4AF37]
+        hover:border-[#D4AF37]/50
+        transition
+        ">
 
-                        rounded-lg
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
 
-                        border
-                        border-white/10
+                            <path
+                                d="M16.7 3c.3 1.8 1.4 3.3 3 4.2v3.2a8.2 8.2 0 0 1-3-1v6.1a6.5 6.5 0 1 1-5.6-6.4v3.3a3.2 3.2 0 1 0 2.3 3.1V3h3.3Z" />
 
-                        flex
-                        items-center
-                        justify-center
-                        ">
-                        TT
+                        </svg>
+
                     </div>
 
                 </div>
@@ -237,7 +268,7 @@
                     ">
 
                     <p class="break-all">
-                        ✉ hello@Vooters.id
+                        ✉ vooters.id@gmail.com
                     </p>
 
                     <p>

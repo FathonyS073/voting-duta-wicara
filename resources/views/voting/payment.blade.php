@@ -11,6 +11,8 @@
     <title>
         Pembayaran Vote - Vooters
     </title>
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="{{ config('midtrans.client_key') }}"></script>
 
 
     @vite(['resources/css/app.css'])
@@ -434,13 +436,11 @@ mt-8
 space-y-3
 ">
 
-
-
-                    <button
+                    <button id="pay-button" type="button"
                         class="
 w-full
-bg-[#7A1F2B]
-hover:bg-[#5A1520]
+bg-blue-600
+hover:bg-blue-700
 text-white
 py-4
 rounded-xl
@@ -511,6 +511,43 @@ text-gray-400
 
 
     @include('partials.footer')
+    <script>
+        document.getElementById('pay-button').addEventListener('click', function() {
+
+            window.snap.pay(@json($snapToken), {
+
+                onSuccess: function(result) {
+
+                    window.location.href =
+                        "{{ route('payment.status', $transaction->invoice_number) }}";
+
+                },
+
+                onPending: function(result) {
+
+                    window.location.href =
+                        "{{ route('payment.status', $transaction->invoice_number) }}";
+
+                },
+
+                onError: function(result) {
+
+                    alert('Pembayaran gagal. Silakan coba kembali.');
+
+                    console.log(result);
+
+                },
+
+                onClose: function() {
+
+                    console.log('Pembayaran ditutup oleh pengguna.');
+
+                }
+
+            });
+
+        });
+    </script>
 
 
 </body>
