@@ -2,19 +2,24 @@
 
 namespace App\Filament\Resources\Votes\Schemas;
 
-use Filament\Schemas\Schema;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-
+use Filament\Schemas\Schema;
 
 class VoteForm
 {
-
     public static function configure(Schema $schema): Schema
     {
         return $schema
             ->components([
 
+                Select::make('event_id')
+                    ->label('Event')
+                    ->relationship(
+                        'event',
+                        'name'
+                    )
+                    ->disabled(),
 
                 Select::make('transaction_id')
                     ->label('Transaction')
@@ -22,8 +27,7 @@ class VoteForm
                         'transaction',
                         'invoice_number'
                     )
-                    ->required(),
-
+                    ->disabled(),
 
                 Select::make('category_id')
                     ->label('Kategori')
@@ -31,8 +35,7 @@ class VoteForm
                         'category',
                         'name'
                     )
-                    ->required(),
-
+                    ->disabled(),
 
                 Select::make('candidate_id')
                     ->label('Finalis')
@@ -40,16 +43,12 @@ class VoteForm
                         'candidate',
                         'name'
                     )
-                    ->required(),
-
+                    ->disabled(),
 
                 TextInput::make('vote_amount')
                     ->label('Jumlah Vote')
-                    ->numeric()
-                    ->required(),
-
+                    ->disabled(),
 
             ]);
     }
-
 }
