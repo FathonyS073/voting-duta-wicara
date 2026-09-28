@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\Vote;
 use App\Services\MidtransService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
@@ -114,11 +116,41 @@ class MidtransController extends Controller
                 )
             ) {
 
-                $transaction->update([
-                    'payment_status' => 'paid',
-                    'payment_reference' => $notification->transaction_id,
-                    'paid_at' => now(),
-                ]);
+                DB::transaction(function () use (
+                    $transaction,
+                    $notification
+                ) {
+
+                    /*
+                     * Update transaction menjadi paid
+                     */
+                    $transaction->update([
+                        'payment_status' => 'paid',
+                        'payment_reference' => $notification->transaction_id,
+                        'paid_at' => $transaction->paid_at ?? now(),
+                    ]);
+
+
+                    /*
+                     * Buat record vote
+                     *
+                     * firstOrCreate digunakan agar
+                     * satu transaksi hanya menghasilkan
+                     * satu record vote.
+                     */
+                    Vote::firstOrCreate(
+                        [
+                            'transaction_id' => $transaction->id,
+                        ],
+                        [
+                            'event_id' => $transaction->event_id,
+                            'category_id' => $transaction->category_id,
+                            'candidate_id' => $transaction->candidate_id,
+                            'vote_amount' => $transaction->vote_amount,
+                        ]
+                    );
+
+                });
 
             }
 

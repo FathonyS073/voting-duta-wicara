@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
     <title>
@@ -514,37 +515,96 @@ text-gray-400
     <script>
         document.getElementById('pay-button').addEventListener('click', function() {
 
-            window.snap.pay(@json($snapToken), {
+            const button = this;
 
-                onSuccess: function(result) {
+            button.disabled = true;
+            button.innerText = '⏳ Memuat Pembayaran...';
 
-                    window.location.href =
-                        "{{ route('payment.status', $transaction->invoice_number) }}";
+            fetch("{{ route('payment.token', $transaction->invoice_number) }}", {
 
-                },
+                    method: 'POST',
 
-                onPending: function(result) {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': document
+                            .querySelector('meta[name="csrf-token"]')
+                            .getAttribute('content')
+                    }
 
-                    window.location.href =
-                        "{{ route('payment.status', $transaction->invoice_number) }}";
+                })
 
-                },
+                .then(response => response.json())
 
-                onError: function(result) {
+                .then(data => {
 
-                    alert('Pembayaran gagal. Silakan coba kembali.');
+                    if (!data.snap_token) {
 
-                    console.log(result);
+                        throw new Error(
+                            data.message || 'Snap Token tidak ditemukan.'
+                        );
 
-                },
+                    }
 
-                onClose: function() {
+                    window.snap.pay(data.snap_token, {
 
-                    console.log('Pembayaran ditutup oleh pengguna.');
+                        onSuccess: function(result) {
 
-                }
+                            window.location.href =
+                                "{{ route('payment.status', $transaction->invoice_number) }}";
 
-            });
+                        },
+
+                        onPending: function(result) {
+
+                            window.location.href =
+                                "{{ route('payment.status', $transaction->invoice_number) }}";
+
+                        },
+
+                        onError: function(result) {
+
+                            console.error(result);
+
+                            alert(
+                                'Pembayaran gagal. Silakan coba kembali.'
+                            );
+
+                            button.disabled = false;
+
+                            button.innerText =
+                                '💳 Bayar Sekarang';
+
+                        },
+
+                        onClose: function() {
+
+                            button.disabled = false;
+
+                            button.innerText =
+                                '💳 Bayar Sekarang';
+
+                        }
+
+                    });
+
+                })
+
+                .catch(error => {
+
+                    console.error(error);
+
+                    alert(
+                        'Gagal memuat pembayaran. Silakan coba kembali.'
+                    );
+
+                    button.disabled = false;
+
+                    button.innerText =
+                        '💳 Bayar Sekarang';
+
+                });
 
         });
     </script>
