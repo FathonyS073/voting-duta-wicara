@@ -55,6 +55,7 @@ class Transaction extends Model
         'payment_status',
 
         'payment_reference',
+        'snap_token',
 
         'payment_proof',
 
