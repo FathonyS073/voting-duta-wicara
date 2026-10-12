@@ -56,6 +56,14 @@ Route::get(
     [VotingController::class, 'payment']
 )->name('payment.show');
 
+Route::post(
+    '/payment/{invoice}/manual-qris',
+    [
+        VotingController::class,
+        'submitManualQris'
+    ]
+)->name('payment.manual.submit');
+
 Route::get(
     '/bantuan',
     [VotingController::class,'help']

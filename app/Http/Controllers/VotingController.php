@@ -7,6 +7,7 @@ use App\Models\Candidate;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\Setting;
 
 
 class VotingController extends Controller
@@ -462,31 +463,16 @@ class VotingController extends Controller
 
     public function payment($invoice)
     {
-
-        /*
-        |--------------------------------------------------------------------------
-        | Ambil Transaction
-        |--------------------------------------------------------------------------
-        */
-
         $transaction = Transaction::where(
-                'invoice_number',
-                $invoice
-            )
+            'invoice_number',
+            $invoice
+        )
             ->with([
                 'event',
                 'candidate',
-                'category'
+                'category',
             ])
             ->firstOrFail();
-
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Pastikan transaksi valid
-        |--------------------------------------------------------------------------
-        */
 
         abort_if(
             !$transaction->event ||
@@ -496,14 +482,158 @@ class VotingController extends Controller
         );
 
 
+        /*
+        |--------------------------------------------------------------------------
+        | Payment Settings
+        |--------------------------------------------------------------------------
+        */
+
+        $manualQrisEnabled =
+            Setting::getValue('manual_qris_enabled', '1') === '1';
+
+        $manualQrisMerchantName =
+            Setting::getValue(
+                'manual_qris_merchant_name',
+                'Vooters'
+            );
+
+        $manualQrisImage =
+            Setting::getValue('manual_qris_image');
+
+        $manualQrisInstruction =
+            Setting::getValue(
+                'manual_qris_instruction',
+                'Scan QRIS dan masukkan nominal pembayaran sesuai total transaksi yang tertera.'
+            );
+
+        $midtransEnabled =
+            Setting::getValue('midtrans_enabled', '0') === '1';
+
 
         return view(
             'voting.payment',
             compact(
-                'transaction'
+                'transaction',
+                'manualQrisEnabled',
+                'manualQrisMerchantName',
+                'manualQrisImage',
+                'manualQrisInstruction',
+                'midtransEnabled'
             )
         );
+    }
 
+    public function submitManualQris(
+    Request $request,
+    string $invoice
+    ) {
+        /*
+        |--------------------------------------------------------------------------
+        | QRIS Manual Harus Aktif
+        |--------------------------------------------------------------------------
+        */
+
+        abort_unless(
+            Setting::getValue('manual_qris_enabled', '0') === '1',
+            404
+        );
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | QRIS Harus Sudah Dikonfigurasi
+        |--------------------------------------------------------------------------
+        */
+
+        abort_if(
+            empty(Setting::getValue('manual_qris_image')),
+            503,
+            'QRIS belum dikonfigurasi.'
+        );
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Transaction
+        |--------------------------------------------------------------------------
+        */
+
+        $transaction = Transaction::where(
+            'invoice_number',
+            $invoice
+        )->firstOrFail();
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Hanya Pending Yang Boleh Mengirim Bukti
+        |--------------------------------------------------------------------------
+        */
+
+        if ($transaction->payment_status !== 'pending') {
+
+            return redirect()
+                ->route(
+                    'payment.status',
+                    $transaction->invoice_number
+                );
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Validasi Bukti Pembayaran
+        |--------------------------------------------------------------------------
+        */
+
+        $validated = $request->validate([
+            'payment_proof' => [
+                'required',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:2048',
+            ],
+        ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Simpan Bukti Pembayaran
+        |--------------------------------------------------------------------------
+        */
+
+        $proofPath = $validated['payment_proof']->store(
+            'payment-proofs',
+            'public'
+        );
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Update Transaction
+        |--------------------------------------------------------------------------
+        |
+        | PENTING:
+        | Vote BELUM dibuat di sini.
+        |
+        */
+
+        $transaction->update([
+            'payment_method' => 'manual_qris',
+            'payment_proof' => $proofPath,
+            'payment_status' => 'waiting_confirmation',
+        ]);
+
+
+        return redirect()
+            ->route(
+                'payment.status',
+                $transaction->invoice_number
+            )
+            ->with(
+                'success',
+                'Bukti pembayaran berhasil dikirim dan sedang menunggu verifikasi admin.'
+            );
     }
 
 
