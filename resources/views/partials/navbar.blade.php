@@ -144,7 +144,7 @@
             </a>
 
 
-            <a href="{{ route('about') }}"
+            <a href=http://wa.me/+6285232132926
                 class="
                 bg-[#6F1022]
                 hover:bg-[#4B0B17]
