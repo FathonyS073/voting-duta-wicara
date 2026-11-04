@@ -99,13 +99,8 @@ mx-auto
                 Kami siap membantu pertanyaan, kendala,
                 maupun kebutuhan kerja sama terkait platform
                 Digital Voting Vooters.
-
             </p>
-
-
         </div>
-
-
     </section>
 
 
