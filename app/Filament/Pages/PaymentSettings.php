@@ -50,6 +50,9 @@ class PaymentSettings extends Page
 
             'midtrans_enabled' =>
                 Setting::getValue('midtrans_enabled', '0') === '1',
+
+            'kasera_enabled' =>
+                Setting::getValue('kasera_enabled', '0') === '1',
         ]);
     }
 
@@ -123,14 +126,21 @@ class PaymentSettings extends Page
 
                 Section::make('Payment Gateway')
                     ->description(
-                        'Integrasi pembayaran otomatis menggunakan Midtrans.'
+                        'Integrasi pembayaran otomatis menggunakan Midtrans dan Kasera Pay.'
                     )
                     ->schema([
 
                         Toggle::make('midtrans_enabled')
                             ->label('Aktifkan Midtrans')
                             ->helperText(
-                                'Jika nonaktif, customer akan melihat Payment Gateway sebagai Coming Soon.'
+                                'Jika aktif, customer dapat menggunakan pembayaran otomatis melalui Midtrans.'
+                            )
+                            ->default(false),
+
+                        Toggle::make('kasera_enabled')
+                            ->label('Aktifkan Kasera Pay')
+                            ->helperText(
+                                'Jika aktif, customer dapat menggunakan pembayaran otomatis melalui Kasera Pay.'
                             )
                             ->default(false),
 
@@ -219,6 +229,11 @@ class PaymentSettings extends Page
         Setting::setValue(
             'midtrans_enabled',
             !empty($data['midtrans_enabled']) ? '1' : '0'
+        );
+
+        Setting::setValue(
+            'kasera_enabled',
+            !empty($data['kasera_enabled']) ? '1' : '0'
         );
 
 
