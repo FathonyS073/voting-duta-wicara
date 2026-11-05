@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class PaymentLog extends Model
 {
-
     protected $fillable = [
 
         'transaction_id',
 
         'gateway',
+
+        'gateway_event_id',
 
         'status',
 
@@ -20,13 +21,11 @@ class PaymentLog extends Model
     ];
 
 
-
     protected $casts = [
 
         'response' => 'array',
 
     ];
-
 
 
     /*
@@ -39,5 +38,4 @@ class PaymentLog extends Model
     {
         return $this->belongsTo(Transaction::class);
     }
-
 }

@@ -681,6 +681,92 @@
                             </div>
 
                         @endif
+                        <!-- ========================= -->
+                        <!-- KASERA PAY -->
+                        <!-- ========================= -->
+
+                        <form action="{{ route('payment.kasera.create', $transaction->invoice_number) }}"
+                            method="POST">
+                            @csrf
+
+                            <button type="submit"
+                                class="
+            w-full
+            border-2
+            border-[#7A1F2B]
+            rounded-2xl
+            p-5
+            text-left
+            hover:bg-[#fff7ed]
+            transition
+        ">
+                                <div
+                                    class="
+                flex
+                items-center
+                justify-between
+                gap-4
+            ">
+
+                                    <div class="flex items-center gap-4">
+
+                                        <div
+                                            class="
+                        w-12
+                        h-12
+                        rounded-xl
+                        bg-[#fff7ed]
+                        flex
+                        items-center
+                        justify-center
+                        text-xl
+                    ">
+                                            💳
+                                        </div>
+
+
+                                        <div>
+
+                                            <p
+                                                class="
+                            font-bold
+                            text-[#7A1F2B]
+                        ">
+                                                Kasera Pay
+                                            </p>
+
+                                            <p
+                                                class="
+                            mt-1
+                            text-sm
+                            text-gray-500
+                        ">
+                                                Pembayaran otomatis melalui Kasera.
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <span
+                                        class="
+                    px-3
+                    py-1
+                    rounded-full
+                    bg-green-100
+                    text-green-700
+                    text-xs
+                    font-bold
+                ">
+                                        Tersedia
+                                    </span>
+
+                                </div>
+
+                            </button>
+
+                        </form>
 
 
 
