@@ -42,22 +42,115 @@ class KaseraWebhookController extends Controller
         | Verifikasi Signature
         |--------------------------------------------------------------------------
         */
+        $isValidSignature = $this->isValidSignature(
+    $rawBody,
+    $signatureHeader,
+    $webhookSecret
+);
 
-        if (
-            !$this->isValidSignature(
-                $rawBody,
-                $signatureHeader,
-                $webhookSecret
-            )
-        ) {
-            Log::warning(
-                'Kasera webhook invalid signature'
-            );
+/*
+|--------------------------------------------------------------------------
+| TEMPORARY DEBUG SIGNATURE
+|--------------------------------------------------------------------------
+*/
 
-            return response()->json([
-                'message' => 'Invalid signature.',
-            ], 400);
-        }
+$debugTimestamp = null;
+$debugV1Count = 0;
+
+foreach (explode(',', $signatureHeader) as $part) {
+    $part = trim($part);
+
+    if (str_starts_with($part, 't=')) {
+        $debugTimestamp = substr($part, 2);
+    }
+
+    if (str_starts_with($part, 'v1=')) {
+        $debugV1Count++;
+    }
+}
+
+$legacyHeader = (string) $request->header(
+    'Kasera-Signature',
+    ''
+);
+
+$legacyMatches = false;
+
+if (
+    $legacyHeader !== '' &&
+    $webhookSecret !== ''
+) {
+    $legacyExpected = hash_hmac(
+        'sha256',
+        $rawBody,
+        $webhookSecret
+    );
+
+    $legacyMatches = hash_equals(
+        $legacyExpected,
+        trim($legacyHeader)
+    );
+}
+
+Log::info('Kasera webhook signature diagnostic', [
+    'v1_header_present' =>
+        $signatureHeader !== '',
+
+    'v1_header_length' =>
+        strlen($signatureHeader),
+
+    'v1_count' =>
+        $debugV1Count,
+
+    'timestamp_present' =>
+        $debugTimestamp !== null,
+
+    'timestamp_valid' =>
+        $debugTimestamp !== null
+        && ctype_digit($debugTimestamp),
+
+    'timestamp_age_seconds' =>
+        (
+            $debugTimestamp !== null &&
+            ctype_digit($debugTimestamp)
+        )
+            ? abs(time() - (int) $debugTimestamp)
+            : null,
+
+    'raw_body_length' =>
+        strlen($rawBody),
+
+    'secret_loaded' =>
+        $webhookSecret !== '',
+
+    'secret_length' =>
+        strlen($webhookSecret),
+
+    'secret_prefix_ok' =>
+        str_starts_with(
+            $webhookSecret,
+            'whsec_'
+        ),
+
+    'legacy_header_present' =>
+        $legacyHeader !== '',
+
+    'legacy_matches' =>
+        $legacyMatches,
+
+    'v1_matches' =>
+        $isValidSignature,
+]);
+
+if (!$isValidSignature) {
+    Log::warning(
+        'Kasera webhook invalid signature'
+    );
+
+    return response()->json([
+        'message' => 'Invalid signature.',
+    ], 400);
+}
 
 
         /*
@@ -98,26 +191,56 @@ class KaseraWebhookController extends Controller
 
 
         /*
-        |--------------------------------------------------------------------------
-        | Cocokkan Kasera-Event-Id
-        |--------------------------------------------------------------------------
-        */
+|--------------------------------------------------------------------------
+| Cocokkan Kasera-Event-Id
+|--------------------------------------------------------------------------
+|
+| Kasera dapat merepresentasikan event ID dengan atau tanpa prefix "evt_".
+| Normalisasi keduanya sebelum dibandingkan.
+|
+*/
 
-        $headerEventId = $request->header(
-            'Kasera-Event-Id'
+$headerEventId = (string) $request->header(
+    'Kasera-Event-Id',
+    ''
+);
+
+if ($headerEventId !== '') {
+
+    $bodyEventId = (string) $eventId;
+
+    $normalizedBodyEventId = str_starts_with(
+        $bodyEventId,
+        'evt_'
+    )
+        ? substr($bodyEventId, 4)
+        : $bodyEventId;
+
+    $normalizedHeaderEventId = str_starts_with(
+        $headerEventId,
+        'evt_'
+    )
+        ? substr($headerEventId, 4)
+        : $headerEventId;
+
+    if (
+        !hash_equals(
+            $normalizedBodyEventId,
+            $normalizedHeaderEventId
+        )
+    ) {
+        Log::warning(
+            'Kasera webhook event id mismatch',
+            [
+                'event_id' => $eventId,
+            ]
         );
 
-        if (
-            !empty($headerEventId) &&
-            !hash_equals(
-                (string) $eventId,
-                (string) $headerEventId
-            )
-        ) {
-            return response()->json([
-                'message' => 'Event ID mismatch.',
-            ], 400);
-        }
+        return response()->json([
+            'message' => 'Event ID mismatch.',
+        ], 400);
+    }
+}
 
 
         /*
