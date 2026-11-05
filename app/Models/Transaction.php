@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-
     protected $fillable = [
 
         'invoice_number',
@@ -31,7 +30,6 @@ class Transaction extends Model
         'customer_phone',
 
 
-
         /*
         |--------------------------------------------------------------------------
         | Detail Vote
@@ -43,18 +41,20 @@ class Transaction extends Model
         'total_amount',
 
 
-
         /*
         |--------------------------------------------------------------------------
         | Payment
         |--------------------------------------------------------------------------
         */
 
+        'payment_gateway',
+
         'payment_method',
 
         'payment_status',
 
         'payment_reference',
+
         'snap_token',
 
         'payment_proof',
@@ -64,13 +64,11 @@ class Transaction extends Model
     ];
 
 
-
     protected $casts = [
 
         'paid_at' => 'datetime',
 
     ];
-
 
 
     /*
@@ -85,7 +83,6 @@ class Transaction extends Model
     }
 
 
-
     /*
     |--------------------------------------------------------------------------
     | Transaction memilih Candidate
@@ -96,7 +93,6 @@ class Transaction extends Model
     {
         return $this->belongsTo(Candidate::class);
     }
-
 
 
     /*
@@ -111,7 +107,6 @@ class Transaction extends Model
     }
 
 
-
     /*
     |--------------------------------------------------------------------------
     | Transaction menghasilkan banyak Vote
@@ -122,5 +117,4 @@ class Transaction extends Model
     {
         return $this->hasMany(Vote::class);
     }
-
 }

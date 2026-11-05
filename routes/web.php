@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VotingController;
 use App\Http\Controllers\MidtransController;
+use App\Http\Controllers\KaseraPayController;
 
 
 Route::get(
@@ -107,6 +108,11 @@ Route::post(
     '/payment/{invoice}/token',
     [MidtransController::class, 'token']
 )->name('payment.token');
+
+Route::post(
+    '/payment/{invoice}/kasera',
+    [KaseraPayController::class, 'create']
+)->name('payment.kasera.create');
 
 
 Route::post(

@@ -32,7 +32,7 @@ class KaseraPayService
     }
 
     /**
-     * Membuat payment request Kasera.
+     * Membuat payment request Kasera Hosted Checkout.
      */
     public function createPayment(
         Transaction $transaction
@@ -45,26 +45,71 @@ class KaseraPayService
                 $transaction->invoice_number
             ),
 
+            /*
+            |--------------------------------------------------------------------------
+            | Reference Vooters
+            |--------------------------------------------------------------------------
+            |
+            | external_id digunakan untuk menghubungkan payment request
+            | Kasera dengan invoice internal Vooters.
+            |
+            */
             'external_id' => $transaction->invoice_number,
 
+            /*
+            |--------------------------------------------------------------------------
+            | Hosted Checkout
+            |--------------------------------------------------------------------------
+            |
+            | Dengan object checkout, Kasera akan menyediakan halaman
+            | checkout untuk customer.
+            |
+            */
+            'checkout' => [
+                'steps' => [
+                    'customer',
+                    'payment_method',
+                    'payment',
+                ],
+
+                'is_name_required' => true,
+                'is_email_required' => false,
+                'is_phone_required' => false,
+            ],
+
+            /*
+            |--------------------------------------------------------------------------
+            | Return URL
+            |--------------------------------------------------------------------------
+            |
+            | Setelah pembayaran selesai, customer dapat kembali
+            | ke halaman status transaksi Vooters.
+            |
+            | Return URL BUKAN bukti bahwa pembayaran berhasil.
+            | Status PAID tetap ditentukan dari webhook Kasera.
+            |
+            */
             'return_url' => route(
                 'payment.status',
                 $transaction->invoice_number
             ),
         ];
 
+
         /*
         |--------------------------------------------------------------------------
         | Idempotency Key
         |--------------------------------------------------------------------------
         |
-        | Invoice yang sama selalu menggunakan key yang sama.
-        | Dengan demikian retry request tidak menghasilkan
-        | dua payment request Kasera.
+        | Invoice yang sama selalu menggunakan idempotency key yang sama.
+        | Jika request terkirim ulang karena timeout/retry, Kasera
+        | mengembalikan payment request yang sama dan tidak membuat
+        | pembayaran duplikat.
         |
         */
         $idempotencyKey =
             'vooters-' . $transaction->invoice_number;
+
 
         $response = Http::withToken($this->apiKey)
             ->acceptJson()
@@ -78,10 +123,35 @@ class KaseraPayService
                 $payload
             );
 
+
         $this->ensureSuccessful($response);
 
-        return $response->json();
+
+        $data = $response->json();
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Validasi Response
+        |--------------------------------------------------------------------------
+        |
+        | Hosted Checkout harus memberikan ID payment request
+        | dan checkout_url.
+        |
+        */
+        if (
+            empty($data['id']) ||
+            empty($data['checkout_url'])
+        ) {
+            throw new RuntimeException(
+                'Response Kasera tidak memiliki payment request ID atau checkout URL.'
+            );
+        }
+
+
+        return $data;
     }
+
 
     /**
      * Pastikan response API berhasil.
@@ -92,6 +162,7 @@ class KaseraPayService
         if ($response->successful()) {
             return;
         }
+
 
         throw new RuntimeException(
             'Kasera API Error [' .
