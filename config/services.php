@@ -21,6 +21,12 @@ return [
     'resend' => [
         'key' => env('RESEND_API_KEY'),
     ],
+    'kasera' => [
+        'mode' => env('KASERA_MODE', 'sandbox'),
+        'api_key' => env('KASERA_API_KEY'),
+        'webhook_secret' => env('KASERA_WEBHOOK_SECRET'),
+        'base_url' => 'https://pay.kasera.id/v1',
+    ],
 
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
