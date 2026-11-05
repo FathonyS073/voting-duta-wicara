@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VotingController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\KaseraPayController;
+use App\Http\Controllers\KaseraWebhookController;
 
 
 Route::get(
@@ -113,6 +114,11 @@ Route::post(
     '/payment/{invoice}/kasera',
     [KaseraPayController::class, 'create']
 )->name('payment.kasera.create');
+
+Route::post(
+    '/webhooks/kasera',
+    [KaseraWebhookController::class, 'handle']
+)->name('kasera.webhook');
 
 
 Route::post(

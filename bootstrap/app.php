@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
     $middleware->preventRequestForgery(except: [
         'midtrans/notification',
+        'webhooks/kasera',
     ]);
 
 })
